@@ -38,7 +38,7 @@ const Header: React.FC<HeaderProps> = ({
                 </a>
               </div>
             </nav>
-          )};
+          )}
         </div>
       </div>
     </header>
