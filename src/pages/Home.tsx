@@ -1,4 +1,7 @@
 import React from 'react';
+import Button from '../components/ui/Button';
+import Card from '../components/ui/Card';
+import Section from '../components/ui/Section';
 
 const Home: React.FC = () => {
   return (
@@ -7,70 +10,50 @@ const Home: React.FC = () => {
       <section id="home" className="min-h-screen flex items-center justify-center px-4">
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
-            <h1 className="text-4xl md:text-6xl font-bold text-slate-800 dark:text-white mb-6">
-              안녕하세요! 👋
-              <br />
-              <span className="text-blue-600 dark:text-blue-400">현욱</span>입니다
+            <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6">
+              <span className="text-blue-600">현욱</span>입니다
             </h1>
-            <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8">
-              코딩을 사랑하는 개발자의 이야기
+            <p className="text-xl md:text-2xl text-slate-600">
+              병원 홈페이지 만드는 개발자
             </p>
           </div>
-          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+            <Button color="blue">
               프로젝트 보기
-            </button>
-            <button className="border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 px-8 py-3 rounded-lg font-medium transition-colors">
+            </Button>
+            <Button color="gray">
               About Me
-            </button>
+            </Button>
           </div>
         </div>
       </section>
 
       {/* About 섹션 (임시) */}
-      <section id="about" className="py-20 px-4 bg-white dark:bg-slate-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-12">
-            About Me
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
+      <Section id="about" title="About Me">
+          <p className='text-lg text-slate-600'>
             여기에 자기소개가 들어갈 예정입니다.
           </p>
-        </div>
-      </section>
+      </Section>
 
       {/* Projects 섹션 (임시) */}
-      <section id="projects" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-800 dark:text-white mb-12">
-            Projects
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* 프로젝트 카드들이 들어갈 자리 */}
-            <div className="bg-white dark:bg-slate-800 p-6 rounded-lg shadow-md border border-slate-200 dark:border-slate-700">
-              <h3 className="text-xl font-semibold text-slate-800 dark:text-white mb-4">
-                프로젝트 1
-              </h3>
-              <p className="text-slate-600 dark:text-slate-300">
-                프로젝트 설명이 들어갈 자리입니다.
-              </p>
-            </div>
+      <Section id="projects" title="Projects" backgroundColor='gray'>
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            <Card 
+              title="프로젝트1" 
+              description="프로젝트1 설명글"
+            >
+              <Button color="green">자세히보기</Button>
+            </Card>
           </div>
-        </div>
-      </section>
+      </Section>
 
       {/* Contact 섹션 (임시) */}
-      <section id="contact" className="py-20 px-4 bg-white dark:bg-slate-800">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-12">
-            Contact
-          </h2>
-          <p className="text-lg text-slate-600 dark:text-slate-300">
+      <Section id="contact" title="Contact">
+          <p className='text-lg text-slate-600'>
             연락처 정보가 들어갈 예정입니다.
           </p>
-        </div>
-      </section>
+          <Button color="blue">연락하기</Button>
+      </Section>
     </div>
   );
 };

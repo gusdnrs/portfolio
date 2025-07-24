@@ -6,3 +6,48 @@ body {
 }
 
 /* 커스텀 CSS는 아래에 작성 */
+/* 네비게이션 슬라이드 효과 */
+.nav-list {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* space-x-8과 동일 */
+}
+
+.nav-list > div {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-list > div > a {
+  padding: 0 1rem;
+  box-sizing: border-box;
+  display: block;
+  position: relative;
+  transition: all 0.15s ease;
+  -webkit-transition: all 0.15s ease;
+  -moz-transition: all 0.15s ease;
+  -ms-transition: all 0.15s ease;
+  -o-transition: all 0.15s ease;
+}
+
+/* 호버 시 원래 텍스트가 위로 슬라이드 */
+.nav-list > div > a:hover {
+  transform: translateY(-100%);
+  color: #3b82f6;
+  -webkit-transform: translateY(-100%);
+  -moz-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  -o-transform: translateY(-100%);
+}
+
+/* data-hover 속성값을 before로 표시 */
+.nav-list > div > a:before {
+  content: attr(data-hover);
+  width: 100%;
+  font-weight: 600;
+  color: #3b82f6; /* blue-600 */
+  text-align: center;
+  position: absolute;
+  top: 100%;
+  left: 0;
+}
