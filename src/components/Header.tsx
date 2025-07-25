@@ -5,15 +5,14 @@ interface HeaderProps {
 };
 
 const Header: React.FC<HeaderProps> = ({
-  title = "Coding Blog",
   showNavigation = true
 }) => {
   return (
     <header className="sticky top-0 z-100 bg-white/80 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 py-4">
+      <div className="max-w-6xl mx-auto">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-slate-800">
-            {title}
+          <h1 className="max-w-20">
+            <img src="/logo.png" alt="" />
           </h1>
           {showNavigation && (
             <nav className="nav-list hidden md:flex">

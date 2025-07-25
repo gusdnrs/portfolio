@@ -2,6 +2,7 @@ import React from 'react';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Section from '../components/ui/Section';
+import { projects } from '../data/Projects';
 
 const Home: React.FC = () => {
   return (
@@ -11,17 +12,17 @@ const Home: React.FC = () => {
         <div className="max-w-4xl mx-auto text-center">
           <div className="mb-8">
             <h1 className="text-4xl md:text-6xl font-bold text-slate-800 mb-6">
-              <span className="text-blue-600">현욱</span>입니다
+              <span className="text-yellow-300">현욱</span>입니다
             </h1>
             <p className="text-xl md:text-2xl text-slate-600">
               병원 홈페이지 만드는 개발자
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button color="blue">
+            <Button color="primary">
               프로젝트 보기
             </Button>
-            <Button color="gray">
+            <Button color="secondary">
               About Me
             </Button>
           </div>
@@ -37,14 +38,11 @@ const Home: React.FC = () => {
 
       {/* Projects 섹션 (임시) */}
       <Section id="projects" title="Projects" backgroundColor='gray'>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            <Card 
-              title="프로젝트1" 
-              description="프로젝트1 설명글"
-            >
-              <Button color="green">자세히보기</Button>
-            </Card>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map(project => (
+            <Card key={project.id} {...project} />
+          ))}
+        </div>
       </Section>
 
       {/* Contact 섹션 (임시) */}

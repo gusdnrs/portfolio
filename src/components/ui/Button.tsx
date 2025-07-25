@@ -11,6 +11,8 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, color = "blue" }) =>
     const baseClasses = "text-white px-8 py-3 rounded-lg font-medium transition-colors";
 
     const colorClasses = {
+      primary: "bg-primary hover:bg-blue-800 text-white",
+      secondary: "bg-secondary hover:bg-cyan-600 text-white",
       blue: "bg-blue-600 hover:bg-blue-700",
       red: "bg-red-600 hover:bg-red-700",
       green: "bg-green-600 hover:bg-green-700",
