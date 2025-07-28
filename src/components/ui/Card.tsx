@@ -15,7 +15,6 @@ const Card: React.FC<CardProps> = ({
   imageUrl,
   skills = [],
   liveUrl,
-  githubUrl,
   date,
   className = ""
 }) => {
