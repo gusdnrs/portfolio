@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "임현욱 포트폴리오",
     description: "끈기로 완성하는 실무형 개발자 임현욱의 포트폴리오입니다. CMS 커스터마이즈, 그누보드5, 실전 프로젝트 경험을 담았습니다.",
-    url: "https://portfolio-pi-six-25b2jpx2kn.vercel.app/", // 실제 배포 도메인으로 수정
+    url: "https://portfolio-ebon-five-15.vercel.app/", // 실제 배포 도메인으로 수정
     type: "website",
     images: [
       {

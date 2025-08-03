@@ -1,9 +1,21 @@
-@import "tailwindcss";
+/* Pretendard npm install */
 @import 'pretendard/dist/web/static/pretendard.css';
 
+/* Tailwind Style */
+@import "tailwindcss";
+
+/* 전역 CSS 변수 (optional) */
 :root {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --primary-green: #38b24c,
+  --accent-yellow: #ffd700,
+  --bg-light: #f7ffee,
+  --deep-gray: #23272a,
+
+
+}
+
+/* body 전체의 기본 폰트, 컬러 지정 */
+body {
+  margin: 0;
+  padding: 0;
 }
