@@ -11,7 +11,7 @@ const notoSansKr = Noto_Sans_KR({
   weight: ["300", "400", "500", "600", "700", "900"], // 필요하다면 굵기 목록 지정
 });
 
-export const meta: Metadata = {
+export const metadata: Metadata = {
   title: "임현욱 포트폴리오",
   description: "끈기로 완성하는 실무형 개발자 임현욱의 포트폴리오입니다. CMS 커스터마이즈, 그누보드5, 실전 프로젝트 경험을 담았습니다.",
   keywords: [
