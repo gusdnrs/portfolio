@@ -4,6 +4,7 @@ import localFont from 'next/font/local'; // 한글 전용 폰트
 import '../styles/globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
+import ScrollToTop from '../components/common/ScrollToTop';
 
 // 영문, 숫자 전용 폰트
 const montserrat = Montserrat({
@@ -49,6 +50,7 @@ export default function RootLayout({
       <body>
         <Header></Header>
         <main>{children}</main>
+        <ScrollToTop />
         <Footer></Footer>
       </body>
     </html>

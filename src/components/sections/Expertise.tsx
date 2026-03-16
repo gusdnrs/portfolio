@@ -33,7 +33,7 @@ export default function Expertise() {
 
   return (
     <section id="expertise" className="py-24 px-4 bg-bg-gray overflow-hidden">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto  relative z-11">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,8 @@ export default function Expertise() {
           </span>
           <h2 className="text-4xl font-bold mb-4">Core Specialist</h2>
           <p className="text-gray-500 max-w-2xl mx-auto">
-            4년 이상의 실무를 통해 정립한 4대 핵심 역량을 바탕으로<br className="hidden md:block" />
+            4년 이상의 실무를 통해 정립한 4대 핵심 역량을 바탕으로
+            <br className="hidden md:block" />
             단순 브라우징을 넘어선 사용자 경험의 완성도를 추구합니다.
           </p>
         </motion.div>
@@ -62,7 +63,7 @@ export default function Expertise() {
             >
               {/* Hover Glow Effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-brand-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
-              
+
               <div className="relative z-10">
                 <div className="text-brand-blue mb-6 p-4 w-fit rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 ring-inset">
                   {skill.icon}
