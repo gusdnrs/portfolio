@@ -35,21 +35,6 @@ export default function Hero() {
           </p>
         </motion.div>
       </div>
-
-      {/* Scroll Down Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="font-en text-[10px] tracking-[0.2em] uppercase text-gray-400 font-bold">
-            Scroll Down
-          </span>
-          <div className="w-px h-12 bg-linear-to-b from-brand-blue/60 to-transparent" />
-        </div>
-      </motion.div>
     </section>
   );
 }

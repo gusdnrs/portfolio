@@ -9,16 +9,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ConnectingLine() {
   const [pathData, setPathData] = useState<string>('');
-  const [isVisible, setIsVisible] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
+  const bgPathRef = useRef<SVGPathElement>(null);
   const progressPathRef = useRef<SVGPathElement>(null);
 
-  const [pageHeight, setPageHeight] = useState(0);
-
-  // 1. Calculate path points and page height
+  // 1. Calculate path points
   useEffect(() => {
     const updatePath = () => {
-      setPageHeight(document.documentElement.scrollHeight);
       const sections = ['hero', 'about', 'expertise', 'work', 'contact'];
       const points: { x: number; y: number }[] = [];
 
@@ -29,26 +26,21 @@ export default function ConnectingLine() {
           const scrollY = window.scrollY;
           
           let xOffset;
-          let yOffset;
-
-          if (index === 0) {
-            // Start point: Exactly matching HeroBackground exit (offsetWidth/2, bottom)
-            xOffset = el.offsetWidth * 0.5;
-            yOffset = rect.bottom + scrollY;
-          } else if (index === sections.length - 1) {
-            // End point: Center of Footer/Contact
-            xOffset = el.offsetWidth * 0.5;
-            yOffset = rect.top + scrollY + rect.height / 2;
+          if (index === 0 || index === sections.length - 1) {
+            // Center start and end points
+            xOffset = window.innerWidth * 0.5;
           } else {
             // Alternate intermediate points
             const isEven = index % 2 === 0;
             xOffset = isEven
               ? window.innerWidth * 0.15
               : window.innerWidth * 0.85;
-            yOffset = rect.top + scrollY + rect.height / 2;
           }
 
-          points.push({ x: xOffset, y: yOffset });
+          points.push({
+            x: xOffset,
+            y: rect.top + scrollY + rect.height / 2,
+          });
         }
       });
 
@@ -65,23 +57,18 @@ export default function ConnectingLine() {
     };
 
     updatePath();
-    const timer = setTimeout(updatePath, 1000); // More time for full layout stability
-    
-    // Show the line with a delay constant with Hero intro (3s)
-    const introTimer = setTimeout(() => setIsVisible(true), 2900);
-
+    const timer = setTimeout(updatePath, 500); // Wait for potential layout shifts
     window.addEventListener('resize', updatePath);
     return () => {
       window.removeEventListener('resize', updatePath);
       clearTimeout(timer);
-      clearTimeout(introTimer);
     };
   }, []);
 
   // 2. Animate progress path on scroll
   useGSAP(
     () => {
-      if (!pathData || !progressPathRef.current || !isVisible) return;
+      if (!pathData || !progressPathRef.current) return;
 
       const path = progressPathRef.current;
       const length = path.getTotalLength();
@@ -90,39 +77,61 @@ export default function ConnectingLine() {
       gsap.set(path, {
         strokeDasharray: length,
         strokeDashoffset: length,
-        opacity: 0
       });
 
-      // Drawing animation tied to scroll
+      // Drawing animation
       gsap.to(path, {
         strokeDashoffset: 0,
-        opacity: 1,
         ease: 'none',
         scrollTrigger: {
           trigger: 'body',
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 0.5,
+          scrub: 0.5, // Faster scrub for direct feedback
+          onUpdate: (self) => {
+            // Add gradual opacity fade as a bonus "painting" feel
+            // The line gets more "intense" as it's drawn
+            gsap.set(path, { opacity: Math.min(1, self.progress * 1.5) });
+          },
         },
       });
 
+      // Refresh ScrollTrigger to ensure lengths are matched
       ScrollTrigger.refresh();
     },
-    { dependencies: [pathData, isVisible], scope: svgRef },
+    { dependencies: [pathData], scope: svgRef },
   );
 
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-      style={{ height: `${pageHeight}px` }}
+      className="absolute top-0 left-0 w-full pointer-events-none z-10"
+      style={{ height: '100%' }}
     >
+      <defs>
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="4" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+      {/* Blueprint background path (faint) */}
+      <path
+        ref={bgPathRef}
+        d={pathData}
+        fill="none"
+        stroke="#3a59d1"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="opacity-0"
+      />
+      {/* Progress path (painted) */}
       <path
         ref={progressPathRef}
         d={pathData}
         fill="none"
         stroke="#3a59d1"
-        strokeWidth="3"
+        strokeWidth="4"
         strokeLinecap="round"
         strokeLinejoin="round"
         style={{ filter: 'drop-shadow(0 0 8px rgba(58, 89, 209, 0.4))' }}
