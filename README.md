@@ -1,4 +1,4 @@
-# Hyunkwook Im | Web Publisher Portfolio
+# 임현욱 | Web Publisher Portfolio
 
 41+ 프로젝트 경험을 보유한 4년차 웹퍼블리셔 임현욱의 포트폴리오 사이트입니다. 기획의 본질을 파악하고 단단한 코드로 안정적인 웹 환경을 구축하는 것을 목표로 합니다.
 
