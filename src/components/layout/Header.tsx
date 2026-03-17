@@ -39,9 +39,11 @@ export default function Header() {
   }, []);
 
   const navItems = [
+    { id: 0, title: 'Home', href: '/#hero' },
     { id: 1, title: 'About', href: '/#about' },
-    { id: 2, title: 'Expertise', href: '/#expertise' },
-    { id: 3, title: 'Work', href: '/#work' },
+    { id: 2, title: 'Core Skills', href: '/#core-skills' },
+    { id: 3, title: 'Portfolio', href: '/#portfolio' },
+    { id: 4, title: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -50,8 +52,8 @@ export default function Header() {
         className={`${
           isScrolled
             ? 'fixed bg-black/80 backdrop-blur-[20px] backdrop-saturate-[180%] border-b border-white/10 h-[60px] text-white'
-            : isSubPage 
-              ? 'absolute text-white' 
+            : isSubPage
+              ? 'absolute text-white'
               : 'absolute'
         } top-0 left-0 w-full z-100 h-20 transition-all duration-300`}
       >
@@ -122,8 +124,8 @@ export default function Header() {
 
       {/* Mobile Overlay Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-white text-gray-950 transition-transform duration-500 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 z-40 bg-white text-gray-950 transition-all duration-500 ease-in-out ${
+          isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 invisible'
         } md:hidden`}
       >
         <nav className="flex h-full flex-col justify-center items-center px-10">

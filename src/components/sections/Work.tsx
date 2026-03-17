@@ -18,7 +18,7 @@ export default function Work() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="work" className="py-24 px-4 bg-white min-h-screen">
+    <section id="portfolio" className="py-24 px-4 bg-white min-h-screen">
       <div className="max-w-7xl mx-auto  relative z-11">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

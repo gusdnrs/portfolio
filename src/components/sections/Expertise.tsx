@@ -32,7 +32,7 @@ export default function Expertise() {
   ];
 
   return (
-    <section id="expertise" className="py-24 px-4 bg-bg-gray overflow-hidden">
+    <section id="core-skills" className="py-24 px-4 bg-bg-gray overflow-hidden">
       <div className="max-w-6xl mx-auto  relative z-11">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -62,7 +62,7 @@ export default function Expertise() {
               className="group relative p-10 rounded-3xl glass border border-white/40 overflow-hidden hover:shadow-2xl hover:shadow-brand-blue/10 transition-all duration-500"
             >
               {/* Hover Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-brand-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+              <div className="absolute -inset-1 bg-linear-to-r from-brand-blue/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
 
               <div className="relative z-10">
                 <div className="text-brand-blue mb-6 p-4 w-fit rounded-2xl bg-white shadow-sm ring-1 ring-gray-100 ring-inset">

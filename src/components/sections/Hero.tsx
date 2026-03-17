@@ -28,7 +28,7 @@ export default function Hero() {
           className="flex flex-col items-center gap-4"
         >
           <p className="text-lg md:text-2xl pt-2 font-medium tracking-tight text-gray-700">
-            기획의 진심을 기술의 가치로 잇는&nbsp;
+            기획의 아이디어와 사용자의 경험을 코드로 잇는&nbsp;
             <span>
               <span className="text-brand-blue font-bold">임현욱</span>입니다.
             </span>

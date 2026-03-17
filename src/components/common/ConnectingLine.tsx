@@ -19,7 +19,7 @@ export default function ConnectingLine() {
   useEffect(() => {
     const updatePath = () => {
       setPageHeight(document.documentElement.scrollHeight);
-      const sections = ['hero', 'about', 'expertise', 'work', 'contact'];
+      const sections = ['hero', 'identity', 'core-skills', 'portfolio', 'contact'];
       const points: { x: number; y: number }[] = [];
 
       sections.forEach((id, index) => {
@@ -114,7 +114,7 @@ export default function ConnectingLine() {
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`absolute top-0 left-0 w-full pointer-events-none z-10 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
       style={{ height: `${pageHeight}px` }}
     >
       <path
