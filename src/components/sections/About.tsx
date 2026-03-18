@@ -262,7 +262,7 @@ export default function About() {
             {features.map((feature, idx) => (
               <div
                 key={idx}
-                className="flex gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100"
+                className="flex flex-row lg:flex-col xl:flex-row gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100"
               >
                 <div className="shrink-0 w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm">
                   {feature.icon}
@@ -334,7 +334,7 @@ export default function About() {
       </div>
 
       {/* ROW 3: Tech Marquee (Bottom - Moved outside max-w-1440px for true full-width calculation) */}
-      <div className="about-tech relative pt-16 z-10">
+      <div className="about-tech relative pt-16 md:pt-24 z-10">
         <div className="overflow-hidden">
           <div className="tech-marquee-inner flex items-center whitespace-nowrap w-max">
             {/* Using 4 sets of clones for absolute seamlessness on ultra-wide screens */}

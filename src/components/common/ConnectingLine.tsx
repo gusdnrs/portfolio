@@ -27,7 +27,7 @@ export default function ConnectingLine() {
         if (el) {
           const rect = el.getBoundingClientRect();
           const scrollY = window.scrollY;
-          
+
           let xOffset;
           let yOffset;
 
@@ -67,7 +67,7 @@ export default function ConnectingLine() {
 
     updatePath();
     const timer = setTimeout(updatePath, 1000); // More time for full layout stability
-    
+
     // Show the line with a delay constant with Hero intro (3s)
     const introTimer = setTimeout(() => setIsVisible(true), 2900);
 
@@ -91,7 +91,7 @@ export default function ConnectingLine() {
       gsap.set(path, {
         strokeDasharray: length,
         strokeDashoffset: length,
-        opacity: 0
+        opacity: 0,
       });
 
       // Drawing animation tied to scroll
@@ -115,7 +115,7 @@ export default function ConnectingLine() {
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none z-[1] overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
+      className={`absolute top-0 left-0 w-full pointer-events-none z-1 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
       style={{ height: `${pageHeight}px` }}
     >
       <path
