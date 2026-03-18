@@ -40,7 +40,7 @@ export default function Header() {
 
   const navItems = [
     { id: 0, title: 'Home', href: '/#hero' },
-    { id: 1, title: 'About', href: '/#about' },
+    { id: 1, title: 'About Me', href: '/#about' },
     { id: 2, title: 'Portfolio', href: '/#portfolio' },
     { id: 3, title: 'Contact', href: '/#contact' },
   ];
@@ -124,7 +124,9 @@ export default function Header() {
       {/* Mobile Overlay Menu */}
       <div
         className={`fixed inset-0 z-40 bg-white text-gray-950 transition-all duration-500 ease-in-out ${
-          isMenuOpen ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 invisible'
+          isMenuOpen
+            ? 'translate-x-0 opacity-100'
+            : 'translate-x-full opacity-0 invisible'
         } md:hidden`}
       >
         <nav className="flex h-full flex-col justify-center items-center px-10">

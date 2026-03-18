@@ -42,10 +42,10 @@ export default function ConnectingLine() {
           } else {
             // Alternate intermediate points
             const isEven = index % 2 === 0;
-            // Use 40% and 60% to keep the line more centered and away from side columns
+            // Use wider 15% and 85% to restore the broader movement
             xOffset = isEven
-              ? window.innerWidth * 0.4
-              : window.innerWidth * 0.6;
+              ? window.innerWidth * 0.15
+              : window.innerWidth * 0.85;
             yOffset = rect.top + scrollY + rect.height / 2;
           }
 
@@ -115,7 +115,7 @@ export default function ConnectingLine() {
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none -z-10 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
+      className={`absolute top-0 left-0 w-full pointer-events-none z-[1] overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
       style={{ height: `${pageHeight}px` }}
     >
       <path
