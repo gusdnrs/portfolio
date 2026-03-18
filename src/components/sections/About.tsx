@@ -70,8 +70,8 @@ export default function About() {
       // 3. Bottom Features Stagger
       gsap.from('.about-feature-card', {
         scrollTrigger: {
-          trigger: '.about-middle', // 바로 위 섹션을 트리거로 잡아 무조건 발동되도록 안전장치 강화
-          start: 'bottom 90%',
+          trigger: '.about-features',
+          start: 'top 90%',
         },
         y: 30,
         opacity: 0,
@@ -79,9 +79,82 @@ export default function About() {
         stagger: 0.15,
         ease: 'power2.out',
       });
+
+      // 4. Experience & Education Reveal
+      gsap.from('.about-history-col', {
+        scrollTrigger: {
+          trigger: '.about-history',
+          start: 'top 85%',
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: 'power2.out',
+      });
+
+      // 5. Tech Icons Stagger
+      gsap.from('.tech-icon-wrapper', {
+        scrollTrigger: {
+          trigger: '.about-tech',
+          start: 'top 90%',
+        },
+        scale: 0.5,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.05,
+        ease: 'back.out(1.7)',
+      });
     },
     { scope: containerRef },
   );
+
+  const experiences = [
+    {
+      date: '2021.11 ~ 2025.11',
+      company: '테라기획',
+      title: '주임',
+    },
+    {
+      date: '2020.06 ~ 2020.10',
+      company: '영림임업',
+      title: '사원',
+    },
+    {
+      date: '2019.02 ~ 2019.08',
+      company: '한국능률협회컨설팅',
+      title: '인턴',
+    },
+  ];
+
+  const education = [
+    {
+      date: '2021.06 ~ 2021.12',
+      title:
+        '(스마트웹&콘텐츠개발) [B.L]웹표준기반 스마트UI/UX디자인콘텐츠제작 수료 - 그린컴퓨터아카데미',
+    },
+    {
+      date: '2011.03 ~ 2019.02',
+      title: '한양대학교 (ERICA) 경제학부 졸업',
+    },
+  ];
+
+  const techIcons = [
+    { name: 'HTML5', src: '/images/icons/html5.svg' },
+    { name: 'CSS3', src: '/images/icons/css3.svg' },
+    { name: 'Tailwind', src: '/images/icons/tailwind.png' },
+    { name: 'SCSS', src: '/images/icons/scss.png' },
+    { name: 'JS', src: '/images/icons/js.svg' },
+    { name: 'jQuery', src: '/images/icons/jquery.svg' },
+    { name: '그누보드(PHP)', src: '/images/icons/gnuboard.png' },
+    { name: 'PHP', src: '/images/icons/php.png' },
+    { name: 'MYSQL', src: '/images/icons/mysql.png' },
+    { name: 'Figma', src: '/images/icons/figma.svg' },
+    { name: 'Bootstrap', src: '/images/icons/bootstrap.svg' },
+    { name: 'Photoshop', src: '/images/icons/photoshop.svg' },
+    { name: 'Illustrator', src: '/images/icons/illustrator.svg' },
+    { name: 'Adobe XD', src: '/images/icons/xd.svg' },
+  ];
 
   const features = [
     {
@@ -116,7 +189,7 @@ export default function About() {
       className="py-20 md:py-32 lg:py-48 px-4 bg-white overflow-hidden relative"
       ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto relative z-11">
+      <div className="max-w-[1440px] mx-auto relative z-11">
         {/* TOP: Headline Section */}
         <div className="about-top mb-12 md:mb-20 lg:mb-28 text-center lg:text-left">
           <span className="about-headline-line font-en text-xs md:text-sm font-black tracking-[0.2em] text-brand-blue uppercase mb-6 block">
@@ -142,32 +215,29 @@ export default function About() {
         </div>
 
         {/* MIDDLE: Image & Narrative (Balanced Layout) */}
-        <div className="about-middle flex flex-col lg:flex-row gap-10 md:gap-16 items-center mb-12 md:mb-20 lg:mb-28">
+        <div
+          id="identity"
+          className="about-middle flex flex-col lg:flex-row gap-10 md:gap-16 items-center mb-12 md:mb-20 lg:mb-28"
+        >
           {/* Left/Top: Image Container */}
           <div className="w-full lg:w-5/12">
-            {/* Added group and cursor-pointer to the wrapper */}
             <div className="about-image-wrapper group relative aspect-3/2 md:aspect-video lg:aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl w-full max-w-none cursor-pointer">
               <div className="about-image-inner absolute inset-0 w-full h-full scale-[1.2]">
-                {/* Default Image */}
                 <Image
                   src="/images/hero_bg.png"
                   alt="Im Hyunwook Profile"
                   fill
                   className="object-cover object-center md:object-[80%_center] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0"
                 />
-
-                {/* Hover Image (Original Photo) */}
                 <Image
                   src="/images/hero_bg_hover.jpg"
                   alt="Im Hyunwook Real Profile"
                   fill
                   className="object-cover object-center md:object-[80%_center] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100"
                 />
-
                 <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent pointer-events-none" />
               </div>
 
-              {/* Hover Cue / Indicator */}
               <div className="absolute bottom-6 right-6 md:bottom-8 md:right-8 lg:bottom-10 lg:right-10 px-4 py-2 bg-white/30 backdrop-blur-md rounded-full shadow-lg border border-white/40 flex items-center gap-2.5 transition-all duration-500 transform group-hover:opacity-0 group-hover:translate-y-4">
                 <span className="relative flex h-2.5 w-2.5">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75 ring-1 ring-white"></span>
@@ -224,6 +294,75 @@ export default function About() {
               </p>
             </div>
           ))}
+        </div>
+
+        {/* NEW: Experience & Education */}
+        <div className="about-history grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 lg:gap-32 mt-20 md:mt-32 lg:mt-48 pb-20 md:pb-32 lg:pb-48 border-b border-gray-100">
+          {/* Work Experience */}
+          <div className="about-history-col">
+            <h3 className="font-en text-lg md:text-xl font-black tracking-tight text-gray-950 mb-8 border-b-2 border-gray-950 pb-2 w-fit">
+              WORK EXPERIENCE
+            </h3>
+            <ul className="space-y-6">
+              {experiences.map((exp, idx) => (
+                <li
+                  key={idx}
+                  className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6"
+                >
+                  <span className="font-en text-sm font-bold text-gray-400 min-w-[140px] tracking-tight">
+                    {exp.date}
+                  </span>
+                  <span className="text-base md:text-lg font-bold text-gray-700">
+                    {exp.company}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Education */}
+          <div className="about-history-col">
+            <h3 className="font-en text-lg md:text-xl font-black tracking-tight text-gray-950 mb-8 border-b-2 border-gray-950 pb-2 w-fit">
+              EDUCATION
+            </h3>
+            <ul className="space-y-6">
+              {education.map((edu, idx) => (
+                <li key={idx} className="flex flex-col gap-1">
+                  <span className="font-en text-sm font-bold text-gray-400 tracking-tight">
+                    {edu.date}
+                  </span>
+                  <span className="text-base md:text-lg font-bold text-gray-700 leading-snug">
+                    {edu.title}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* NEW: Tech Stack Icons */}
+        <div className="about-tech mt-20 md:mt-32 lg:mt-48 text-center">
+          <div className="about-tech-icons flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">
+            {techIcons.map((icon, idx) => (
+              <div
+                key={idx}
+                className="tech-icon-wrapper group relative flex flex-col items-center"
+              >
+                <div className="relative w-12 h-12 md:w-16 md:h-16 flex items-center justify-center grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
+                  <Image
+                    src={icon.src}
+                    alt={icon.name}
+                    width={64}
+                    height={64}
+                    className="object-contain"
+                  />
+                </div>
+                <span className="absolute -bottom-6 text-[10px] font-black text-brand-blue opacity-0 group-hover:opacity-100 transition-opacity duration-300 uppercase tracking-widest">
+                  {icon.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

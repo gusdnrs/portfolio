@@ -36,7 +36,7 @@ export default function Contact() {
       id="contact"
       className="py-24 px-5 md:px-10 bg-bg-gray overflow-hidden relative"
     >
-      <div className="max-w-6xl mx-auto relative z-11">
+      <div className="max-w-[1440px] mx-auto relative z-11">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -59,7 +59,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="p-10 md:p-16 rounded-[40px] glass bg-white/70 border-white/60 shadow-xl max-w-4xl mx-auto"
+          className="p-10 md:p-16 rounded-[40px] glass bg-white/70 border-white/60 shadow-xl max-w-5xl mx-auto"
         >
           <div className="flex flex-col md:flex-row justify-between items-center gap-12">
             <div className="text-center md:text-left space-y-4">

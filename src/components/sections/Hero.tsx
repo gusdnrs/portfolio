@@ -10,7 +10,7 @@ export default function Hero() {
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-white pt-20"
     >
       <HeroBackground />
-      <div className="relative z-10 text-center px-4">
+      <div className="relative z-10 text-center px-4 max-w-[1440px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}

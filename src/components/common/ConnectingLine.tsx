@@ -19,7 +19,7 @@ export default function ConnectingLine() {
   useEffect(() => {
     const updatePath = () => {
       setPageHeight(document.documentElement.scrollHeight);
-      const sections = ['hero', 'identity', 'core-skills', 'portfolio', 'contact'];
+      const sections = ['hero', 'identity', 'portfolio', 'contact'];
       const points: { x: number; y: number }[] = [];
 
       sections.forEach((id, index) => {
@@ -42,9 +42,10 @@ export default function ConnectingLine() {
           } else {
             // Alternate intermediate points
             const isEven = index % 2 === 0;
+            // Use 40% and 60% to keep the line more centered and away from side columns
             xOffset = isEven
-              ? window.innerWidth * 0.15
-              : window.innerWidth * 0.85;
+              ? window.innerWidth * 0.4
+              : window.innerWidth * 0.6;
             yOffset = rect.top + scrollY + rect.height / 2;
           }
 
@@ -114,7 +115,7 @@ export default function ConnectingLine() {
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none z-10 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`absolute top-0 left-0 w-full pointer-events-none -z-10 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
       style={{ height: `${pageHeight}px` }}
     >
       <path
