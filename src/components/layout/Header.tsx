@@ -9,7 +9,7 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const isSubPage = pathname.startsWith('/work/');
+  const isSubPage = pathname.startsWith('/project/');
 
   // Handle manual scroll to hash when navigating from other pages
   useEffect(() => {
@@ -39,9 +39,10 @@ export default function Header() {
   }, []);
 
   const navItems = [
-    { id: 1, title: 'About', href: '/#about' },
-    { id: 2, title: 'Expertise', href: '/#expertise' },
-    { id: 3, title: 'Work', href: '/#work' },
+    { id: 0, title: 'Home', href: '/#hero' },
+    { id: 1, title: 'About Me', href: '/#about' },
+    { id: 2, title: 'Portfolio', href: '/#portfolio' },
+    { id: 3, title: 'Contact', href: '/#contact' },
   ];
 
   return (
@@ -49,9 +50,9 @@ export default function Header() {
       <div
         className={`${
           isScrolled
-            ? 'fixed bg-black/80 backdrop-blur-[20px] backdrop-saturate-[180%] border-b border-white/10 h-[60px] text-white'
-            : isSubPage 
-              ? 'absolute text-white' 
+            ? 'fixed bg-black/80 backdrop-blur-[20px] backdrop-saturate-180 border-b border-white/10 h-[60px] text-white'
+            : isSubPage
+              ? 'absolute text-white'
               : 'absolute'
         } top-0 left-0 w-full z-100 h-20 transition-all duration-300`}
       >
@@ -65,6 +66,15 @@ export default function Header() {
                 <li key={item.id}>
                   <Link
                     href={item.href}
+                    onClick={(e) => {
+                      // 같은 페이지(/)에서 클릭 시 JS smooth scroll 처리
+                      if (pathname === '/') {
+                        e.preventDefault();
+                        const id = item.href.replace('/#', '');
+                        const el = document.getElementById(id);
+                        if (el) el.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                     className={`transition-colors ${
                       isScrolled || isSubPage
                         ? 'text-white/70 hover:text-white'
@@ -122,8 +132,10 @@ export default function Header() {
 
       {/* Mobile Overlay Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-white text-gray-950 transition-transform duration-500 ease-in-out ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 z-40 bg-white text-gray-950 transition-all duration-500 ease-in-out ${
+          isMenuOpen
+            ? 'translate-x-0 opacity-100'
+            : 'translate-x-full opacity-0 invisible'
         } md:hidden`}
       >
         <nav className="flex h-full flex-col justify-center items-center px-10">
@@ -132,7 +144,15 @@ export default function Header() {
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
+                  onClick={(e) => {
+                    setIsMenuOpen(false);
+                    if (pathname === '/') {
+                      e.preventDefault();
+                      const id = item.href.replace('/#', '');
+                      const el = document.getElementById(id);
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                   className="font-en text-4xl font-black capitalize hover:text-brand-blue transition-colors"
                 >
                   {item.title}

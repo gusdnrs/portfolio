@@ -1,119 +1,317 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ChartBar, Clock, Lightbulb, Users } from 'lucide-react';
+import { useRef } from 'react';
 import Image from 'next/image';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+// 전역 초기화에서 처리됨
 
 export default function About() {
-  const features = [
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(
+    () => {
+      // 1. Top Headline Reveal
+      gsap.from('.about-headline-line', {
+        scrollTrigger: {
+          trigger: '.about-top',
+          start: 'top 92%',
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: 'back.out(1.7)',
+      });
+
+      // 2. Main content area (Image and Right Side)
+      gsap.from('.about-image-wrapper', {
+        scrollTrigger: {
+          trigger: '.about-main',
+          start: 'top 92%',
+        },
+        x: -50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power2.out',
+      });
+
+      gsap.from('.about-right-side', {
+        scrollTrigger: {
+          trigger: '.about-main',
+          start: 'top 92%',
+        },
+        x: 50,
+        opacity: 0,
+        duration: 1,
+        ease: 'power2.out',
+      });
+
+      // History Reveal
+      gsap.from('.about-history-col', {
+        scrollTrigger: {
+          trigger: '.about-history',
+          start: 'top 92%',
+        },
+        y: 50,
+        opacity: 0,
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'back.out(1.4)',
+      });
+
+      // 3. Tech Marquee Logic
+      const marqueeInner = containerRef.current?.querySelector(
+        '.tech-marquee-inner',
+      );
+      if (marqueeInner) {
+        // Responsive duration based on screen width
+        const isMobile = window.innerWidth < 768;
+        const duration = isMobile ? 25 : 35; // seconds for one full loop
+
+        // Using 4 sets of clones (-25%) for absolute seamlessness on ultra-wide screens
+        gsap.fromTo(
+          marqueeInner,
+          { xPercent: 0 },
+          {
+            xPercent: -25,
+            repeat: -1,
+            duration: duration,
+            ease: 'none',
+          },
+        );
+      }
+    },
+    { scope: containerRef },
+  );
+
+  const experiences = [
     {
-      icon: <ChartBar className="w-6 h-6 text-brand-blue" />,
-      title: '분석적 사고',
-      description:
-        '경제학 전공 기반의 데이터 최적화 및 논리적 컴포넌트 설계 역량',
+      date: '2021.11 ~ 2025.11',
+      company: '테라기획',
+      title: '주임',
     },
     {
-      icon: <Clock className="w-6 h-6 text-brand-blue" />,
-      title: '실무 숙련도',
-      description: '4년 1개월의 실무 경험과 41건 이상의 다양한 프로젝트 완수',
+      date: '2020.06 ~ 2020.10',
+      company: '영림임업',
+      title: '사원',
     },
     {
-      icon: <Lightbulb className="w-6 h-6 text-brand-blue" />,
-      title: '기획 최적화',
-      description: '기획서의 의도를 깊이 이해하고 기술적 구현 가능성으로 번역',
+      date: '2019.02 ~ 2019.08',
+      company: '한국능률협회컨설팅',
+      title: '인턴',
+    },
+  ];
+
+  const education = [
+    {
+      date: '2021.06 ~ 2021.12',
+      title:
+        '(스마트웹&콘텐츠개발) [B.L]웹표준기반 스마트UI/UX디자인콘텐츠제작 수료 - 그린컴퓨터아카데미',
     },
     {
-      icon: <Users className="w-6 h-6 text-brand-blue" />,
-      title: '협업 중심',
-      description: '기획자, 디자이너와 원활한 소통을 통한 디자인 정밀 구현',
+      date: '2011.03 ~ 2019.02',
+      title: '한양대학교 (ERICA) 경제학부 학사',
     },
+  ];
+
+  const techIcons = [
+    { name: 'HTML5', src: '/images/icons/html.svg' },
+    { name: 'CSS3', src: '/images/icons/css.svg' },
+    { name: 'Tailwind', src: '/images/icons/tailwind.svg' },
+    { name: 'SCSS', src: '/images/icons/scss.svg' },
+    { name: 'JS', src: '/images/icons/javascript.svg' },
+    { name: 'jQuery', src: '/images/icons/jquery.svg' },
+    { name: 'Gnuboard', src: '/images/icons/gnuboard.svg' },
+    { name: 'PHP', src: '/images/icons/php.svg' },
+    { name: 'MySQL', src: '/images/icons/mysql.svg' },
+    { name: 'Figma', src: '/images/icons/figma.svg' },
+    { name: 'Photoshop', src: '/images/icons/photoshop.svg' },
   ];
 
   return (
     <section
       id="about"
-      className="py-24 px-4 bg-white overflow-hidden relative"
+      className="py-20 md:py-32 lg:py-40 px-4 bg-white overflow-hidden relative "
+      ref={containerRef}
     >
-      <div className="max-w-7xl mx-auto relative z-11">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left: Headline & Narrative (Column 7) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-7"
-          >
-            <span className="font-en text-sm font-bold tracking-widest text-brand-blue uppercase mb-4 block">
-              01. The Logic
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-8">
-              Logic & Practice:
-              <br />
-              <span className="text-gray-400 text-xl">
-                기획의 언어를 기술의 가치로 번역합니다.
-              </span>
-            </h2>
+      <div className="max-w-[1440px] mx-auto relative z-10 ">
+        {/* TOP: Header Title */}
+        <div className="about-top mb-16 md:mb-24 text-center lg:text-left">
+          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+            <span className="about-headline-line block mb-2">About Me</span>
+          </h2>
+        </div>
 
-            <div className="space-y-6 text-lg text-gray-600 leading-relaxed mb-12">
-              <p>
-                경제학을 전공하며 습득한{' '}
-                <strong className="text-brand-blue-dark">‘최적화’</strong>와{' '}
-                <strong className="text-brand-blue-dark">‘구조적 분석’</strong>
-                의 습관은 웹 퍼블리셔로서 저의 가장 큰 무기입니다. 단순히 화면을
-                그리는 것을 넘어, 데이터의 흐름과 컴포넌트의 논리적 구조를 먼저
-                설계합니다.
-              </p>
-              <p>
-                복잡한 기획안을 효율적인 코드 구조로 분해하고 재조립하는
-                과정에서 기술적 즐거움을 느끼며, 4년이 넘는 시간 동안{' '}
-                <strong className="text-brand-blue-dark">
-                  41건 이상의 프로젝트
-                </strong>
-                를 수행하며 완성도를 증명해 왔습니다.
-              </p>
+        {/* ROW 1: Identity & Bio/Features */}
+        <div id="identity" className="about-main mb-12 lg:mb-16">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-12">
+            {/* Left: Image Container */}
+            <div className="w-full lg:w-5/12">
+              <div className="about-image-wrapper group relative aspect-video lg:aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl w-full">
+                <div className="about-image-inner absolute inset-0 w-full h-full scale-[1.1] cursor-pointer">
+                  <Image
+                    src="/images/hero_bg.png"
+                    alt="Im Hyunwook Profile"
+                    fill
+                    className="object-cover object-[50%_20%] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0"
+                  />
+                  <Image
+                    src="/images/hero_bg_hover.jpg"
+                    alt="Im Hyunwook Real Profile"
+                    fill
+                    className="object-cover object-[50%_20%] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100"
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Feature Cards Grid within Logic side */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-8 rounded-2xl bg-gray-50 border border-gray-100 hover:border-brand-blue/30 transition-all group"
-                >
-                  <div className="mb-4 p-3 w-fit rounded-xl bg-white shadow-sm group-hover:bg-brand-blue/10 transition-colors">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                  <p className="text-gray-500 text-sm leading-snug">
-                    {feature.description}
+            {/* Right: Bio & Ultra-wide Features */}
+            <div className="about-right-side w-full lg:w-7/12 flex flex-col justify-center">
+              <div className="text-left space-y-8">
+                <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black text-brand-blue tracking-tight leading-[1.2]">
+                  Im Hyun-wook
+                </h3>
+                <div className="space-y-6 text-[clamp(1rem,2vw,1.375rem)] text-gray-600 leading-relaxed font-medium">
+                  <p>
+                    안녕하세요! 웹 퍼블리셔&nbsp;
+                    <span className="font-bold text-brand-blue">임현욱</span>
+                    입니다.
                   </p>
-                </motion.div>
+                  <p>
+                    <span className="font-bold text-brand-blue">
+                      41건 이상의 병·의원 프로젝트를 완수
+                    </span>
+                    하며 쌓은 숙련도로 웹 표준과 접근성을 준수한 최적의 웹
+                    구조를 지향하고 있습니다. 단순한 코딩을 넘어 프로젝트의
+                    비즈니스 목적을 깊이 이해하고 실현하는 데 집중하고 있습니다.
+                  </p>
+                  <p>
+                    학생회장과 영업 실무로 다진&nbsp;
+                    <span className="font-bold text-brand-blue">소통 능력</span>
+                    을 바탕으로 기획자와 디자이너의 의도를 명확히 파악하여
+                    아이디어를 화면 위에 구현했습니다. 어떤 업무든 강한&nbsp;
+                    <span className="font-bold text-brand-blue">책임감</span>
+                    으로 완수하며, 단순히 기술을 구현하는 것을 넘어 사용자가
+                    마주하는 순간의&nbsp;
+                    <span className="font-bold text-brand-blue">
+                      경험을 가치 있게 만드는 개발자
+                    </span>
+                    가 되고자 합니다.
+                  </p>
+                  <p>감사합니다.</p>
+                </div>
+              </div>
+
+              {/* Features: Integrated under bio for 1440px+ screens */}
+              {/* <div className="hidden xl:grid grid-cols-2 gap-6 mt-12">
+                {features.map((feature, idx) => (
+                  <div
+                    key={idx}
+                    className="flex flex-col gap-5 p-8 rounded-[40px] bg-gray-50/50 border border-gray-100/50 hover:bg-white hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-500 group"
+                  >
+                    <div className="shrink-0 w-20 h-20 rounded-3xl bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+                      <Image
+                        src={feature.image}
+                        alt={feature.title}
+                        width={64}
+                        height={64}
+                        className="object-contain"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="text-xl font-bold text-gray-900 mb-2">
+                        {feature.title}
+                      </h4>
+                      <p className="text-[15px] text-gray-500 leading-relaxed font-medium">
+                        {feature.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div> */}
+            </div>
+          </div>
+        </div>
+
+        {/* ROW 2: Work & Education (Side-by-Side) */}
+        <div className="about-history grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 py-12">
+          {/* Work Experience */}
+          <div className="about-history-col">
+            <div className="flex items-center gap-4 mb-10">
+              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900">
+                WORK EXPERIENCE
+              </h3>
+              <div className="h-px bg-gray-200 grow" />
+            </div>
+            <div className="space-y-8">
+              {experiences.map((exp, idx) => (
+                <div key={idx} className="flex flex-col gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                    <span className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
+                      {exp.company}
+                    </span>
+                    <span className="font-en text-sm font-bold text-gray-400 tracking-widest uppercase tabular-nums opacity-60">
+                      {exp.date}
+                    </span>
+                  </div>
+                  {/* <span className="text-gray-500 font-medium">{exp.title}</span> */}
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right: Personal Image (Column 5) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-5 relative aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl"
-          >
-            <Image
-              src="/images/hero_bg.png"
-              alt="Im Hyunwook Profile"
-              fill
-              className="object-cover transition-transform duration-700 hover:scale-105"
-            />
-            {/* Subtle Gradient Overlay */}
-            <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent" />
-          </motion.div>
+          {/* Education */}
+          <div className="about-history-col">
+            <div className="flex items-center gap-4 mb-10">
+              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900">
+                EDUCATION
+              </h3>
+              <div className="h-px bg-gray-200 grow" />
+            </div>
+            <div className="space-y-8">
+              {education.map((edu, idx) => (
+                <div key={idx} className="flex flex-col gap-2">
+                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
+                    <span className="text-lg md:text-xl font-bold text-gray-800 leading-snug tracking-tight">
+                      {edu.title}
+                    </span>
+                    <span className="font-en text-sm font-bold text-gray-400 tracking-widest uppercase whitespace-nowrap tabular-nums opacity-60">
+                      {edu.date}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ROW 3: Tech Marquee (Bottom - Moved outside max-w-1440px for true full-width calculation) */}
+      <div className="about-tech relative pt-16 md:pt-24 z-10">
+        <div className="overflow-hidden">
+          <div className="tech-marquee-inner flex items-center whitespace-nowrap w-max">
+            {/* Using 4 sets of clones for absolute seamlessness on ultra-wide screens */}
+            {[...techIcons, ...techIcons, ...techIcons, ...techIcons].map(
+              (icon, idx) => (
+                <div
+                  key={idx}
+                  className="tech-marquee-item shrink-0 px-6 sm:px-8 md:px-12 lg:px-16 flex items-center justify-center"
+                >
+                  <div className="relative w-24 h-24 md:w-32 md:h-26 flex items-center justify-center py-4">
+                    <Image
+                      src={icon.src}
+                      alt={icon.name}
+                      width={100}
+                      height={100}
+                      className="object-contain w-auto h-full max-h-[80px]"
+                    />
+                  </div>
+                </div>
+              ),
+            )}
+          </div>
         </div>
       </div>
     </section>

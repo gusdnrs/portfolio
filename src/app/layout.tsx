@@ -6,6 +6,7 @@ import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
 import ScrollToTop from '../components/common/ScrollToTop';
 import ConnectingLine from '../components/common/ConnectingLine';
+import GSAPProvider from '../components/common/GSAPProvider';
 
 // 영문, 숫자 전용 폰트
 const montserrat = Montserrat({
@@ -47,13 +48,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${pretendard.variable} ${montserrat.variable} overflow-x-hidden`}>
-      <body className="overflow-x-hidden relative">
-        <ConnectingLine />
-        <Header></Header>
-        <main>{children}</main>
-        <ScrollToTop />
-        <Footer></Footer>
+    <html lang="ko" className={`${pretendard.variable} ${montserrat.variable}`}>
+      <body className="relative">
+        <GSAPProvider>
+          <ConnectingLine />
+          <Header></Header>
+          <main>{children}</main>
+          <ScrollToTop />
+          <Footer></Footer>
+        </GSAPProvider>
       </body>
     </html>
   );

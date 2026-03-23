@@ -1,25 +1,33 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-gsap.registerPlugin(ScrollTrigger);
+// 전역 초기화(GSAPInitializer)에서 처리되므로 registerPlugin 생략
 
 export default function ConnectingLine() {
+  const pathname = usePathname();
+  const isSubPage = pathname.startsWith('/project/');
+
   const [pathData, setPathData] = useState<string>('');
   const [isVisible, setIsVisible] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const progressPathRef = useRef<SVGPathElement>(null);
-
   const [pageHeight, setPageHeight] = useState(0);
 
-  // 1. Calculate path points and page height
+  // 1. Calculate path points and page height with ResizeObserver
   useEffect(() => {
+    if (isSubPage) return;
+
     const updatePath = () => {
-      setPageHeight(document.documentElement.scrollHeight);
-      const sections = ['hero', 'about', 'expertise', 'work', 'contact'];
+      const scrollHeight = document.documentElement.scrollHeight;
+      setPageHeight(scrollHeight);
+
+      // Updated sections list
+      const sections = ['hero', 'identity', 'portfolio', 'portfolio-sub-projects', 'contact-main-card'];
       const points: { x: number; y: number }[] = [];
 
       sections.forEach((id, index) => {
@@ -27,20 +35,20 @@ export default function ConnectingLine() {
         if (el) {
           const rect = el.getBoundingClientRect();
           const scrollY = window.scrollY;
-          
+
           let xOffset;
           let yOffset;
 
           if (index === 0) {
-            // Start point: Exactly matching HeroBackground exit (offsetWidth/2, bottom)
+            // Hero: Center bottom
             xOffset = el.offsetWidth * 0.5;
             yOffset = rect.bottom + scrollY;
-          } else if (index === sections.length - 1) {
-            // End point: Center of Footer/Contact
-            xOffset = el.offsetWidth * 0.5;
-            yOffset = rect.top + scrollY + rect.height / 2;
+          } else if (id === 'contact-main-card') {
+            // Contact Card: Center top (connection point)
+            xOffset = window.innerWidth * 0.5;
+            yOffset = rect.top + scrollY;
           } else {
-            // Alternate intermediate points
+            // Middle sections: Alternating sides
             const isEven = index % 2 === 0;
             xOffset = isEven
               ? window.innerWidth * 0.15
@@ -62,21 +70,29 @@ export default function ConnectingLine() {
         }
         setPathData(d);
       }
+      
+      // 레이아웃 변경 시 ScrollTrigger 갱신 (디바운스 고려 가능하나 여기서는 단순 호출)
+      ScrollTrigger.refresh();
     };
 
+    // Initial calculation
     updatePath();
-    const timer = setTimeout(updatePath, 1000); // More time for full layout stability
-    
-    // Show the line with a delay constant with Hero intro (3s)
+
+    // ResizeObserver for dynamic height changes (images results, etc.)
+    const resizeObserver = new ResizeObserver(() => {
+      updatePath();
+    });
+    resizeObserver.observe(document.body);
+
     const introTimer = setTimeout(() => setIsVisible(true), 2900);
 
     window.addEventListener('resize', updatePath);
     return () => {
       window.removeEventListener('resize', updatePath);
-      clearTimeout(timer);
+      resizeObserver.disconnect();
       clearTimeout(introTimer);
     };
-  }, []);
+  }, [isSubPage]);
 
   // 2. Animate progress path on scroll
   useGSAP(
@@ -86,14 +102,12 @@ export default function ConnectingLine() {
       const path = progressPathRef.current;
       const length = path.getTotalLength();
 
-      // Initial state
       gsap.set(path, {
         strokeDasharray: length,
         strokeDashoffset: length,
-        opacity: 0
+        opacity: 0,
       });
 
-      // Drawing animation tied to scroll
       gsap.to(path, {
         strokeDashoffset: 0,
         opacity: 1,
@@ -103,18 +117,19 @@ export default function ConnectingLine() {
           start: 'top top',
           end: 'bottom bottom',
           scrub: 0.5,
+          invalidateOnRefresh: true,
         },
       });
-
-      ScrollTrigger.refresh();
     },
     { dependencies: [pathData, isVisible], scope: svgRef },
   );
 
+  if (isSubPage) return null;
+
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none z-10 transition-opacity duration-700 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+      className={`absolute top-0 left-0 w-full pointer-events-none z-1 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
       style={{ height: `${pageHeight}px` }}
     >
       <path
