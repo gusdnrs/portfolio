@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Logo from '../common/Logo';
@@ -27,9 +27,10 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 80) {
+      const scrollY = window.scrollY;
+      if (scrollY > 100) {
         setIsScrolled(true);
-      } else {
+      } else if (scrollY < 30) {
         setIsScrolled(false);
       }
     };
@@ -38,24 +39,43 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Handle body scroll lock and window resize
+  // Previous width for resize tracking
+  const prevWidthRef = useRef<number>(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    prevWidthRef.current = window.innerWidth;
+
+    const handleResize = () => {
+      const currentWidth = window.innerWidth;
+      const prevWidth = prevWidthRef.current;
+
+      // Force reload when crossing from mobile to desktop
+      if (prevWidth < 768 && currentWidth >= 768) {
+        window.location.reload();
+      }
+
+      // Sync menu and body scroll
+      if (currentWidth >= 768) {
+        setIsMenuOpen(false);
+        document.body.style.overflow = '';
+      }
+
+      prevWidthRef.current = currentWidth;
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Handle body scroll lock
   useEffect(() => {
     if (isMenuOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsMenuOpen(false);
-        document.body.style.overflow = '';
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
       document.body.style.overflow = '';
     };
   }, [isMenuOpen]);
