@@ -71,7 +71,7 @@ export default function Portfolio() {
         );
       }
     },
-    { scope: '#portfolio', dependencies: [activeCategory, visibleCount] },
+    { scope: containerRef, dependencies: [activeCategory, visibleCount] },
   );
 
   const categories: ProjectCategory[] = [
