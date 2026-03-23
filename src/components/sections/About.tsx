@@ -133,10 +133,16 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 md:py-32 lg:py-40 px-4 bg-white overflow-hidden relative "
+      className="py-20 md:py-32 lg:py-40 px-4 bg-[#F5F5F7] overflow-hidden relative"
       ref={containerRef}
     >
-      <div className="max-w-[1440px] mx-auto relative z-10 ">
+      {/* Background Blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px]"></div>
+        <div className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-purple-400/10 rounded-full blur-[140px]"></div>
+      </div>
+
+      <div className="max-w-[1440px] mx-auto relative z-10">
         {/* TOP: Header Title */}
         <div className="about-top mb-16 md:mb-24 text-center lg:text-left">
           <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
