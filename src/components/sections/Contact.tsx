@@ -55,17 +55,23 @@ export default function Contact() {
       });
 
       // Link Items Animation
-      gsap.from('.contact-link-tile', {
-        scrollTrigger: {
-          trigger: '#contact',
-          start: 'top 80%',
+      gsap.fromTo('.contact-link-tile', 
+        {
+          y: 40,
+          opacity: 0,
         },
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: 'power3.out',
-      });
+        {
+          scrollTrigger: {
+            trigger: '#contact',
+            start: 'top 80%',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+        }
+      );
     },
     { scope: containerRef },
   );
@@ -82,18 +88,17 @@ export default function Contact() {
           <div className="lg:col-span-6 flex flex-col justify-center">
             <div className="space-y-10">
               <div className="space-y-4">
-                <span className="contact-headline-item block text-sm font-black uppercase tracking-[0.4em] text-brand-blue/60 mb-4">
-                  Connection
-                </span>
                 <h2 className="contact-headline-item text-[clamp(2.5rem,7vw,5.5rem)] font-black tracking-tighter text-gray-950 uppercase leading-[0.95]">
                   Contact
                 </h2>
               </div>
-              
+
               <div className="contact-headline-item space-y-6">
-                <p className="text-[clamp(1.125rem,2.2vw,1.5rem)] text-gray-600 font-semibold leading-relaxed max-w-xl">
-                  41건 이상의 다양한 병·의원 프로젝트를 성공적으로 완수해온 웹 퍼블리셔 임현욱입니다. <br /><br />
-                  기획의 의도를 정확하게 파악하고, 사용자 경험을 최우선으로 고려하는 견고한 코드를 통해 당신의 비즈니스 가치를 화면 위에 실현하겠습니다.
+                <p className="text-[clamp(1.1rem,2.1vw,1.4rem)] text-gray-600 font-semibold leading-relaxed max-w-xl">
+                  좋은 기획이 기술을 만나 더 큰 가치를 만들 수 있도록, <br />
+                  41건 이상의 프로젝트 경험을 녹여내어 세밀하고 견고한 화면을 그려냅니다. <br /><br />
+                  단순한 구현을 넘어 비즈니스의 목적을 함께 고민하는 든든한 파트너가 되어 드릴게요. <br />
+                  새로운 시작을 위한 즐거운 대화를 기다립니다.
                 </p>
               </div>
             </div>
