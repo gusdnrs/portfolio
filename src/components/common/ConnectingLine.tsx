@@ -23,8 +23,14 @@ export default function ConnectingLine() {
     if (isSubPage) return;
 
     const updatePath = () => {
-      const scrollHeight = document.documentElement.scrollHeight;
-      setPageHeight(scrollHeight);
+      // Use offsetHeight which is more reliable during layout shifts than scrollHeight
+      const bodyHeight = Math.max(
+        document.body.offsetHeight,
+        document.documentElement.offsetHeight,
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+      );
+      setPageHeight(bodyHeight);
 
       // Updated sections list
       const sections = ['hero', 'identity', 'portfolio', 'portfolio-sub-projects', 'contact-main-card'];
@@ -86,9 +92,14 @@ export default function ConnectingLine() {
 
     const introTimer = setTimeout(() => setIsVisible(true), 2900);
 
-    window.addEventListener('resize', updatePath);
+    const handleResize = () => {
+      // Small delay to allow layout to settle (header menu closing, etc.)
+      setTimeout(updatePath, 150);
+    };
+
+    window.addEventListener('resize', handleResize);
     return () => {
-      window.removeEventListener('resize', updatePath);
+      window.removeEventListener('resize', handleResize);
       resizeObserver.disconnect();
       clearTimeout(introTimer);
     };
