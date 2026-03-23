@@ -51,6 +51,25 @@ export default function Portfolio() {
         ease: 'back.out(1.7)',
       });
 
+      // Featured Cards Reveal
+      gsap.fromTo(
+        '.featured-project-card',
+        { y: 80, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: '.portfolio-grid-container',
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+        },
+      );
+
       // Projects Grid Animation (triggered on change)
       const cards = gsap.utils.toArray('.sub-project-card');
       if (cards.length > 0) {
