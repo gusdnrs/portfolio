@@ -61,11 +61,24 @@ export default function Contact() {
 
   useGSAP(
     () => {
-      // Left Content Animation
+      // 1. Title Reveal
+      gsap.from('.contact-title-animate', {
+        scrollTrigger: {
+          trigger: '.contact-top',
+          start: 'top 92%',
+        },
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+        ease: 'back.out(1.7)',
+      });
+
+      // 2. Main content area (Left and Right)
       gsap.from('.contact-left-animate', {
         scrollTrigger: {
-          trigger: containerRef.current,
-          start: 'top 70%',
+          trigger: '.contact-main-card',
+          start: 'top 85%',
         },
         x: -40,
         opacity: 0,
@@ -74,17 +87,28 @@ export default function Contact() {
         ease: 'power4.out',
       });
 
-      // Right Cards Animation
       gsap.from('.contact-card-animate', {
         scrollTrigger: {
-          trigger: '.contact-cards-container',
-          start: 'top 80%',
+          trigger: '.contact-main-card',
+          start: 'top 85%',
         },
         x: 40,
         opacity: 0,
         duration: 1,
         stagger: 0.1,
         ease: 'power3.out',
+      });
+
+      // Connecting Line Animation
+      gsap.from('.contact-line', {
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 95%',
+        },
+        scaleY: 0,
+        transformOrigin: 'top',
+        duration: 1.5,
+        ease: 'power3.inOut',
       });
     },
     { scope: containerRef },
@@ -102,17 +126,36 @@ export default function Contact() {
         <div className="absolute bottom-[20%] right-[15%] w-[600px] h-[600px] bg-purple-400/10 rounded-full blur-[140px]"></div>
       </div>
 
+      {/* 2. 연결 선 (About으로부터 섹션으로 이어짐) */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-32 bg-linear-to-b from-transparent to-[#007AFF] contact-line origin-top"></div>
+      <div className="absolute top-32 left-1/2 -translate-x-1/2 w-8 h-8 rounded-full border border-[#007AFF]/30 flex items-center justify-center">
+        <div className="w-2 h-2 bg-[#007AFF] rounded-full animate-ping"></div>
+      </div>
+
       {/* 3. 메인 와이드 카드 (Split Layout) */}
       <section className="relative z-10 w-full max-w-[1440px] px-8">
-        <div className="bg-white/10 backdrop-blur-[40px] backdrop-saturate-[180%] rounded-[48px] md:rounded-[60px] border border-white/40 shadow-[0_40px_100px_rgba(0,0,0,0.05)] overflow-hidden">
+        {/* TOP: Header Title - Added to match About Me style */}
+        <div className="contact-top mb-16 md:mb-24 text-center lg:text-left">
+          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+            <span className="contact-title-animate block mb-2">Contact</span>
+          </h2>
+        </div>
+
+        <div className="contact-main-card bg-white/10 backdrop-blur-2xl backdrop-saturate-180 rounded-[48px] md:rounded-[60px] border border-white/40 shadow-[0_40px_100px_rgba(0,0,0,0.05)] overflow-hidden">
           <div className="grid lg:grid-cols-10 items-stretch min-h-[600px] md:min-h-[700px]">
             {/* 왼쪽 영역: 강력한 헤드라인 (60%) */}
             <div className="lg:col-span-6 p-10 md:p-16 lg:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/20">
+              <div className="contact-left-animate flex items-center gap-3 mb-8">
+                <span className="w-12 h-px bg-[#007AFF]"></span>
+                <span className="text-[#007AFF] font-bold tracking-[0.3em] text-sm uppercase">
+                  Get in Touch
+                </span>
+              </div>
               <h2 className="contact-left-animate text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.15] tracking-tight mb-10 text-[#1D1D1F]">
                 41건의 프로젝트로 검증된 <br />
                 실무 숙련도, <br />
                 기획의 의도를 코드로 잇는 <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#007AFF] to-[#5AC8FA]">
+                <span className="text-transparent bg-clip-text bg-linear-to-r from-[#007AFF] to-[#5AC8FA]">
                   임현욱입니다.
                 </span>
               </h2>
@@ -137,7 +180,7 @@ export default function Contact() {
                   >
                     <div className="flex items-center gap-5">
                       <div
-                        className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${link.color} flex items-center justify-center text-white shadow-lg shadow-blue-500/10 group-hover:scale-110 transition-transform duration-500`}
+                        className={`w-14 h-14 rounded-2xl bg-linear-to-br ${link.color} flex items-center justify-center text-white shadow-lg shadow-blue-500/10 group-hover:scale-110 transition-transform duration-500`}
                       >
                         {link.icon}
                       </div>
