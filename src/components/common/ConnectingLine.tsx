@@ -23,17 +23,16 @@ export default function ConnectingLine() {
     if (isSubPage) return;
 
     const updatePath = () => {
-      // Use offsetHeight which is more reliable during layout shifts than scrollHeight
-      const bodyHeight = Math.max(
-        document.body.offsetHeight,
-        document.documentElement.offsetHeight,
-        document.body.scrollHeight,
-        document.documentElement.scrollHeight
-      );
-      setPageHeight(bodyHeight);
+      const scrollHeight = document.documentElement.scrollHeight;
+      setPageHeight(scrollHeight);
 
       // Updated sections list
-      const sections = ['hero', 'identity', 'portfolio', 'portfolio-sub-projects', 'contact-main-card'];
+      const sections = [
+        'hero',
+        'identity',
+        'portfolio',
+        'contact',
+      ];
       const points: { x: number; y: number }[] = [];
 
       sections.forEach((id, index) => {
@@ -49,10 +48,10 @@ export default function ConnectingLine() {
             // Hero: Center bottom
             xOffset = el.offsetWidth * 0.5;
             yOffset = rect.bottom + scrollY;
-          } else if (id === 'contact-main-card') {
-            // Contact Card: Center top (connection point)
+          } else if (index === sections.length - 1) {
+            // Last Section (Contact): Target the bottom of the section (just above footer)
             xOffset = window.innerWidth * 0.5;
-            yOffset = rect.top + scrollY;
+            yOffset = rect.bottom + scrollY - 120; // Reaching deeper into the contact area
           } else {
             // Middle sections: Alternating sides
             const isEven = index % 2 === 0;
@@ -76,7 +75,7 @@ export default function ConnectingLine() {
         }
         setPathData(d);
       }
-      
+
       // 레이아웃 변경 시 ScrollTrigger 갱신 (디바운스 고려 가능하나 여기서는 단순 호출)
       ScrollTrigger.refresh();
     };
@@ -92,14 +91,9 @@ export default function ConnectingLine() {
 
     const introTimer = setTimeout(() => setIsVisible(true), 2900);
 
-    const handleResize = () => {
-      // Small delay to allow layout to settle (header menu closing, etc.)
-      setTimeout(updatePath, 150);
-    };
-
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', updatePath);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', updatePath);
       resizeObserver.disconnect();
       clearTimeout(introTimer);
     };
@@ -127,7 +121,7 @@ export default function ConnectingLine() {
           trigger: 'body',
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 0.5,
+          scrub: 0.1, // Even tighter sync
           invalidateOnRefresh: true,
         },
       });
