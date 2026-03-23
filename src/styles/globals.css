@@ -13,9 +13,7 @@
 
 /* Base Style Set */
 @layer base {
-  html {
-    @apply scroll-smooth;
-  }
+
   body {
     @apply cursor-default bg-bg-gray text-brand-blue-dark break-keep font-pretendard antialiased tracking-tight;
   }

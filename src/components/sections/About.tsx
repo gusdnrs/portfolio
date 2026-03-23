@@ -1,15 +1,11 @@
 'use client';
 
 import { useRef } from 'react';
-import { ChartBar, Clock, Lightbulb, Users } from 'lucide-react';
 import Image from 'next/image';
 import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 
-if (typeof window !== 'undefined') {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// 전역 초기화에서 처리됨
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -20,20 +16,20 @@ export default function About() {
       gsap.from('.about-headline-line', {
         scrollTrigger: {
           trigger: '.about-top',
-          start: 'top 85%',
+          start: 'top 92%',
         },
-        y: 40,
+        y: 60,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power3.out',
+        duration: 1,
+        stagger: 0.1,
+        ease: 'back.out(1.7)',
       });
 
       // 2. Main content area (Image and Right Side)
       gsap.from('.about-image-wrapper', {
         scrollTrigger: {
           trigger: '.about-main',
-          start: 'top 80%',
+          start: 'top 92%',
         },
         x: -50,
         opacity: 0,
@@ -44,7 +40,7 @@ export default function About() {
       gsap.from('.about-right-side', {
         scrollTrigger: {
           trigger: '.about-main',
-          start: 'top 80%',
+          start: 'top 92%',
         },
         x: 50,
         opacity: 0,
@@ -56,13 +52,13 @@ export default function About() {
       gsap.from('.about-history-col', {
         scrollTrigger: {
           trigger: '.about-history',
-          start: 'top 85%',
+          start: 'top 92%',
         },
-        y: 30,
+        y: 50,
         opacity: 0,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: 'power2.out',
+        duration: 1.2,
+        stagger: 0.15,
+        ease: 'back.out(1.4)',
       });
 
       // 3. Tech Marquee Logic
@@ -127,50 +123,24 @@ export default function About() {
     { name: 'SCSS', src: '/images/icons/scss.svg' },
     { name: 'JS', src: '/images/icons/javascript.svg' },
     { name: 'jQuery', src: '/images/icons/jquery.svg' },
+    { name: 'Gnuboard', src: '/images/icons/gnuboard.svg' },
+    { name: 'PHP', src: '/images/icons/php.svg' },
+    { name: 'MySQL', src: '/images/icons/mysql.svg' },
     { name: 'Figma', src: '/images/icons/figma.svg' },
     { name: 'Photoshop', src: '/images/icons/photoshop.svg' },
-  ];
-
-  const features = [
-    {
-      icon: <ChartBar className="w-5 h-5 text-brand-blue" />,
-      title: '원활한 소통과 협업',
-      description:
-        '다양한 이해관계자와 소통해온 경험을 바탕으로 기획자와 디자이너의 의도를 명확히 파악하며, 팀과 적극적으로 소통합니다.',
-    },
-    {
-      icon: <Clock className="w-5 h-5 text-brand-blue" />,
-      title: '41건의 프로젝트 경험',
-      description:
-        '4년간 41건 이상의 병·의원 신규 구축 및 리뉴얼 프로젝트를 완수하며 검증된 실무 경험을 보유하고 있습니다.',
-    },
-    {
-      icon: <Lightbulb className="w-5 h-5 text-brand-blue" />,
-      title: '효율적인 구조 설계',
-      description:
-        '반복되는 UI 요소를 컴포넌트화하여 제작 공수를 줄이고, 유지보수가 용이한 웹 환경을 설계하는 것이 강점입니다.',
-    },
-    {
-      icon: <Users className="w-5 h-5 text-brand-blue" />,
-      title: '웹 표준 및 최적화',
-      description:
-        '웹 표준 준수와 성능 최적화를 통해 사이트의 접근성을 높이고, 사용자 유입에 최적화된 환경을 구축합니다.',
-    },
   ];
 
   return (
     <section
       id="about"
-      className="py-20 md:py-32 lg:py-40 px-4 bg-white overflow-hidden relative"
+      className="py-20 md:py-32 lg:py-40 px-4 bg-white overflow-hidden relative "
       ref={containerRef}
     >
-      <div className="max-w-[1440px] mx-auto relative z-10">
+      <div className="max-w-[1440px] mx-auto relative z-10 ">
         {/* TOP: Header Title */}
         <div className="about-top mb-16 md:mb-24 text-center lg:text-left">
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-gray-900">
-            <span className="about-headline-line block mb-2 opacity-100 uppercase">
-              About Me
-            </span>
+          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+            <span className="about-headline-line block mb-2">About Me</span>
           </h2>
         </div>
 
@@ -199,11 +169,11 @@ export default function About() {
 
             {/* Right: Bio & Ultra-wide Features */}
             <div className="about-right-side w-full lg:w-7/12 flex flex-col justify-center">
-              <div className="text-left space-y-6">
-                <h3 className="text-3xl md:text-4xl font-black text-brand-blue">
+              <div className="text-left space-y-8">
+                <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black text-brand-blue tracking-tight leading-[1.2]">
                   Im Hyun-wook
                 </h3>
-                <div className="space-y-4 text-base md:text-lg text-gray-600 leading-relaxed font-medium">
+                <div className="space-y-6 text-[clamp(1rem,2vw,1.375rem)] text-gray-600 leading-relaxed font-medium">
                   <p>
                     안녕하세요! 웹 퍼블리셔&nbsp;
                     <span className="font-bold text-brand-blue">임현욱</span>
@@ -214,14 +184,14 @@ export default function About() {
                       41건 이상의 병·의원 프로젝트를 완수
                     </span>
                     하며 쌓은 숙련도로 웹 표준과 접근성을 준수한 최적의 웹
-                    구조를 설계합니다. 단순한 코딩을 넘어 프로젝트의 비즈니스
-                    목적을 깊이 이해하고 실현하는 데 집중하고 있습니다.
+                    구조를 지향하고 있습니다. 단순한 코딩을 넘어 프로젝트의
+                    비즈니스 목적을 깊이 이해하고 실현하는 데 집중하고 있습니다.
                   </p>
                   <p>
                     학생회장과 영업 실무로 다진&nbsp;
                     <span className="font-bold text-brand-blue">소통 능력</span>
                     을 바탕으로 기획자와 디자이너의 의도를 명확히 파악하여
-                    아이디어를 화면 위에 구현합니다. 어떤 업무든 강한&nbsp;
+                    아이디어를 화면 위에 구현했습니다. 어떤 업무든 강한&nbsp;
                     <span className="font-bold text-brand-blue">책임감</span>
                     으로 완수하며, 단순히 기술을 구현하는 것을 넘어 사용자가
                     마주하는 순간의&nbsp;
@@ -230,62 +200,47 @@ export default function About() {
                     </span>
                     가 되고자 합니다.
                   </p>
+                  <p>감사합니다.</p>
                 </div>
               </div>
 
               {/* Features: Integrated under bio for 1440px+ screens */}
-              <div className="hidden xl:grid grid-cols-2 gap-6 mt-12">
+              {/* <div className="hidden xl:grid grid-cols-2 gap-6 mt-12">
                 {features.map((feature, idx) => (
                   <div
                     key={idx}
-                    className="flex gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100"
+                    className="flex flex-col gap-5 p-8 rounded-[40px] bg-gray-50/50 border border-gray-100/50 hover:bg-white hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-500 group"
                   >
-                    <div className="shrink-0 w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-                      {feature.icon}
+                    <div className="shrink-0 w-20 h-20 rounded-3xl bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
+                      <Image
+                        src={feature.image}
+                        alt={feature.title}
+                        width={64}
+                        height={64}
+                        className="object-contain"
+                      />
                     </div>
                     <div>
-                      <h4 className="text-lg font-bold text-gray-900 mb-1.5">
+                      <h4 className="text-xl font-bold text-gray-900 mb-2">
                         {feature.title}
                       </h4>
-                      <p className="text-base text-gray-500 leading-normal">
+                      <p className="text-[15px] text-gray-500 leading-relaxed font-medium">
                         {feature.description}
                       </p>
                     </div>
                   </div>
                 ))}
-              </div>
+              </div> */}
             </div>
-          </div>
-
-          {/* Features: Standard full-width row for screens below 1440px (using xl:hidden as proxy) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 xl:hidden">
-            {features.map((feature, idx) => (
-              <div
-                key={idx}
-                className="flex flex-row lg:flex-col xl:flex-row gap-4 p-5 rounded-3xl bg-gray-50 border border-gray-100"
-              >
-                <div className="shrink-0 w-12 h-12 rounded-2xl bg-white flex items-center justify-center shadow-sm">
-                  {feature.icon}
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-1.5">
-                    {feature.title}
-                  </h4>
-                  <p className="text-base text-gray-500 leading-normal">
-                    {feature.description}
-                  </p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
 
         {/* ROW 2: Work & Education (Side-by-Side) */}
-        <div className="about-history grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 py-12 border-t border-gray-100">
+        <div className="about-history grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 py-12">
           {/* Work Experience */}
           <div className="about-history-col">
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-black tracking-tight text-gray-900">
+            <div className="flex items-center gap-4 mb-10">
+              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900">
                 WORK EXPERIENCE
               </h3>
               <div className="h-px bg-gray-200 grow" />
@@ -294,10 +249,10 @@ export default function About() {
               {experiences.map((exp, idx) => (
                 <div key={idx} className="flex flex-col gap-2">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-lg md:text-xl font-bold text-gray-900 tracking-tight">
                       {exp.company}
                     </span>
-                    <span className="font-en text-xs font-bold text-gray-400 tracking-widest uppercase tabular-nums">
+                    <span className="font-en text-sm font-bold text-gray-400 tracking-widest uppercase tabular-nums opacity-60">
                       {exp.date}
                     </span>
                   </div>
@@ -309,8 +264,8 @@ export default function About() {
 
           {/* Education */}
           <div className="about-history-col">
-            <div className="flex items-center gap-4 mb-8">
-              <h3 className="text-xl font-black tracking-tight text-gray-900">
+            <div className="flex items-center gap-4 mb-10">
+              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900">
                 EDUCATION
               </h3>
               <div className="h-px bg-gray-200 grow" />
@@ -319,10 +274,10 @@ export default function About() {
               {education.map((edu, idx) => (
                 <div key={idx} className="flex flex-col gap-2">
                   <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-                    <span className="text-lg font-bold text-gray-800 leading-snug">
+                    <span className="text-lg md:text-xl font-bold text-gray-800 leading-snug tracking-tight">
                       {edu.title}
                     </span>
-                    <span className="font-en text-xs font-bold text-gray-400 tracking-widest uppercase whitespace-nowrap tabular-nums">
+                    <span className="font-en text-sm font-bold text-gray-400 tracking-widest uppercase whitespace-nowrap tabular-nums opacity-60">
                       {edu.date}
                     </span>
                   </div>
