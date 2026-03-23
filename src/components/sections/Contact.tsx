@@ -49,8 +49,8 @@ export default function Contact() {
         ease: 'power4.out',
       });
 
-      // Text Items Stagger
-      gsap.from('.contact-animate-text', {
+      // Text Header Animation
+      gsap.from('.contact-animate-header', {
         scrollTrigger: {
           trigger: '.contact-content-block',
           start: 'top 75%',
@@ -58,22 +58,29 @@ export default function Contact() {
         y: 30,
         opacity: 0,
         duration: 1,
-        stagger: 0.2,
+        stagger: 0.15,
         ease: 'power3.out',
       });
 
-      // Cards Animation
-      gsap.from('.contact-link-tile', {
-        scrollTrigger: {
-          trigger: '.contact-links-grid',
-          start: 'top 85%',
+      // Cards Animation (fromTo for absolute reliability)
+      gsap.fromTo(
+        '.contact-link-tile',
+        {
+          y: 40,
+          opacity: 0,
         },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'power3.out',
-      });
+        {
+          scrollTrigger: {
+            trigger: '.contact-links-grid',
+            start: 'top 85%',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: 'power3.out',
+        },
+      );
     },
     { scope: containerRef },
   );
@@ -88,18 +95,16 @@ export default function Contact() {
         <div className="contact-content-block max-w-7xl mx-auto bg-white rounded-[48px] md:rounded-[64px] border border-gray-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.05)] overflow-hidden">
           <div className="px-8 py-20 md:px-16 md:py-24 lg:py-32 text-center">
             {/* Header Text Section */}
-            <div className="mb-20 space-y-8">
-              <span className="contact-animate-text block text-[13px] font-black uppercase tracking-[0.3em] text-brand-blue/60 mb-6">
-                Connect with me
-              </span>
-              <h2 className="contact-animate-text text-[clamp(2rem,5.5vw,4.5rem)] font-black tracking-tighter text-gray-900 leading-[1.1] mb-8">
-                41건의 프로젝트로 검증된 실무 숙련도, <br className="hidden md:block" />
-                기획의 의도를 코드로 잇는 임현욱입니다.
+            <div className="mb-20 space-y-10">
+              <h2 className="contact-animate-header text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+                contact
               </h2>
-              <p className="contact-animate-text text-[clamp(1.1rem,2vw,1.4rem)] text-gray-500 font-medium leading-relaxed max-w-3xl mx-auto">
-                좋은 기획이 기술을 만나 더 큰 가치를 만들 수 있도록 성실히 구현합니다. <br className="hidden md:block" />
-                단순한 구현을 넘어 비즈니스의 목적을 함께 고민하는 든든한 파트너가 되어 드릴게요.
-              </p>
+              <div className="contact-animate-header space-y-6">
+                <p className="text-[clamp(1.125rem,2.2vw,1.5rem)] text-gray-600 font-semibold leading-relaxed max-w-2xl mx-auto">
+                  41건의 프로젝트로 검증된 실무 숙련도, <br className="hidden md:block" />
+                  기획의 의도를 코드로 잇는 임현욱입니다.
+                </p>
+              </div>
             </div>
 
             {/* Links Grid Section */}
