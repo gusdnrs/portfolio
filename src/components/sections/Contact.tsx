@@ -1,43 +1,39 @@
 'use client';
 
 import { useRef } from 'react';
-import { Github, Mail, FileText, FileUser } from 'lucide-react';
+import { Github, Mail, FileText, FileUser, ArrowUpRight } from 'lucide-react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
+const contactLinks = [
+  {
+    icon: Github,
+    label: '깃허브',
+    subLabel: '저장소 보러가기',
+    href: 'https://github.com/gusdnrs',
+  },
+  {
+    icon: FileText,
+    label: '노션',
+    subLabel: '포트폴리오 / 아카이브',
+    href: 'https://gusdnrs.notion.site/PORTFOLIO-1288b8f2d57d8063be82ea0f4882ce0d?pvs=4',
+  },
+  {
+    icon: Mail,
+    label: '이메일',
+    subLabel: 'gusdnrs@naver.com',
+    href: 'mailto:gusdnrs@naver.com',
+  },
+  {
+    icon: FileUser,
+    label: '이력서',
+    subLabel: '상세 이력서 보기',
+    href: '/resume_hyunwook.pdf',
+  },
+];
+
 export default function Contact() {
   const containerRef = useRef<HTMLDivElement>(null);
-
-  const snsLinks = [
-    {
-      id: 1,
-      name: 'Github',
-      label: 'Repository',
-      href: 'https://github.com/gusdnrs',
-      icon: <Github size={24} />,
-    },
-    {
-      id: 2,
-      name: 'Notion',
-      label: 'Portfolio / Archive',
-      href: 'https://h-gomi.notion.site/2e0eae09287780078b1bf89ddfae8189?pvs=143',
-      icon: <FileText size={24} />,
-    },
-    {
-      id: 3,
-      name: 'Email',
-      label: 'gusdnrs@naver.com',
-      href: 'mailto:gusdnrs@naver.com',
-      icon: <Mail size={24} />,
-    },
-    {
-      id: 4,
-      name: 'Resume',
-      label: 'Curriculum Vitae',
-      href: '/documents/resume_hyunwook.pdf',
-      icon: <FileUser size={24} />,
-    },
-  ];
 
   useGSAP(
     () => {
@@ -55,7 +51,8 @@ export default function Contact() {
       });
 
       // Link Items Animation
-      gsap.fromTo('.contact-link-tile', 
+      gsap.fromTo(
+        '.contact-link-tile',
         {
           y: 40,
           opacity: 0,
@@ -70,7 +67,7 @@ export default function Contact() {
           duration: 0.8,
           stagger: 0.1,
           ease: 'power3.out',
-        }
+        },
       );
     },
     { scope: containerRef },
@@ -86,19 +83,17 @@ export default function Contact() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Left Side: Impactful Text */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <div className="space-y-10">
-              <div className="space-y-4">
-                <h2 className="contact-headline-item text-[clamp(2.5rem,7vw,5.5rem)] font-black tracking-tighter text-gray-950 uppercase leading-[0.95]">
-                  Contact
-                </h2>
-              </div>
-
-              <div className="contact-headline-item space-y-6">
-                <p className="text-[clamp(1.1rem,2.1vw,1.4rem)] text-gray-600 font-semibold leading-relaxed max-w-xl">
-                  좋은 기획이 기술을 만나 더 큰 가치를 만들 수 있도록, <br />
-                  41건 이상의 프로젝트 경험을 녹여내어 세밀하고 견고한 화면을 그려냅니다. <br /><br />
-                  단순한 구현을 넘어 비즈니스의 목적을 함께 고민하는 든든한 파트너가 되어 드릴게요. <br />
-                  새로운 시작을 위한 즐거운 대화를 기다립니다.
+            <div className="space-y-8 md:space-y-10">
+              <h2 className="contact-headline-item text-3xl lg:text-5xl font-black tracking-tight text-gray-950 leading-tight">
+                41건의 프로젝트로 검증된 실무 숙련도, <br />
+                기획의 의도를 코드로 잇는 임현욱입니다.
+              </h2>
+              
+              <div className="contact-headline-item space-y-6 md:space-y-8">
+                <p className="text-lg font-medium text-gray-600 opacity-80 leading-relaxed max-w-xl">
+                  기획의 의도를 정확하게 파악하고, 사용자 경험을 최우선으로 고려하는 견고한 코드를 통해 당신의 비즈니스 가치를 화면 위에 실현하겠습니다. <br /><br />
+                  저에게 궁금한 점이 있으시다면 연락해 주세요 :) <br />
+                  빠르게 답장 드리겠습니다!
                 </p>
               </div>
             </div>
@@ -107,35 +102,39 @@ export default function Contact() {
           {/* Right Side: Links Grid */}
           <div className="lg:col-span-6 flex items-center">
             <div className="contact-links-grid grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
-              {snsLinks.map((link) => (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  target={link.name !== 'Email' ? '_blank' : undefined}
-                  rel={
-                    link.name !== 'Email' ? 'noopener noreferrer' : undefined
-                  }
-                  className="contact-link-tile group relative p-8 md:p-10 rounded-[40px] bg-gray-50/50 border border-transparent hover:border-brand-blue/10 hover:bg-white hover:shadow-[0_32px_64px_-16px_rgba(58,89,209,0.1)] transition-all duration-500 overflow-hidden"
-                >
-                  {/* Subtle Background Accent */}
-                  <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-blue/0 group-hover:bg-brand-blue/3 rounded-full blur-3xl transition-all duration-700" />
-
-                  <div className="relative z-10 space-y-8">
-                    <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-gray-400 group-hover:text-brand-blue group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
-                      {link.icon}
+              {contactLinks.map((link, idx) => {
+                const Icon = link.icon;
+                return (
+                  <a
+                    key={idx}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contact-link-tile group relative p-8 md:p-10 rounded-3xl bg-white border border-gray-100 shadow-sm hover:border-brand-blue/20 hover:shadow-[0_20px_40px_-12px_rgba(58,89,209,0.15)] transition-all duration-500 overflow-hidden"
+                  >
+                    {/* Hover Glow Effect */}
+                    <div className="absolute -top-10 -right-10 w-32 h-32 bg-brand-blue/0 group-hover:bg-brand-blue/5 rounded-full blur-3xl transition-all duration-700" />
+                    
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div className="flex justify-between items-start mb-12">
+                        <div className="w-12 h-12 rounded-xl bg-gray-50 flex items-center justify-center text-gray-400 group-hover:text-brand-blue group-hover:bg-brand-blue/5 transition-all duration-500">
+                          <Icon size={24} />
+                        </div>
+                        <ArrowUpRight className="text-gray-300 group-hover:text-brand-blue group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500" size={20} />
+                      </div>
+                      
+                      <div>
+                        <span className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 group-hover:text-brand-blue/60 transition-colors">
+                          {link.label}
+                        </span>
+                        <p className="text-xl font-bold text-gray-900 tracking-tight mt-1 group-hover:text-brand-blue transition-colors">
+                          {link.subLabel}
+                        </p>
+                      </div>
                     </div>
-
-                    <div>
-                      <span className="text-[11px] font-black uppercase tracking-[0.2em] text-gray-400 group-hover:text-brand-blue/60 transition-colors">
-                        {link.name}
-                      </span>
-                      <p className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight mt-1 group-hover:text-brand-blue transition-colors">
-                        {link.label}
-                      </p>
-                    </div>
-                  </div>
-                </a>
-              ))}
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
