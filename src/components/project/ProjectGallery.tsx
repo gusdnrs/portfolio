@@ -88,7 +88,7 @@ export default function ProjectGallery({ detailImages }: ProjectGalleryProps) {
               </h4>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              {moImages.slice(0, 3).map((img, index) => (
+              {moImages.map((img, index) => (
                 <div
                   key={index}
                   className="group relative aspect-9/19 bg-gray-50 rounded-[24px] md:rounded-[40px] overflow-hidden cursor-zoom-in border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-500"

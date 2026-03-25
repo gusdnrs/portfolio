@@ -161,12 +161,14 @@ export default function About() {
                     src="/images/hero_bg.png"
                     alt="Im Hyunwook Profile"
                     fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover object-[50%_20%] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0"
                   />
                   <Image
                     src="/images/hero_bg_hover.jpg"
                     alt="Im Hyunwook Real Profile"
                     fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
                     className="object-cover object-[50%_20%] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100"
                   />
                 </div>
@@ -222,8 +224,10 @@ export default function About() {
                         src={feature.image}
                         alt={feature.title}
                         width={64}
-                        height={64}
-                        className="object-contain"
+                        fill
+                        priority
+                        sizes="100vw"
+                        className="object-cover"
                       />
                     </div>
                     <div>

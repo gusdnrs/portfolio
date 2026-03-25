@@ -92,15 +92,15 @@ export default function Header() {
       <div
         className={`${
           isScrolled
-            ? 'fixed bg-black/80 backdrop-blur-[20px] backdrop-saturate-180 border-b border-white/10 h-[60px] text-white'
+            ? 'fixed bg-white/20 backdrop-blur-md backdrop-saturate-180 border-b border-white/30 h-[80px] text-gray-900 shadow-[0_2px_30px_0_rgba(0,0,0,0.08)]'
             : isSubPage
               ? 'absolute text-white'
-              : 'absolute'
+              : 'absolute text-gray-950'
         } top-0 left-0 w-full z-100 h-20 transition-all duration-300`}
       >
         <header className="h-full px-6 md:px-10 flex items-center justify-between relative">
           <Link href="/" className="whitespace-nowrap">
-            <Logo isScrolled={isScrolled || isSubPage} />
+            <Logo isScrolled={isScrolled} isWhite={!isScrolled && isSubPage} />
           </Link>
           <nav className="hidden md:block">
             <ul className="flex gap-8">
@@ -118,7 +118,7 @@ export default function Header() {
                       }
                     }}
                     className={`transition-colors ${
-                      isScrolled || isSubPage
+                      !isScrolled && isSubPage
                         ? 'text-white/70 hover:text-white'
                         : 'text-gray-950/70 hover:text-gray-950'
                     }`}
@@ -132,18 +132,6 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Right Spacer / Mobile Button */}
-          <div
-            className={`flex items-center transition-all duration-500 md:hidden ${
-              isScrolled
-                ? 'max-w-0 opacity-0 overflow-hidden'
-                : 'max-w-[100px] opacity-100'
-            }`}
-          >
-            {/* Desktop에서는 우측 여백을 위해 빈 공간 유지, 모바일에서만 버튼 활성화 */}
-            <div className="w-10 md:w-0" />
-          </div>
-
           {/* Mobile Nav Toggle */}
           <button
             className={`md:hidden flex flex-col gap-1.5 p-2 cursor-pointer focus:outline-none ${
@@ -155,17 +143,17 @@ export default function Header() {
           >
             <span
               className={`w-6 h-0.5 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''} ${
-                isScrolled || isSubPage ? 'bg-white' : 'bg-gray-950'
+                isScrolled || (!isScrolled && !isSubPage) ? 'bg-gray-950' : 'bg-white'
               }`}
             />
             <span
               className={`w-6 h-0.5 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''} ${
-                isScrolled || isSubPage ? 'bg-white' : 'bg-gray-950'
+                isScrolled || (!isScrolled && !isSubPage) ? 'bg-gray-950' : 'bg-white'
               }`}
             />
             <span
               className={`w-6 h-0.5 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''} ${
-                isScrolled || isSubPage ? 'bg-white' : 'bg-gray-950'
+                isScrolled || (!isScrolled && !isSubPage) ? 'bg-gray-950' : 'bg-white'
               }`}
             />
           </button>
@@ -174,7 +162,7 @@ export default function Header() {
 
       {/* Mobile Overlay Menu */}
       <div
-        className={`fixed inset-0 z-40 bg-white text-gray-950 transition-all duration-500 ease-in-out ${
+        className={`fixed inset-0 bg-white/95 backdrop-blur-xl z-200 transition-all duration-500 ease-portfolio ${
           isMenuOpen
             ? 'translate-x-0 opacity-100'
             : 'translate-x-full opacity-0 invisible'
@@ -186,15 +174,7 @@ export default function Header() {
               <li key={item.id}>
                 <Link
                   href={item.href}
-                  onClick={(e) => {
-                    setIsMenuOpen(false);
-                    if (pathname === '/') {
-                      e.preventDefault();
-                      const id = item.href.replace('/#', '');
-                      const el = document.getElementById(id);
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }}
+                  onClick={() => setIsMenuOpen(false)}
                   className="font-en text-4xl font-black capitalize hover:text-brand-blue transition-colors"
                 >
                   {item.title}

@@ -1,9 +1,11 @@
 export default function Logo({
   className,
   isScrolled,
+  isWhite,
 }: {
   className?: string;
   isScrolled?: boolean;
+  isWhite?: boolean;
 }) {
   return (
     <h1
@@ -13,7 +15,9 @@ export default function Logo({
         IM
       </span>
       <span
-        className={`text-xl font-black leading-none text-brand-blue-dark ${isScrolled ? 'text-white/70' : ''}`}
+        className={`text-xl font-black leading-none ${
+          isWhite ? 'text-white/90' : isScrolled ? 'text-gray-950' : 'text-brand-blue-dark'
+        }`}
       >
         HYUNWOOK
       </span>

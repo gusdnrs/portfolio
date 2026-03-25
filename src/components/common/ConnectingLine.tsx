@@ -16,23 +16,14 @@ export default function ConnectingLine() {
   const [isVisible, setIsVisible] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const progressPathRef = useRef<SVGPathElement>(null);
-  const [pageHeight, setPageHeight] = useState(0);
 
-  // 1. Calculate path points and page height with ResizeObserver
+  // 1. Calculate path points with ResizeObserver
   useEffect(() => {
     if (isSubPage) return;
 
     const updatePath = () => {
-      const scrollHeight = document.documentElement.scrollHeight;
-      setPageHeight(scrollHeight);
-
       // Updated sections list
-      const sections = [
-        'hero',
-        'identity',
-        'portfolio',
-        'contact',
-      ];
+      const sections = ['hero', 'identity', 'portfolio', 'contact'];
       const points: { x: number; y: number }[] = [];
 
       sections.forEach((id, index) => {
@@ -49,9 +40,9 @@ export default function ConnectingLine() {
             xOffset = el.offsetWidth * 0.5;
             yOffset = rect.bottom + scrollY;
           } else if (index === sections.length - 1) {
-            // Last Section (Contact): Target the bottom of the section (just above footer)
+            // Last Section (Contact): Target a point deep enough to be behind the card (approx 500px from top)
             xOffset = window.innerWidth * 0.5;
-            yOffset = rect.bottom + scrollY - 120; // Reaching deeper into the contact area
+            yOffset = rect.top + scrollY + 500; 
           } else {
             // Middle sections: Alternating sides
             const isEven = index % 2 === 0;
@@ -76,14 +67,14 @@ export default function ConnectingLine() {
         setPathData(d);
       }
 
-      // 레이아웃 변경 시 ScrollTrigger 갱신 (디바운스 고려 가능하나 여기서는 단순 호출)
+      // 레이아웃 변경 시 ScrollTrigger 갱신
       ScrollTrigger.refresh();
     };
 
     // Initial calculation
     updatePath();
 
-    // ResizeObserver for dynamic height changes (images results, etc.)
+    // ResizeObserver for dynamic height changes
     const resizeObserver = new ResizeObserver(() => {
       updatePath();
     });
@@ -118,10 +109,10 @@ export default function ConnectingLine() {
         opacity: 1,
         ease: 'none',
         scrollTrigger: {
-          trigger: 'body',
+          trigger: typeof document !== 'undefined' ? document.documentElement : 'body',
           start: 'top top',
           end: 'bottom bottom',
-          scrub: 0.1, // Even tighter sync
+          scrub: 0.1,
           invalidateOnRefresh: true,
         },
       });
@@ -134,8 +125,7 @@ export default function ConnectingLine() {
   return (
     <svg
       ref={svgRef}
-      className={`absolute top-0 left-0 w-full pointer-events-none z-1 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
-      style={{ height: `${pageHeight}px` }}
+      className={`absolute top-0 left-0 w-full h-full pointer-events-none z-1 overflow-x-hidden transition-opacity duration-700 ${isVisible ? 'opacity-40' : 'opacity-0'}`}
     >
       <path
         ref={progressPathRef}
