@@ -10,7 +10,7 @@ import { ArrowUpRight, Plus } from 'lucide-react';
 import { projects, Project } from '@/utils/projects';
 
 // ── Types ──
-type ProjectCategory = 'All' | 'new' | 'renewal' | 'Maintenance';
+// ProjectCategory was used for filtering but is now removed.
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -20,21 +20,12 @@ export default function Portfolio() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   // ── States ──
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory>('All');
   const [visibleCount, setVisibleCount] = useState(6);
 
   // ── Data Processing ──
   const featured = projects.filter((p) => p.featured);
-
   const subProjects = projects.filter((p) => !p.featured);
-
-  // Filtered List
-  const filteredProjects = subProjects.filter((item) => {
-    if (activeCategory === 'All') return true;
-    return item.category === activeCategory;
-  });
-
-  const displayedProjects = filteredProjects.slice(0, visibleCount);
+  const displayedProjects = subProjects.slice(0, visibleCount);
 
   // ── Animation ──
   useGSAP(
@@ -90,15 +81,8 @@ export default function Portfolio() {
         );
       }
     },
-    { scope: containerRef, dependencies: [activeCategory, visibleCount] },
+    { scope: containerRef, dependencies: [visibleCount] },
   );
-
-  const categories: ProjectCategory[] = [
-    'All',
-    'new',
-    'renewal',
-    'Maintenance',
-  ];
 
   return (
     <section
@@ -138,7 +122,7 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* ── 대표작 그리드 레이아웃 8개 ── */}
+        {/* ── 대표작 그리드 레이아웃 6개 ── */}
         <div className="portfolio-grid-container grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-14 mb-32 md:mb-48">
           {featured.map((project) => (
             <Link
@@ -152,6 +136,7 @@ export default function Portfolio() {
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/2 transition-colors duration-500" />
@@ -194,57 +179,31 @@ export default function Portfolio() {
 
         {/* ── Sub Projects Showcase (Redesigned) ── */}
         <div id="portfolio-sub-projects" className="mt-24 mb-32">
-          {/* Section Header */}
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12 px-4">
-            <div className="space-y-2">
+            <div className="space-y-2 text-center md:text-left">
               <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter">
                 유지보수 및 전체 프로젝트
               </h3>
               <p className="text-gray-400 font-medium">
                 총&nbsp;
                 <span className="text-blue-600 font-bold tabular-nums">
-                  {filteredProjects.length}
+                  {projects.length}
                 </span>
                 &nbsp;개의 프로젝트가 진행되었습니다
               </p>
             </div>
-
-            {/* Filter Tabs */}
-            <div className="filter-tabs flex flex-wrap gap-2 p-1.5 bg-gray-50 rounded-2xl border border-gray-100">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => {
-                    setActiveCategory(cat);
-                    setVisibleCount(6);
-                  }}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all duration-300 ${
-                    activeCategory === cat
-                      ? 'bg-white text-blue-600 shadow-sm ring-1 ring-black/5'
-                      : 'text-gray-400 hover:text-gray-600'
-                  }`}
-                >
-                  {cat === 'new'
-                    ? 'New Launch'
-                    : cat === 'renewal'
-                      ? 'UI/UX Renewal'
-                      : cat}
-                </button>
-              ))}
-            </div>
           </div>
-
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-2 px-4 border-t border-gray-100/50">
             {displayedProjects.map((item) => (
-              <div key={item.id} className="sub-project-card">
+              <div
+                key={item.id}
+                className="sub-project-card border-b border-gray-100/50"
+              >
                 <ProjectSmallCard item={item as Project} />
               </div>
             ))}
           </div>
-
-          {/* Load More Button */}
-          {visibleCount < filteredProjects.length && (
+          {visibleCount < subProjects.length && (
             <div className="mt-16 flex justify-center">
               <button
                 onClick={() => setVisibleCount((prev) => prev + 6)}
@@ -262,60 +221,53 @@ export default function Portfolio() {
 }
 
 function ProjectSmallCard({ item }: { item: Project }) {
-  const isMaintenance = item.category === 'Maintenance';
-  const thumbnail = item.logo || item.image;
-
-  const content = (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-start justify-between">
-        <div className="space-y-2">
-          <div className="flex items-center gap-2">
-            <span
-              className={`text-[10px] font-black tracking-wider px-2 py-0.5 rounded-md capitalize ${
-                isMaintenance
-                  ? 'bg-gray-100 text-gray-500'
-                  : 'bg-blue-50 text-blue-600'
-              }`}
-            >
-              {item.category}
-            </span>
-            <span className="text-[10px] font-bold text-gray-400 tabular-nums">
-              {item.period}
-            </span>
-          </div>
-          <h4 className="text-xl font-bold text-gray-900 leading-snug group-hover:text-blue-600 transition-colors line-clamp-2">
-            {item.title}
-          </h4>
-        </div>
-
-        <div className="w-12 h-12 shrink-0 rounded-2xl overflow-hidden bg-gray-100 shadow-inner group-hover:shadow-md transition-all duration-500">
-          <Image
-            src={thumbnail}
-            alt={item.title}
-            width={48}
-            height={48}
-            className="w-full h-full object-cover group-hover:scale-125 transition-transform duration-700"
-          />
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between text-xs font-bold text-gray-400 pt-4 border-t border-gray-50 group-hover:border-blue-100 transition-colors">
-        <span>Show Details</span>
-        <ArrowUpRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
-      </div>
-    </div>
-  );
-
-  const cardClassName =
-    'group p-7 rounded-[32px] bg-white border border-gray-100 hover:border-blue-500/30 hover:shadow-[0_20px_50px_rgba(0,0,0,0.04)] transition-all duration-500 h-full flex flex-col justify-between';
-
-  if (isMaintenance) {
-    return <div className={`${cardClassName} cursor-default`}>{content}</div>;
-  }
+  const thumbnail =
+    item.logo ||
+    (Array.isArray(item.detailImages) ? item.detailImages[0] : item.image);
 
   return (
-    <Link href={`/project/${item.id}`} className={cardClassName}>
-      {content}
+    <Link
+      href={`/project/${item.id}`}
+      className="group flex items-center bg-white border-[#f2f4f6] gap-4 py-5 px-3 -mx-3 rounded-2xl border-1 hover:border-blue-600 hover:bg-blue-600 transition-all duration-500 hover:shadow-xl hover:shadow-blue-600/20"
+    >
+      {/* Micro-Thumbnail */}
+      <div className="relative w-14 h-14 shrink-0 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 group-hover:bg-white group-hover:border-transparent transition-all duration-500">
+        <Image
+          src={thumbnail}
+          alt={item.title}
+          width={56}
+          height={56}
+          className="object-contain w-full h-full opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700"
+        />
+      </div>
+
+      {/* Info Area */}
+      <div className="flex-1 min-w-0">
+        <div className="flex items-center gap-2 mb-1">
+          <h4 className="text-lg font-bold text-gray-900 truncate group-hover:text-white transition-colors duration-500">
+            {item.title}
+          </h4>
+          <span className="shrink-0 px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-wider group-hover:bg-white group-hover:text-blue-600 transition-all duration-500">
+            {item.category === 'new'
+              ? 'Launch'
+              : item.category === 'renewal'
+                ? 'Renewal'
+                : 'Mainte'}
+          </span>
+        </div>
+
+        <div className="flex items-center gap-3 text-base text-gray-400 font-medium whitespace-nowrap overflow-hidden group-hover:text-white/70 transition-colors duration-500">
+          <span className="shrink-0 font-num tabular-nums text-blue-500/50 group-hover:text-white/40 transition-colors duration-500">
+            {item.period.split(' - ')[0]}
+          </span>
+          <span className="truncate">{item.shortDescription}</span>
+        </div>
+      </div>
+
+      {/* Action */}
+      <div className="shrink-0 w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-white transition-all duration-500">
+        <ArrowUpRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-blue-600 transition-colors duration-500" />
+      </div>
     </Link>
   );
 }

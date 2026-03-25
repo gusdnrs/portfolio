@@ -63,8 +63,13 @@ export default function HeroBackground() {
 
       d += ` C ${cp1x},${cp1y} ${cp2x},${cp2y} ${next[0]},${next[1]}`;
     }
-    setIntroPath(d);
-  }, [dimensions.width, dimensions.height]);
+    
+    // Use requestAnimationFrame to avoid synchronous cascading render warning in React 19
+    const frame = requestAnimationFrame(() => {
+      setIntroPath(d);
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [dimensions]);
 
   if (!introPath) return <div ref={containerRef} className="absolute inset-0 pointer-events-none" />;
 

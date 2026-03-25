@@ -10,11 +10,11 @@ if (typeof window !== 'undefined') {
 
 export default function GSAPProvider({ children }: { children: React.ReactNode }) {
   useLayoutEffect(() => {
-    // 디버깅을 위해 전역 노출
     if (typeof window !== 'undefined') {
-      
       // 디버깅을 위해 전역 노출
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).gsap = gsap;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).ScrollTrigger = ScrollTrigger;
 
       // 초기 리프레시

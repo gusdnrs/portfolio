@@ -16,7 +16,7 @@ export interface Project {
 
 export const projects: Project[] = [
   // ==========================================
-  // [ FEATURED PROJECTS: 1-8 ]
+  // [ FEATURED PROJECTS: 1-6 ]
   // ==========================================
   {
     id: '1',
@@ -25,7 +25,16 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2024.07 - 2024.08',
     shortDescription: '두정이진병원 리뉴얼',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'MySQL', 'SCSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: [
+      'HTML',
+      'PHP',
+      'jQuery',
+      'JS',
+      'MySQL',
+      'SCSS',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/2jin2/main.png',
     detailImages: [
       '/images/projects/2jin2/pc-01.jpg',
@@ -48,15 +57,24 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2023.08 - 2023.10',
     shortDescription: '기운찬한방병원 리뉴얼',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'MySQL', 'SCSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: [
+      'HTML',
+      'PHP',
+      'jQuery',
+      'JS',
+      'MySQL',
+      'SCSS',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/giunchanhospital/main.png',
     detailImages: [
-      '/images/projects/giunchanhospital/pc-01.jpg',
-      '/images/projects/giunchanhospital/pc-02.jpg',
-      '/images/projects/giunchanhospital/pc-04.jpg',
-      '/images/projects/giunchanhospital/mo-01.jpg',
-      '/images/projects/giunchanhospital/mo-02.jpg',
-      '/images/projects/giunchanhospital/mo-04.jpg',
+      '/images/projects/giunchanhospital/pc-01_v2.jpg',
+      '/images/projects/giunchanhospital/pc-02_v2.jpg',
+      '/images/projects/giunchanhospital/pc-03_v2.jpg',
+      '/images/projects/giunchanhospital/mo-01_v2.jpg',
+      '/images/projects/giunchanhospital/mo-02_v2.jpg',
+      '/images/projects/giunchanhospital/mo-03_v2.jpg',
     ],
     longDescription:
       '기존 웹사이트를 병원급 규모에 맞춰 전면 리뉴얼한 프로젝트입니다. 방대한 의료 정보를 사용자가 쉽게 찾을 수 있도록 IA를 재정립하는 데 많은 시간을 할애하였으며, 작업 범위가 넓고 구현 난이도가 높았던 프로젝트입니다. 수많은 페이지의 스타일을 체계적으로 관리하고 반응형 퍼블리싱을 적용하여, 모바일에서도 최적화된 화면을 제공합니다.',
@@ -70,7 +88,7 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2023.12 - 2024.01',
     shortDescription: '주연여성의원 신규 런칭',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'SCSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'SCSS', 'Gnuboard', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/juyeonclinic/main.png',
     detailImages: [
       '/images/projects/juyeonclinic/pc-01.jpg',
@@ -92,7 +110,7 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2025.07 - 2025.07',
     shortDescription: '이스트폴담우이비인후과의원 신규 런칭',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'SCSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'SCSS', 'Gnuboard', 'Figma'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/damwooent/main.png',
     detailImages: [
       '/images/projects/damwooent/pc-01.jpg',
@@ -110,7 +128,16 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2024.02 - 2024.05',
     shortDescription: '베스트연합의원 리뉴얼',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'MySQL', 'SCSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: [
+      'HTML',
+      'PHP',
+      'jQuery',
+      'JS',
+      'MySQL',
+      'SCSS',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/bestunitedclinic/main_v2.png',
     detailImages: [
       '/images/projects/bestunitedclinic/pc-01_v2.jpg',
@@ -127,30 +154,12 @@ export const projects: Project[] = [
   },
   {
     id: '6',
-    title: '성남센트럴안과의원',
-    category: 'renewal',
-    contribution: '퍼블리싱 100%',
-    period: '2025.02 - 2025.02',
-    shortDescription: '성남센트럴안과의원 index 페이지 리뉴얼',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'CSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
-    image: '/images/projects/snceye/main_v2.png',
-    detailImages: [
-      '/images/projects/snceye/pc-01_v2.jpg',
-      '/images/projects/snceye/mo-01_v2.jpg',
-    ],
-    longDescription:
-      '기존 메인 페이지를 보다 역동적이고 세련되게 개선한 리뉴얼 프로젝트입니다. 인터랙티브한 요소를 강화하고 싶어하는 병원의 니즈에 맞춰, 스크롤 애니메이션 및 다양한 시각적 인터랙션을 적재적소에 배치하여 생동감 넘치는 브랜드 이미지를 전달하고자 했습니다. 기술적 완성도와 미적 요소를 조화롭게 결합해 성공적인 결과물을 도출하며 프로젝트를 완료하였습니다.',
-    featured: true,
-    websiteUrl: 'http://snceye.co.kr/',
-  },
-  {
-    id: '7',
     title: '서울에이스병원',
     category: 'maintenance',
     contribution: '퍼블리싱 및 유지보수 100%',
     period: '2021.11 - 2025.11',
     shortDescription: '서울에이스병원 서브페이지 구축 및 유지보수',
-    tools: ['HTML', 'PHP', 'MySQL', 'jQuery', 'JS', 'CSS'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'PHP', 'MySQL', 'jQuery', 'JS', 'CSS', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/ace-hospital/main.png',
     detailImages: [
       '/images/projects/ace-hospital/pc-01.jpg',
@@ -165,6 +174,32 @@ export const projects: Project[] = [
     featured: true,
     websiteUrl: 'http://ace-hospital.co.kr/',
   },
+  // ==========================================
+  // [ SUB PROJECTS & MAINTENANCE: 7-41 ]
+  // ==========================================
+  {
+    id: '7',
+    title: '성남센트럴안과의원',
+    category: 'renewal',
+    contribution: '퍼블리싱 100%',
+    period: '2025.02 - 2025.02',
+    shortDescription: '성남센트럴안과의원 index 페이지 리뉴얼',
+    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'CSS', 'Gnuboard', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/snceye/main_v2.png',
+    detailImages: [
+      '/images/projects/snceye/pc-01_v2.jpg',
+      '/images/projects/snceye/pc-02.jpg',
+      '/images/projects/snceye/pc-03.jpg',
+      '/images/projects/snceye/mo-01_v2.jpg',
+      '/images/projects/snceye/mo-02.jpg',
+      '/images/projects/snceye/mo-03.jpg',
+    ],
+    logo: '/images/projects/snceye/logo.png',
+    longDescription:
+      '기존 메인 페이지를 보다 역동적이고 세련되게 개선한 리뉴얼 프로젝트입니다. 인터랙티브한 요소를 강화하고 싶어하는 병원의 니즈에 맞춰, 스크롤 애니메이션 및 다양한 시각적 인터랙션을 적재적소에 배치하여 생동감 넘치는 브랜드 이미지를 전달하고자 했습니다. 기술적 완성도와 미적 요소를 조화롭게 결합해 성공적인 결과물을 도출하며 프로젝트를 완료하였습니다.',
+    featured: false,
+    websiteUrl: 'http://snceye.co.kr/',
+  },
   {
     id: '8',
     title: '테라기획',
@@ -172,7 +207,7 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2025.02 - 2025.02',
     shortDescription: '테라기획 리뉴얼',
-    tools: ['HTML', 'jQuery', 'JS', 'CSS'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'Photoshop', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/terramedi/main_v2.png',
     detailImages: [
       '/images/projects/terramedi/pc-01_v2.jpg',
@@ -182,15 +217,12 @@ export const projects: Project[] = [
       '/images/projects/terramedi/mo-02_v2.jpg',
       '/images/projects/terramedi/mo-03_v2.jpg',
     ],
+    logo: '/images/projects/terramedi/logo.png',
     longDescription:
       '병원 마케팅 전문 기업의 브랜드 가치를 전달하기 위한 홈페이지 리뉴얼 프로젝트입니다. 회사가 제공하는 다양한 서비스와 전문적인 정보들을 체계적으로 담아낼 수 있도록 레이아웃을 설계하였으며, 방대한 정보를 효과적으로 전달할 수 있는 직관적인 UI를 구현하는 데 주력했습니다. 기획 의도에 맞는 완성도 높은 결과물을 선보이며 프로젝트를 마무리하였습니다.',
-    featured: true,
+    featured: false,
     websiteUrl: 'http://www.terramedi.co.kr/page/index.php',
   },
-
-  // ==========================================
-  // [ SUB PROJECTS & MAINTENANCE: 9-41 ]
-  // ==========================================
   {
     id: '9',
     title: '나이스병원',
@@ -198,7 +230,16 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 50%',
     period: '2022.01 - 2022.06',
     shortDescription: '나이스병원 신규 런칭',
-    tools: ['HTML', 'PHP', 'jQuery', 'JS', 'MySQL', 'SCSS', 'Gnuboard'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: [
+      'HTML',
+      'PHP',
+      'jQuery',
+      'JS',
+      'MySQL',
+      'SCSS',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/nicehospital/main.png',
     detailImages: [
       '/images/projects/nicehospital/pc-01.png',
@@ -215,6 +256,409 @@ export const projects: Project[] = [
     websiteUrl: 'https://www.nice-hospital.com/',
   },
   {
+    id: '25',
+    title: '구로참튼튼병원',
+    category: 'maintenance',
+    contribution: '퍼블리싱 100%',
+    period: '2021.11 - 2025.11',
+    shortDescription: '구로참튼튼병원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/gurotntn/main.png',
+    detailImages: [
+      '/images/projects/gurotntn/pc-01.jpg',
+      '/images/projects/gurotntn/pc-02.jpg',
+      '/images/projects/gurotntn/pc-03.jpg',
+      '/images/projects/gurotntn/mo-01.jpg',
+      '/images/projects/gurotntn/mo-02.jpg',
+      '/images/projects/gurotntn/mo-03.jpg',
+    ],
+    logo: '/images/projects/gurotntn/logo.jpg',
+    longDescription: '신규 런칭, 퍼블리싱 100%',
+    featured: false,
+    websiteUrl: 'http://www.gurotntn.co.kr/',
+  },
+  {
+    id: '26',
+    title: '올바른정형외과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2023.07 - 2023.07',
+    shortDescription: '올바른정형외과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/allrightclinic/main.png',
+    detailImages: [
+      '/images/projects/allrightclinic/pc-01.jpg',
+      '/images/projects/allrightclinic/pc-02.jpg',
+      '/images/projects/allrightclinic/pc-03.jpg',
+      '/images/projects/allrightclinic/mo-01.jpg',
+      '/images/projects/allrightclinic/mo-02.jpg',
+      '/images/projects/allrightclinic/mo-03.jpg',
+    ],
+    logo: '/images/projects/allrightclinic/logo.png',
+    longDescription: '신규 런칭, 퍼블리싱 100%',
+    featured: false,
+    websiteUrl: 'http://www.allrightclinic.co.kr/',
+  },
+  {
+    id: '27',
+    title: '예쁨의정석의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2023.06 - 2023.06',
+    shortDescription: '예쁨의정석의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/beautyjungsuk/main.png',
+    detailImages: [
+      '/images/projects/beautyjungsuk/pc-01.jpg',
+      '/images/projects/beautyjungsuk/pc-02.jpg',
+      '/images/projects/beautyjungsuk/pc-03.jpg',
+      '/images/projects/beautyjungsuk/mo-01.jpg',
+      '/images/projects/beautyjungsuk/mo-02.png',
+      '/images/projects/beautyjungsuk/mo-03.jpg',
+    ],
+    logo: '/images/projects/beautyjungsuk/logo.png',
+    longDescription: '신규 런칭, 퍼블리싱 100%',
+    featured: false,
+    websiteUrl: 'http://www.beautyjungsuk.co.kr/',
+  },
+  {
+    id: '28',
+    title: '삼성탑정형외과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2023.05 - 2023.06',
+    shortDescription: '삼성탑정형외과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/dasantop/main.png',
+    detailImages: [
+      '/images/projects/dasantop/pc-01.jpg',
+      '/images/projects/dasantop/mo-01.jpg',
+    ],
+    logo: '/images/projects/dasantop/logo.jpg',
+    longDescription:
+      '삼성탑정형외과의원 신규 런칭 프로젝트입니다. 기획자, 디자이너, 개발자와 처음으로 실무에서 호흡을 맞추며 원활한 커뮤니케이션의 기술과 프로젝트 일정 관리의 중요성을 깊이 배울 수 있었던 뜻깊은 경험이었습니다.',
+    featured: false,
+    websiteUrl: 'http://www.dasantop.co.kr/',
+  },
+  {
+    id: '29',
+    title: '노원참튼튼병원',
+    category: 'maintenance',
+    contribution: '퍼블리싱 100%',
+    period: '2021.11 - 2025.11',
+    shortDescription: '노원참튼튼병원 유지보수',
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'PHP', 'MySQL', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/nowontntn/main.png',
+    detailImages: [
+      '/images/projects/nowontntn/pc-01.jpg',
+      '/images/projects/nowontntn/mo-01.jpg',
+    ],
+    logo: '/images/projects/nowontntn/logo.jpg',
+    longDescription:
+      '올바른재활의학과의원 신규 런칭 프로젝트입니다. 기획자, 디자이너, 개발자와 처음으로 실무에서 호흡을 맞추며 원활한 커뮤니케이션의 기술과 프로젝트 일정 관리의 중요성을 깊이 배울 수 있었던 뜻깊은 경험이었습니다.',
+    featured: false,
+    websiteUrl: 'http://www.nowontntn.co.kr/nowon_new/index.php',
+  },
+  {
+    id: '30',
+    title: '올바른재활의학과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2023.03 - 2023.04',
+    shortDescription: '올바른재활의학과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/allbarun365/main.png',
+    detailImages: [
+      '/images/projects/allbarun365/pc-01.jpg',
+      '/images/projects/allbarun365/mo-01.jpg',
+    ],
+    logo: '/images/projects/allbarun365/logo.png',
+    longDescription:
+      '올바른재활의학과의원 신규 런칭 프로젝트입니다. 기획자, 디자이너, 개발자와 처음으로 실무에서 호흡을 맞추며 원활한 커뮤니케이션의 기술과 프로젝트 일정 관리의 중요성을 깊이 배울 수 있었던 뜻깊은 경험이었습니다.',
+    featured: false,
+    websiteUrl: 'http://www.allbarun365.co.kr/',
+  },
+  {
+    id: '31',
+    title: '청담튼튼병원',
+    category: 'maintenance',
+    contribution: '퍼블리싱 100%',
+    period: '2021.11 - 2025.11',
+    shortDescription: '청담튼튼병원 유지보수',
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'PHP', 'MySQL', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/tntnhospital/main.png',
+    detailImages: [
+      '/images/projects/tntnhospital/pc-01.jpg',
+      '/images/projects/tntnhospital/pc-02.jpg',
+      '/images/projects/tntnhospital/pc-03.jpg',
+      '/images/projects/tntnhospital/pc-04.jpg',
+      '/images/projects/tntnhospital/pc-05.jpg',
+      '/images/projects/tntnhospital/pc-06.jpg',
+      '/images/projects/tntnhospital/mo-01_v2.jpg',
+      '/images/projects/tntnhospital/mo-02_v2.jpg',
+      '/images/projects/tntnhospital/mo-03_v2.jpg',
+      '/images/projects/tntnhospital/mo-04_v2.jpg',
+      '/images/projects/tntnhospital/mo-05_v2.jpg',
+      '/images/projects/tntnhospital/mo-06_v2.jpg',
+    ],
+    logo: '/images/projects/tntnhospital/logo.jpg',
+    longDescription:
+      '청담튼튼병원 유지보수, 관리자페이지 리뉴얼, 서버이전, 서브페이지 구축, 리뉴얼',
+    featured: false,
+    websiteUrl: 'http://www.tntnhospital.co.kr/',
+  },
+  {
+    id: '32',
+    title: '탑정형외과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2022.12 - 2022.12',
+    shortDescription: '탑정형외과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/top-orthopedic/main.png',
+    detailImages: [
+      '/images/projects/top-orthopedic/pc-01.jpg',
+      '/images/projects/top-orthopedic/pc-02.jpg',
+      '/images/projects/top-orthopedic/pc-03.jpg',
+      '/images/projects/top-orthopedic/mo-01.jpg',
+      '/images/projects/top-orthopedic/mo-02.jpg',
+      '/images/projects/top-orthopedic/mo-03.jpg',
+    ],
+    logo: '/images/projects/top-orthopedic/logo.png',
+    longDescription: '웹페이지 구축, 병원과 소통을 통한 홈페이지구축',
+    featured: false,
+    websiteUrl: 'http://top-orthopedic.clinic/',
+  },
+  {
+    id: '33',
+    title: '성모김내과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2022.08 - 2022.08',
+    shortDescription: '성모김내과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/endo5575/main.png',
+    detailImages: [
+      '/images/projects/endo5575/pc-01.jpg',
+      '/images/projects/endo5575/pc-02.jpg',
+      '/images/projects/endo5575/pc-03.jpg',
+      '/images/projects/endo5575/mo-01.jpg',
+      '/images/projects/endo5575/mo-02.png',
+      '/images/projects/endo5575/mo-03.png',
+    ],
+    logo: '/images/projects/endo5575/logo.png',
+    longDescription:
+      '웹페이지 구축, 병원과 소통을 통한 홈페이지구축, 유지보수 ',
+    featured: false,
+    websiteUrl: 'http://www.endo5575.com/',
+  },
+  {
+    id: '34',
+    title: '태전튼튼정형외과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2022.07 - 2022.07',
+    shortDescription: '태전튼튼정형외과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/tjtt/main.png',
+    detailImages: [
+      '/images/projects/tjtt/pc-01.jpg',
+      '/images/projects/tjtt/mo-01.jpg',
+    ],
+    logo: '/images/projects/tjtt/logo.jpg',
+    longDescription:
+      '랜딩페이지 구축, 1장페이지, 병원과 소통을 통한 디자인 확정',
+    featured: false,
+    websiteUrl: 'http://www.tjtt.co.kr/',
+  },
+  {
+    id: '35',
+    title: '강동모커리한방병원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2022.07 - 2022.07',
+    shortDescription: '강동모커리한방병원 랜딩페이지 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/mokhuri/main.png',
+    detailImages: [
+      '/images/projects/mokhuri/pc-01.jpg',
+      '/images/projects/mokhuri/mo-01.jpg',
+    ],
+    logo: '/images/projects/mokhuri/logo.jpg',
+    longDescription:
+      '단발성, 이벤트 랜딩페이지 구축, 온라인예약, 기존시스템과 연동',
+    featured: false,
+    websiteUrl: '',
+  },
+  {
+    id: '36',
+    title: '서울청정신건강의학과의원',
+    category: 'new',
+    contribution: '퍼블리싱 100%',
+    period: '2022.07 - 2022.08',
+    shortDescription: '서울청정신건강의학과의원 신규 런칭',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/bluementalclinic/main.png',
+    detailImages: [
+      '/images/projects/bluementalclinic/pc-01.jpg',
+      '/images/projects/bluementalclinic/pc-02.jpg',
+      '/images/projects/bluementalclinic/pc-03.jpg',
+      '/images/projects/bluementalclinic/mo-01.jpg',
+      '/images/projects/bluementalclinic/mo-02.png',
+      '/images/projects/bluementalclinic/mo-03.png',
+    ],
+    logo: '/images/projects/bluementalclinic/logo.png',
+    longDescription:
+      '반응형으로 처음 기획해서 진행한 프로젝트, 병원에서 요구한 니즈를 반영하기 위해서 기획단계부터 참여',
+    featured: false,
+    websiteUrl: 'http://www.bluementalclinic.co.kr/',
+  },
+  {
+    id: '37',
+    title: '청담더유외과의원',
+    category: 'maintenance',
+    contribution: '유지보수',
+    period: '2022.05 - 2022.05',
+    shortDescription: '청담더유외과의원 index, 서브페이지 구축 및 유지보수',
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'PHP', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/theubreast/main.png',
+    detailImages: [
+      '/images/projects/theubreast/pc-01.jpg',
+      '/images/projects/theubreast/pc-02.jpg',
+      '/images/projects/theubreast/pc-03.jpg',
+      '/images/projects/theubreast/mo-01.jpg',
+      '/images/projects/theubreast/mo-02.png',
+      '/images/projects/theubreast/mo-03.png',
+    ],
+    logo: '/images/projects/theubreast/logo.png',
+    longDescription:
+      'index 페이지 리뉴얼, 서브페이지 구축 및 유지보수, 근무기간 지속적으로 홈페이지 유지보수 진행',
+    featured: false,
+    websiteUrl: 'https://www.theubreast.co.kr/',
+  },
+  {
+    id: '38',
+    title: '위즈닥터스',
+    category: 'maintenance',
+    contribution: '퍼블리싱 및 유지보수',
+    period: '2021.11 - 2025.11',
+    shortDescription: '위즈닥터스 리뉴얼 및 유지보수',
+    tools: [
+      'HTML',
+      'jQuery',
+      'JS',
+      'CSS',
+      'PHP',
+      'MySQL',
+      'Gnuboard',
+      'Photoshop',
+    ], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    image: '/images/projects/withsdoctors/main.png',
+    detailImages: [
+      '/images/projects/withsdoctors/pc-01.jpg',
+      '/images/projects/withsdoctors/pc-02.jpg',
+      '/images/projects/withsdoctors/pc-03.jpg',
+      '/images/projects/withsdoctors/mo-01.jpg',
+      '/images/projects/withsdoctors/mo-02.jpg',
+      '/images/projects/withsdoctors/mo-03.jpg',
+    ],
+    logo: '/images/projects/withsdoctors/logo.png',
+    longDescription:
+      '회사 대표 도메인 리뉴얼, 병원 마케팅 컨셉에 맞춰 리뉴얼 진행, 관리자페이지 예약 시스템 구축',
+    featured: false,
+    websiteUrl: 'http://www.withsdoctors.com/',
+  },
+  {
     id: '39',
     title: '동대문참튼튼병원',
     category: 'maintenance',
@@ -222,7 +666,7 @@ export const projects: Project[] = [
     period: '2021.11 - 2025.11',
     shortDescription:
       '동대문참튼튼병원 index 리뉴얼, 서브페이지 구축 및 유지보수',
-    tools: ['HTML', 'jQuery', 'JS', 'CSS'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'PHP', 'MySQL', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/jangantntn/main.png',
     detailImages: [
       '/images/projects/jangantntn/pc-01.jpg',
@@ -233,7 +677,8 @@ export const projects: Project[] = [
       '/images/projects/jangantntn/mo-03.jpg',
     ],
     logo: '/images/projects/jangantntn/logo.png',
-    longDescription: '',
+    longDescription:
+      'index 페이지 리뉴얼, 서브페이지 구축 및 유지보수, 근무기간 지속적으로 홈페이지 유지보수 진행',
     featured: false,
     websiteUrl: 'https://www.jangantntn.co.kr/',
   },
@@ -245,7 +690,7 @@ export const projects: Project[] = [
     period: '2021.11 - 2025.11',
     shortDescription:
       '의정부참튼튼병원 index 리뉴얼, 서브페이지 구축 및 유지보수',
-    tools: ['HTML', 'jQuery', 'JS', 'CSS'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'PHP', 'MySQL', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/uijeongbutntn/main.png',
     detailImages: [
       '/images/projects/uijeongbutntn/pc-01.jpg',
@@ -256,7 +701,8 @@ export const projects: Project[] = [
       '/images/projects/uijeongbutntn/mo-03.jpg',
     ],
     logo: '/images/projects/uijeongbutntn/logo.png',
-    longDescription: '',
+    longDescription:
+      'index 페이지 리뉴얼, 서브페이지 구축 및 유지보수, 근무기간 지속적으로 홈페이지 유지보수 진행',
     featured: false,
     websiteUrl: 'http://www.uijeongbutntn.co.kr/',
   },
@@ -267,7 +713,7 @@ export const projects: Project[] = [
     contribution: '퍼블리싱 100%',
     period: '2021.11 - 2021.12',
     shortDescription: '캠프나인치과의원 리뉴얼',
-    tools: ['HTML', 'jQuery', 'JS', 'CSS'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/camp9dental/main.png',
     detailImages: [
       '/images/projects/camp9dental/pc-01.jpg',
@@ -278,7 +724,8 @@ export const projects: Project[] = [
       '/images/projects/camp9dental/mo-03.jpg',
     ],
     logo: '/images/projects/camp9dental/logo.png',
-    longDescription: '',
+    longDescription:
+      '홈페이지 리뉴얼, 입사후 첫 프로젝트, 기획자, 디자이너, 개발자와 처음으로 실무에서 호흡을 맞추며 원활한 커뮤니케이션의 기술과 프로젝트 일정 관리의 중요성을 깊이 배울 수 있었던 뜻깊은 경험이었습니다.',
     featured: false,
     websiteUrl: 'http://camp9dental.co.kr/',
   },
