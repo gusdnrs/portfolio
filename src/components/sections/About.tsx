@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { projects } from '@/utils/projects';
 
 // 전역 초기화에서 처리됨
 
@@ -189,7 +190,7 @@ export default function About() {
                   </p>
                   <p>
                     <span className="font-bold text-brand-blue">
-                      41건 이상의 병·의원 프로젝트를 완수
+                      {projects.length}건 이상의 병·의원 프로젝트를 완수
                     </span>
                     하며 쌓은 숙련도로 웹 표준과 접근성을 준수한 최적의 웹
                     구조를 지향하고 있습니다. 단순한 코딩을 넘어 프로젝트의
