@@ -49,9 +49,8 @@ export default async function ProjectDetail({
     );
   }
 
-  const prevProject =
-    projects[projectIndex - 1] || projects[projects.length - 1];
-  const nextProject = projects[projectIndex + 1] || projects[0];
+  const prevProject = projects[projectIndex - 1];
+  const nextProject = projects[projectIndex + 1];
 
   return (
     <main className="min-h-screen bg-[#fcfcfc] pb-32">
@@ -86,7 +85,7 @@ export default async function ProjectDetail({
         <div className="absolute inset-x-0 bottom-0 max-w-[1440px] mx-auto px-6 md:px-10 pb-12">
           <div>
             <span className="inline-block px-4 py-2 bg-brand-blue rounded-full text-xs font-black text-white uppercase tracking-widest shadow-lg mb-6">
-              {project.category}
+              {project.category.join(' / ')}
             </span>
             <h1 className="text-4xl md:text-7xl font-black text-brand-blue-dark leading-tight drop-shadow-sm">
               {project.title}
@@ -199,29 +198,37 @@ export default async function ProjectDetail({
       <section className="max-w-[1440px] mx-auto px-6 md:px-10 mt-40">
         <div className="h-px bg-gray-100 mb-20" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Link
-            href={`/project/${prevProject.id}`}
-            className="group p-10 rounded-[40px] border border-gray-100 bg-white hover:border-brand-blue/30 transition-all text-left"
-          >
-            <span className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 group-hover:-translate-x-2 transition-transform">
-              <ChevronLeft className="w-4 h-4" /> Previous Project
-            </span>
-            <h4 className="text-2xl font-bold group-hover:text-brand-blue transition-colors">
-              {prevProject.title}
-            </h4>
-          </Link>
+          {prevProject ? (
+            <Link
+              href={`/project/${prevProject.id}`}
+              className="group p-10 rounded-[40px] border border-gray-100 bg-white hover:border-brand-blue/30 transition-all text-left"
+            >
+              <span className="flex items-center gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 group-hover:-translate-x-2 transition-transform">
+                <ChevronLeft className="w-4 h-4" /> Previous Project
+              </span>
+              <h4 className="text-2xl font-bold group-hover:text-brand-blue transition-colors">
+                {prevProject.title}
+              </h4>
+            </Link>
+          ) : (
+            <div />
+          )}
 
-          <Link
-            href={`/project/${nextProject.id}`}
-            className="group p-10 rounded-[40px] border border-gray-100 bg-white hover:border-brand-blue/30 transition-all text-right"
-          >
-            <span className="flex items-center justify-end gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 group-hover:translate-x-2 transition-transform">
-              Next Project <ChevronRight className="w-4 h-4" />
-            </span>
-            <h4 className="text-2xl font-bold group-hover:text-brand-blue transition-colors">
-              {nextProject.title}
-            </h4>
-          </Link>
+          {nextProject ? (
+            <Link
+              href={`/project/${nextProject.id}`}
+              className="group p-10 rounded-[40px] border border-gray-100 bg-white hover:border-brand-blue/30 transition-all text-right"
+            >
+              <span className="flex items-center justify-end gap-2 text-xs font-bold text-gray-400 uppercase tracking-widest mb-4 group-hover:translate-x-2 transition-transform">
+                Next Project <ChevronRight className="w-4 h-4" />
+              </span>
+              <h4 className="text-2xl font-bold group-hover:text-brand-blue transition-colors">
+                {nextProject.title}
+              </h4>
+            </Link>
+          ) : (
+            <div />
+          )}
         </div>
       </section>
     </main>

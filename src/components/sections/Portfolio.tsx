@@ -27,6 +27,15 @@ export default function Portfolio() {
   const subProjects = projects.filter((p) => !p.featured);
   const displayedProjects = subProjects.slice(0, visibleCount);
 
+  // ── Stats Calculation ──
+  const newCount = projects.filter((p) => p.category.includes('new')).length;
+  const renewalCount = projects.filter((p) =>
+    p.category.includes('renewal'),
+  ).length;
+  const maintenanceCount = projects.filter((p) =>
+    p.category.includes('maintenance'),
+  ).length;
+
   // ── Animation ──
   useGSAP(
     () => {
@@ -34,27 +43,27 @@ export default function Portfolio() {
       gsap.from('.portfolio-header-block', {
         scrollTrigger: {
           trigger: '.portfolio-header-block',
-          start: 'top 92%',
+          start: 'top 98%',
         },
-        y: 60,
+        y: 30,
         opacity: 0,
-        duration: 1.2,
-        ease: 'back.out(1.7)',
+        duration: 0.8,
+        ease: 'power2.out',
       });
 
       // Featured Cards Reveal
       gsap.fromTo(
         '.featured-project-card',
-        { y: 80, opacity: 0 },
+        { y: 40, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1,
-          stagger: 0.2,
-          ease: 'power3.out',
+          duration: 0.7,
+          stagger: 0.1,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: '.portfolio-grid-container',
-            start: 'top 85%',
+            start: 'top 95%',
             toggleActions: 'play none none none',
             once: true,
           },
@@ -75,7 +84,7 @@ export default function Portfolio() {
             ease: 'power2.out',
             scrollTrigger: {
               trigger: '#portfolio-sub-projects',
-              start: 'top 85%',
+              start: 'top 95%',
             },
           },
         );
@@ -99,7 +108,7 @@ export default function Portfolio() {
             <div className="flex flex-wrap gap-3 md:gap-5 mb-2">
               <div className="flex items-center gap-2.5 bg-gray-50/80 px-5 py-2.5 rounded-2xl border border-gray-100/50">
                 <span className="text-brand-blue font-black text-xl md:text-2xl leading-none">
-                  22
+                  {newCount}
                 </span>
                 <span className="text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-wider">
                   신규 런칭
@@ -107,13 +116,16 @@ export default function Portfolio() {
               </div>
               <div className="flex items-center gap-2.5 bg-gray-50/80 px-5 py-2.5 rounded-2xl border border-gray-100/50">
                 <span className="text-brand-blue font-black text-xl md:text-2xl leading-none">
-                  19
+                  {renewalCount}
                 </span>
                 <span className="text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-wider">
                   리뉴얼
                 </span>
               </div>
               <div className="flex items-center gap-2.5 bg-gray-50/80 px-5 py-2.5 rounded-2xl border border-gray-100/50">
+                <span className="text-brand-blue font-black text-xl md:text-2xl leading-none">
+                  {maintenanceCount}
+                </span>
                 <span className="text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-wider">
                   유지보수
                 </span>
@@ -147,11 +159,15 @@ export default function Portfolio() {
                 <div className="flex flex-col gap-5">
                   <div className="flex items-center justify-between">
                     <span className="text-[14px] font-bold text-blue-600 tracking-tight">
-                      {project.category === 'new'
-                        ? 'New Launch'
-                        : project.category === 'renewal'
-                          ? 'UI/UX Renewal'
-                          : project.category}
+                      {project.category
+                        .map((cat) =>
+                          cat === 'new'
+                            ? 'New Launch'
+                            : cat === 'renewal'
+                              ? 'UI/UX Renewal'
+                              : 'Maintenance',
+                        )
+                        .join(' / ')}
                     </span>
                   </div>
 
@@ -248,11 +264,11 @@ function ProjectSmallCard({ item }: { item: Project }) {
             {item.title}
           </h4>
           <span className="shrink-0 px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-wider group-hover:bg-white group-hover:text-blue-600 transition-all duration-500">
-            {item.category === 'new'
-              ? 'Launch'
-              : item.category === 'renewal'
-                ? 'Renewal'
-                : 'Mainte'}
+            {item.category
+              .map((cat) =>
+                cat === 'new' ? 'Launch' : cat === 'renewal' ? 'Renewal' : 'Mainte',
+              )
+              .join(' / ')}
           </span>
         </div>
 

@@ -10,22 +10,22 @@ export default function Hero() {
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({ delay: 0.3 });
+      const tl = gsap.timeline(); // Remove delay for faster LCP
 
       tl.from('.hero-title-main', {
-        y: 60,
-        opacity: 0,
-        duration: 1.2,
+        y: 40,
+        opacity: 0, // Keep opacity but make it faster
+        duration: 0.8, // Reduced from 1.2
         ease: 'power4.out',
       }).from(
         '.hero-subtitle',
         {
           y: 20,
           opacity: 0,
-          duration: 1,
+          duration: 0.8,
           ease: 'power3.out',
         },
-        '-=0.8',
+        '-=0.6', // Overlap more
       );
     },
     { scope: containerRef },

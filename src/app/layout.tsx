@@ -15,12 +15,13 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 });
 
-// 한글 전용 폰트
+// 한글 전용 폰트 - Subset 버전 사용 권장 (용량 최적화)
 const pretendard = localFont({
   src: '../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2',
   display: 'swap',
-  weight: '400 920',
+  weight: '450 920', // 필요한 weight 범위만 지정하여 최적화 시도
   variable: '--font-pretendard',
+  preload: true,
 });
 
 // 메타데이터
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     url: 'https://hyunwook-portfolio.vercel.app/',
   },
   icons: {
-    icon: '/images/favicon.png',
+    icon: '/images/logo.svg', // 643KB PNG 대신 9KB SVG 사용
   },
 };
 
