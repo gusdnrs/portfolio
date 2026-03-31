@@ -132,7 +132,7 @@ export default function ConnectingLine() {
     { dependencies: [pathData, isVisible], scope: svgRef },
   );
 
-  if (isSubPage) return null;
+  if (isSubPage || isMobile) return null;
 
   return (
     <svg

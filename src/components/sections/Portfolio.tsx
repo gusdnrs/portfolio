@@ -34,26 +34,27 @@ export default function Portfolio() {
       const mm = gsap.matchMedia();
 
       mm.add('(max-width: 768px)', () => {
-        // Mobile: Snappier animations
+        // Mobile: Ultra-light animations to maximize performance
         gsap.from('.portfolio-header-block', {
           scrollTrigger: {
             trigger: '.portfolio-header-block',
             start: 'top 98%',
+            once: true,
           },
-          y: 20,
+          y: 10,
           opacity: 0,
-          duration: 0.6,
+          duration: 0.4,
           ease: 'power2.out',
         });
 
         gsap.fromTo(
           '.featured-project-card',
-          { y: 20, opacity: 0 },
+          { y: 10, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.5,
-            stagger: 0.05,
+            duration: 0.4,
+            stagger: 0.03,
             ease: 'power2.out',
             scrollTrigger: {
               trigger: '.portfolio-grid-container',
@@ -67,16 +68,17 @@ export default function Portfolio() {
         if (cards.length > 0) {
           gsap.fromTo(
             cards,
-            { y: 15, opacity: 0 },
+            { y: 5, opacity: 0 },
             {
               y: 0,
               opacity: 1,
-              duration: 0.5,
-              stagger: 0.03,
+              duration: 0.4,
+              stagger: 0, // No stagger on mobile for sub-projects
               ease: 'power2.out',
               scrollTrigger: {
                 trigger: '#portfolio-sub-projects',
                 start: 'top 95%',
+                once: true,
               },
             },
           );
