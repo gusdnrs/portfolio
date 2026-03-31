@@ -41,7 +41,8 @@ export default function Hero() {
       
       <div className="relative z-10 text-center px-4 max-w-[1440px] mx-auto">
         <div className="hero-title-wrapper mb-8 md:mb-12">
-          <h1 className="hero-title-main font-en text-[clamp(2.5rem,11vw,9rem)] xl:text-[9.5rem] font-black leading-[0.85] tracking-tighter text-brand-blue-dark select-none uppercase">
+          <h1 className="hero-title-main font-en text-[clamp(2.5rem,11vw,9rem)] xl:text-[9.5rem] font-bold leading-[0.85] tracking-tighter text-brand-blue-dark select-none uppercase">
+
             <span className="text-brand-blue">IM</span> HYUNWOOK
           </h1>
         </div>

@@ -27,7 +27,7 @@ export default function ProjectGallery({ detailImages }: ProjectGalleryProps) {
           <div className="space-y-10 group/pc relative">
             <div className="flex items-end justify-between border-l-4 border-brand-blue pl-6 py-2">
               <div>
-                <h4 className="text-2xl font-black text-gray-900 tracking-tight">
+                <h4 className="text-2xl font-bold text-gray-900 tracking-tight">
                   PC VIEW
                 </h4>
               </div>
@@ -83,7 +83,7 @@ export default function ProjectGallery({ detailImages }: ProjectGalleryProps) {
         {moImages.length > 0 && (
           <div className="space-y-10">
             <div className="border-l-4 border-brand-blue pl-6 py-2">
-              <h4 className="text-2xl font-black text-gray-900 tracking-tight uppercase">
+              <h4 className="text-2xl font-bold text-gray-900 tracking-tight uppercase">
                 Mobile VIEW
               </h4>
             </div>

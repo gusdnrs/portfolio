@@ -186,7 +186,7 @@ export default function About() {
       <div className="max-w-[1440px] mx-auto relative z-10">
         {/* TOP: Header Title */}
         <div className="about-top mb-16 md:mb-24 text-center lg:text-left">
-          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter text-gray-900 uppercase leading-[1.05]">
             <span className="about-headline-line block mb-2">About Me</span>
           </h2>
         </div>
@@ -222,7 +222,7 @@ export default function About() {
             {/* Right: Bio & Ultra-wide Features */}
             <div className="about-right-side w-full lg:w-7/12 flex flex-col justify-center">
               <div className="text-left space-y-8">
-                <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black text-brand-blue tracking-tight leading-[1.2]">
+                <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-brand-blue tracking-tight leading-[1.2]">
                   Im Hyun-wook
                 </h3>
                 <div className="space-y-6 text-[clamp(1rem,2vw,1.375rem)] text-gray-600 leading-relaxed font-medium">
@@ -269,7 +269,7 @@ export default function About() {
           {/* Work Experience */}
           <div className="about-history-col">
             <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900">
+              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-900">
                 WORK EXPERIENCE
               </h3>
               <div className="h-px bg-gray-200 grow" />
@@ -293,7 +293,7 @@ export default function About() {
           {/* Education */}
           <div className="about-history-col">
             <div className="flex items-center gap-4 mb-10">
-              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900">
+              <h3 className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-900">
                 EDUCATION
               </h3>
               <div className="h-px bg-gray-200 grow" />

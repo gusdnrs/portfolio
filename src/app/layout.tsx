@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google'; // 영문, 숫자 전용 폰트
+import { Montserrat } from 'next/font/google';
+import localFont from 'next/font/local';
 import '../styles/globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -7,15 +8,35 @@ import ScrollToTop from '../components/common/ScrollToTop';
 import ConnectingLine from '../components/common/ConnectingLine';
 import GSAPProvider from '../components/common/GSAPProvider';
 
-// 영문, 숫자 전용 폰트
-const montserrat = Montserrat({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  variable: '--font-montserrat',
+const pretendard = localFont({
+  src: [
+    {
+      path: '../fonts/Pretendard-Regular.subset.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Pretendard-Medium.subset.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/Pretendard-Bold.subset.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-pretendard',
+  display: 'swap',
 });
 
-// 한글 전용 폰트는 globals.css에서 CDN Subset(약 200KB)으로 로드함
-// const pretendard = localFont({ ... }); // 제거됨
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['400', '700', '900'],
+  variable: '--font-montserrat',
+  display: 'swap',
+});
+
 
 // 메타데이터
 export const metadata: Metadata = {
@@ -42,7 +63,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={montserrat.variable}>
+    <html lang="ko" className={`${pretendard.variable} ${montserrat.variable}`}>
+
       <body className="relative">
         <GSAPProvider>
           <ConnectingLine />
