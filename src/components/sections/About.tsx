@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -10,68 +10,108 @@ import { projects } from '@/utils/projects';
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isToggled, setIsToggled] = useState(false);
 
   useGSAP(
     () => {
-      // 1. Top Headline Reveal
-      gsap.from('.about-headline-line', {
-        scrollTrigger: {
-          trigger: '.about-top',
-          start: 'top 92%',
-        },
-        y: 60,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.1,
-        ease: 'back.out(1.7)',
+      const mm = gsap.matchMedia();
+
+      mm.add('(max-width: 768px)', () => {
+        // Mobile: Ultra-light animations to maximize scroll performance
+        gsap.from('.about-headline-line', {
+          scrollTrigger: {
+            trigger: '.about-top',
+            start: 'top 95%',
+            once: true,
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+
+        gsap.from('.about-image-wrapper', {
+          scrollTrigger: {
+            trigger: '.about-main',
+            start: 'top 95%',
+            once: true,
+          },
+          y: 20,
+          opacity: 0,
+          duration: 0.5,
+          ease: 'power2.out',
+        });
+
+        gsap.from(['.about-right-side', '.about-history-col'], {
+          scrollTrigger: {
+            trigger: '.about-main',
+            start: 'top 90%',
+            once: true,
+          },
+          y: 15,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.05,
+          ease: 'power2.out',
+        });
       });
 
-      // 2. Main content area (Image and Right Side)
-      gsap.from('.about-image-wrapper', {
-        scrollTrigger: {
-          trigger: '.about-main',
-          start: 'top 92%',
-        },
-        x: -50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out',
+      mm.add('(min-width: 769px)', () => {
+        // Desktop: High-quality animations
+        gsap.from('.about-headline-line', {
+          scrollTrigger: {
+            trigger: '.about-top',
+            start: 'top 92%',
+          },
+          y: 60,
+          opacity: 0,
+          duration: 1,
+          stagger: 0.1,
+          ease: 'back.out(1.7)',
+        });
+
+        gsap.from('.about-image-wrapper', {
+          scrollTrigger: {
+            trigger: '.about-main',
+            start: 'top 92%',
+          },
+          x: -50,
+          opacity: 0,
+          duration: 1,
+          ease: 'power2.out',
+        });
+
+        gsap.from('.about-right-side', {
+          scrollTrigger: {
+            trigger: '.about-main',
+            start: 'top 92%',
+          },
+          x: 50,
+          opacity: 0,
+          duration: 1,
+          ease: 'power2.out',
+        });
+
+        gsap.from('.about-history-col', {
+          scrollTrigger: {
+            trigger: '.about-history',
+            start: 'top 92%',
+          },
+          y: 50,
+          opacity: 0,
+          duration: 1.2,
+          stagger: 0.15,
+          ease: 'back.out(1.4)',
+        });
       });
 
-      gsap.from('.about-right-side', {
-        scrollTrigger: {
-          trigger: '.about-main',
-          start: 'top 92%',
-        },
-        x: 50,
-        opacity: 0,
-        duration: 1,
-        ease: 'power2.out',
-      });
-
-      // History Reveal
-      gsap.from('.about-history-col', {
-        scrollTrigger: {
-          trigger: '.about-history',
-          start: 'top 92%',
-        },
-        y: 50,
-        opacity: 0,
-        duration: 1.2,
-        stagger: 0.15,
-        ease: 'back.out(1.4)',
-      });
-
-      // 3. Tech Marquee Logic
+      // 3. Tech Marquee Logic (Common)
       const marqueeInner = containerRef.current?.querySelector(
         '.tech-marquee-inner',
       );
       if (marqueeInner) {
-        // Responsive duration based on screen width
         const isMobile = window.innerWidth < 768;
-        const duration = isMobile ? 25 : 35; // seconds for one full loop
-
-        // Using 4 sets of clones (-25%) for absolute seamlessness on ultra-wide screens
+        const duration = isMobile ? 25 : 35;
         gsap.fromTo(
           marqueeInner,
           { xPercent: 0 },
@@ -137,10 +177,10 @@ export default function About() {
       className="py-20 md:py-32 lg:py-40 px-4 bg-[#F5F5F7] overflow-hidden relative"
       ref={containerRef}
     >
-      {/* Background Blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-purple-400/10 rounded-full blur-[140px]"></div>
+      {/* Background Blobs - Hidden on mobile to improve performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden md:block">
+        <div className="absolute top-[10%] left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-400/10 rounded-full blur-[60px] md:blur-[120px]"></div>
+        <div className="absolute bottom-[10%] right-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-400/10 rounded-full blur-[70px] md:blur-[140px]"></div>
       </div>
 
       <div className="max-w-[1440px] mx-auto relative z-10">
@@ -156,21 +196,24 @@ export default function About() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-12">
             {/* Left: Image Container */}
             <div className="w-full lg:w-5/12">
-              <div className="about-image-wrapper group relative aspect-video lg:aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl w-full">
-                <div className="about-image-inner absolute inset-0 w-full h-full scale-[1.1] cursor-pointer">
+              <div className="about-image-wrapper group relative aspect-video lg:aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl w-full">
+                <div
+                  className="about-image-inner absolute inset-0 w-full h-full scale-[1.1] cursor-pointer"
+                  onClick={() => setIsToggled(!isToggled)}
+                >
                   <Image
                     src="/images/hero_bg.png"
                     alt="Im Hyunwook Profile"
                     fill
                     sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover object-[50%_20%] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0"
+                    className={`object-cover object-[50%_20%] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0 ${isToggled ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}
                   />
                   <Image
                     src="/images/hero_bg_hover.jpg"
                     alt="Im Hyunwook Real Profile"
                     fill
                     sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover object-[50%_20%] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100"
+                    className={`object-cover object-[50%_20%] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100 ${isToggled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
                   />
                 </div>
               </div>
@@ -217,36 +260,6 @@ export default function About() {
                   <p>감사합니다.</p>
                 </div>
               </div>
-
-              {/* Features: Integrated under bio for 1440px+ screens */}
-              {/* <div className="hidden xl:grid grid-cols-2 gap-6 mt-12">
-                {features.map((feature, idx) => (
-                  <div
-                    key={idx}
-                    className="flex flex-col gap-5 p-8 rounded-[40px] bg-gray-50/50 border border-gray-100/50 hover:bg-white hover:shadow-2xl hover:shadow-brand-blue/5 transition-all duration-500 group"
-                  >
-                    <div className="shrink-0 w-20 h-20 rounded-3xl bg-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform duration-500">
-                      <Image
-                        src={feature.image}
-                        alt={feature.title}
-                        width={64}
-                        fill
-                        priority
-                        sizes="100vw"
-                        className="object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="text-xl font-bold text-gray-900 mb-2">
-                        {feature.title}
-                      </h4>
-                      <p className="text-[15px] text-gray-500 leading-relaxed font-medium">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div> */}
             </div>
           </div>
         </div>
@@ -272,7 +285,6 @@ export default function About() {
                       {exp.date}
                     </span>
                   </div>
-                  {/* <span className="text-gray-500 font-medium">{exp.title}</span> */}
                 </div>
               ))}
             </div>
@@ -304,24 +316,26 @@ export default function About() {
         </div>
       </div>
 
-      {/* ROW 3: Tech Marquee (Bottom - Moved outside max-w-1440px for true full-width calculation) */}
+      {/* ROW 3: Tech Marquee (Bottom) */}
       <div className="about-tech relative pt-16 md:pt-24 z-10">
         <div className="overflow-hidden">
-          <div className="tech-marquee-inner flex items-center whitespace-nowrap w-max">
-            {/* Using 4 sets of clones for absolute seamlessness on ultra-wide screens */}
+          <div
+            className="tech-marquee-inner flex items-center whitespace-nowrap w-max"
+            style={{ willChange: 'transform' }}
+          >
             {[...techIcons, ...techIcons, ...techIcons, ...techIcons].map(
               (icon, idx) => (
                 <div
                   key={idx}
-                  className="tech-marquee-item shrink-0 px-6 sm:px-8 md:px-12 lg:px-16 flex items-center justify-center"
+                  className="tech-marquee-item shrink-0 px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-center"
                 >
-                  <div className="relative w-24 h-24 md:w-32 md:h-26 flex items-center justify-center py-4">
+                  <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-26 flex items-center justify-center py-4">
                     <Image
                       src={icon.src}
                       alt={icon.name}
                       width={100}
                       height={100}
-                      className="object-contain w-auto h-full max-h-[80px]"
+                      className="object-contain w-auto h-full max-h-[60px] sm:max-h-[80px]"
                     />
                   </div>
                 </div>
