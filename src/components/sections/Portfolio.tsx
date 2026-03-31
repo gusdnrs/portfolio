@@ -31,56 +31,108 @@ export default function Portfolio() {
   // ── Animation ──
   useGSAP(
     () => {
-      // Main Entrance
-      gsap.from('.portfolio-header-block', {
-        scrollTrigger: {
-          trigger: '.portfolio-header-block',
-          start: 'top 98%',
-        },
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        ease: 'power2.out',
-      });
+      const mm = gsap.matchMedia();
 
-      // Featured Cards Reveal
-      gsap.fromTo(
-        '.featured-project-card',
-        { y: 40, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.7,
-          stagger: 0.1,
-          ease: 'power2.out',
+      mm.add('(max-width: 768px)', () => {
+        // Mobile: Snappier animations
+        gsap.from('.portfolio-header-block', {
           scrollTrigger: {
-            trigger: '.portfolio-grid-container',
-            start: 'top 95%',
-            toggleActions: 'play none none none',
-            once: true,
+            trigger: '.portfolio-header-block',
+            start: 'top 98%',
           },
-        },
-      );
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+          ease: 'power2.out',
+        });
 
-      // Projects Grid Animation (triggered on change)
-      const cards = gsap.utils.toArray('.sub-project-card');
-      if (cards.length > 0) {
         gsap.fromTo(
-          cards,
-          { y: 30, opacity: 0 },
+          '.featured-project-card',
+          { y: 20, opacity: 0 },
           {
             y: 0,
             opacity: 1,
-            duration: 0.6,
+            duration: 0.5,
             stagger: 0.05,
             ease: 'power2.out',
             scrollTrigger: {
-              trigger: '#portfolio-sub-projects',
+              trigger: '.portfolio-grid-container',
               start: 'top 95%',
+              once: true,
             },
           },
         );
-      }
+
+        const cards = gsap.utils.toArray('.sub-project-card');
+        if (cards.length > 0) {
+          gsap.fromTo(
+            cards,
+            { y: 15, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.5,
+              stagger: 0.03,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '#portfolio-sub-projects',
+                start: 'top 95%',
+              },
+            },
+          );
+        }
+      });
+
+      mm.add('(min-width: 769px)', () => {
+        // Desktop: Richer animations
+        gsap.from('.portfolio-header-block', {
+          scrollTrigger: {
+            trigger: '.portfolio-header-block',
+            start: 'top 98%',
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          ease: 'power2.out',
+        });
+
+        gsap.fromTo(
+          '.featured-project-card',
+          { y: 40, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            stagger: 0.1,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: '.portfolio-grid-container',
+              start: 'top 95%',
+              toggleActions: 'play none none none',
+              once: true,
+            },
+          },
+        );
+
+        const cards = gsap.utils.toArray('.sub-project-card');
+        if (cards.length > 0) {
+          gsap.fromTo(
+            cards,
+            { y: 30, opacity: 0 },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.05,
+              ease: 'power2.out',
+              scrollTrigger: {
+                trigger: '#portfolio-sub-projects',
+                start: 'top 95%',
+              },
+            },
+          );
+        }
+      });
     },
     { scope: containerRef, dependencies: [visibleCount] },
   );

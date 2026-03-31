@@ -14,13 +14,23 @@ export default function ConnectingLine() {
 
   const [pathData, setPathData] = useState<string>('');
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const svgRef = useRef<SVGSVGElement>(null);
   const progressPathRef = useRef<SVGPathElement>(null);
+
+  // Check for mobile on mount
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // 1. Calculate path points with ResizeObserver
   useEffect(() => {
     if (isSubPage) return;
 
+    let timeoutId: NodeJS.Timeout;
     const updatePath = () => {
       // Updated sections list
       const sections = ['hero', 'identity', 'portfolio', 'contact'];
@@ -40,9 +50,9 @@ export default function ConnectingLine() {
             xOffset = el.offsetWidth * 0.5;
             yOffset = rect.bottom + scrollY;
           } else if (index === sections.length - 1) {
-            // Last Section (Contact): Target a point deep enough to be behind the card (approx 500px from top)
+            // Last Section (Contact): Target a point deep enough to be behind the card
             xOffset = window.innerWidth * 0.5;
-            yOffset = rect.top + scrollY + 500; 
+            yOffset = rect.top + scrollY + 500;
           } else {
             // Middle sections: Alternating sides
             const isEven = index % 2 === 0;
@@ -67,8 +77,11 @@ export default function ConnectingLine() {
         setPathData(d);
       }
 
-      // 레이아웃 변경 시 ScrollTrigger 갱신
-      ScrollTrigger.refresh();
+      // Debounce ScrollTrigger.refresh()
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
     };
 
     // Initial calculation
@@ -82,11 +95,10 @@ export default function ConnectingLine() {
 
     const introTimer = setTimeout(() => setIsVisible(true), 2900);
 
-    window.addEventListener('resize', updatePath);
     return () => {
-      window.removeEventListener('resize', updatePath);
       resizeObserver.disconnect();
       clearTimeout(introTimer);
+      clearTimeout(timeoutId);
     };
   }, [isSubPage]);
 
@@ -135,7 +147,12 @@ export default function ConnectingLine() {
         strokeWidth="3"
         strokeLinecap="round"
         strokeLinejoin="round"
-        style={{ filter: 'drop-shadow(0 0 8px rgba(58, 89, 209, 0.4))' }}
+        style={{
+          filter: isMobile
+            ? 'none'
+            : 'drop-shadow(0 0 8px rgba(58, 89, 209, 0.4))',
+          willChange: 'stroke-dashoffset',
+        }}
       />
     </svg>
   );

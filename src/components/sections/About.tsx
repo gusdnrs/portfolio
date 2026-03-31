@@ -140,8 +140,8 @@ export default function About() {
     >
       {/* Background Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-[500px] h-[500px] bg-blue-400/10 rounded-full blur-[120px]"></div>
-        <div className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] bg-purple-400/10 rounded-full blur-[140px]"></div>
+        <div className="absolute top-[10%] left-[10%] w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-blue-400/10 rounded-full blur-[60px] md:blur-[120px]"></div>
+        <div className="absolute bottom-[10%] right-[10%] w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-purple-400/10 rounded-full blur-[70px] md:blur-[140px]"></div>
       </div>
 
       <div className="max-w-[1440px] mx-auto relative z-10">
@@ -311,7 +311,10 @@ export default function About() {
       {/* ROW 3: Tech Marquee (Bottom - Moved outside max-w-1440px for true full-width calculation) */}
       <div className="about-tech relative pt-16 md:pt-24 z-10">
         <div className="overflow-hidden">
-          <div className="tech-marquee-inner flex items-center whitespace-nowrap w-max">
+          <div
+            className="tech-marquee-inner flex items-center whitespace-nowrap w-max"
+            style={{ willChange: 'transform' }}
+          >
             {/* Using 4 sets of clones for absolute seamlessness on ultra-wide screens */}
             {[...techIcons, ...techIcons, ...techIcons, ...techIcons].map(
               (icon, idx) => (
