@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -10,6 +10,7 @@ import { projects } from '@/utils/projects';
 
 export default function About() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isToggled, setIsToggled] = useState(false);
 
   useGSAP(
     () => {
@@ -156,21 +157,24 @@ export default function About() {
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 mb-12">
             {/* Left: Image Container */}
             <div className="w-full lg:w-5/12">
-              <div className="about-image-wrapper group relative aspect-video lg:aspect-[4/5] rounded-[40px] overflow-hidden shadow-2xl w-full">
-                <div className="about-image-inner absolute inset-0 w-full h-full scale-[1.1] cursor-pointer">
+              <div className="about-image-wrapper group relative aspect-video lg:aspect-4/5 rounded-[40px] overflow-hidden shadow-2xl w-full">
+                <div
+                  className="about-image-inner absolute inset-0 w-full h-full scale-[1.1] cursor-pointer"
+                  onClick={() => setIsToggled(!isToggled)}
+                >
                   <Image
                     src="/images/hero_bg.png"
                     alt="Im Hyunwook Profile"
                     fill
                     sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover object-[50%_20%] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0"
+                    className={`object-cover object-[50%_20%] transition-all duration-700 ease-in-out group-hover:scale-105 group-hover:opacity-0 ${isToggled ? 'opacity-0 scale-105' : 'opacity-100 scale-100'}`}
                   />
                   <Image
                     src="/images/hero_bg_hover.jpg"
                     alt="Im Hyunwook Real Profile"
                     fill
                     sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover object-[50%_20%] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100"
+                    className={`object-cover object-[50%_20%] opacity-0 transition-all duration-700 ease-in-out scale-95 group-hover:scale-100 group-hover:opacity-100 ${isToggled ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
                   />
                 </div>
               </div>
@@ -313,15 +317,15 @@ export default function About() {
               (icon, idx) => (
                 <div
                   key={idx}
-                  className="tech-marquee-item shrink-0 px-6 sm:px-8 md:px-12 lg:px-16 flex items-center justify-center"
+                  className="tech-marquee-item shrink-0 px-4 sm:px-6 md:px-12 lg:px-16 flex items-center justify-center"
                 >
-                  <div className="relative w-24 h-24 md:w-32 md:h-26 flex items-center justify-center py-4">
+                  <div className="relative w-16 h-16 sm:w-24 sm:h-24 md:w-32 md:h-26 flex items-center justify-center py-4">
                     <Image
                       src={icon.src}
                       alt={icon.name}
                       width={100}
                       height={100}
-                      className="object-contain w-auto h-full max-h-[80px]"
+                      className="object-contain w-auto h-full max-h-[60px] sm:max-h-[80px]"
                     />
                   </div>
                 </div>
