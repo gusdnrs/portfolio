@@ -992,7 +992,7 @@ export const projects: Project[] = [
     shortDescription:
       '밝고 친근한 분위기를 가득 담아 아이와 부모를 함께 배려한 웹 클리닉',
     tools: ['HTML', 'jQuery', 'JS', 'CSS', 'PHP', 'MySQL', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
-    image: '/images/projects/hightntn/main.png',
+    image: '/images/projects/hightntn/main_v2.png',
     detailImages: [
       '/images/projects/hightntn/pc-01.jpg',
       '/images/projects/hightntn/mo-01.jpg',
