@@ -27,14 +27,6 @@ export default function Portfolio() {
   const subProjects = projects.filter((p) => !p.featured);
   const displayedProjects = subProjects.slice(0, visibleCount);
 
-  // ── Stats Calculation ──
-  const newCount = projects.filter((p) => p.category.includes('new')).length;
-  const renewalCount = projects.filter((p) =>
-    p.category.includes('renewal'),
-  ).length;
-  const maintenanceCount = projects.filter((p) =>
-    p.category.includes('maintenance'),
-  ).length;
 
   // ── Animation ──
   useGSAP(
@@ -105,32 +97,7 @@ export default function Portfolio() {
             <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
               Portfolio
             </h2>
-            <div className="flex flex-wrap gap-3 md:gap-5 mb-2">
-              <div className="flex items-center gap-2.5 bg-gray-50/80 px-5 py-2.5 rounded-2xl border border-gray-100/50">
-                <span className="text-brand-blue font-black text-xl md:text-2xl leading-none">
-                  {newCount}
-                </span>
-                <span className="text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-wider">
-                  신규 런칭
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-gray-50/80 px-5 py-2.5 rounded-2xl border border-gray-100/50">
-                <span className="text-brand-blue font-black text-xl md:text-2xl leading-none">
-                  {renewalCount}
-                </span>
-                <span className="text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-wider">
-                  리뉴얼
-                </span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-gray-50/80 px-5 py-2.5 rounded-2xl border border-gray-100/50">
-                <span className="text-brand-blue font-black text-xl md:text-2xl leading-none">
-                  {maintenanceCount}
-                </span>
-                <span className="text-gray-500 font-bold text-[10px] md:text-xs uppercase tracking-wider">
-                  유지보수
-                </span>
-              </div>
-            </div>
+
           </div>
         </div>
 
@@ -244,7 +211,7 @@ function ProjectSmallCard({ item }: { item: Project }) {
   return (
     <Link
       href={`/project/${item.id}`}
-      className="group flex items-center bg-white border-[#f2f4f6] gap-4 py-5 px-3 -mx-3 rounded-2xl border-1 hover:border-blue-600 hover:bg-blue-600 transition-all duration-500 hover:shadow-xl hover:shadow-blue-600/20"
+      className="group flex items-center bg-white border-[#f2f4f6] gap-4 py-5 px-3 -mx-3 rounded-2xl border hover:border-blue-600 hover:bg-blue-600 transition-all duration-500 hover:shadow-xl hover:shadow-blue-600/20"
     >
       {/* Micro-Thumbnail */}
       <div className="relative w-14 h-14 shrink-0 bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 group-hover:bg-white group-hover:border-transparent transition-all duration-500">
@@ -266,7 +233,11 @@ function ProjectSmallCard({ item }: { item: Project }) {
           <span className="shrink-0 px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-wider group-hover:bg-white group-hover:text-blue-600 transition-all duration-500">
             {item.category
               .map((cat) =>
-                cat === 'new' ? 'Launch' : cat === 'renewal' ? 'Renewal' : 'Mainte',
+                cat === 'new'
+                  ? 'New Launch'
+                  : cat === 'renewal'
+                    ? 'UI/UX Renewal'
+                    : 'Maintenance',
               )
               .join(' / ')}
           </span>
@@ -274,7 +245,7 @@ function ProjectSmallCard({ item }: { item: Project }) {
 
         <div className="flex items-center gap-3 text-base text-gray-400 font-medium whitespace-nowrap overflow-hidden group-hover:text-white/70 transition-colors duration-500">
           <span className="shrink-0 font-num tabular-nums text-blue-500/50 group-hover:text-white/40 transition-colors duration-500">
-            {item.period.split(' - ')[0]}
+            {(item.period.project?.[0] || item.period.maintenance)?.split(' - ')[0]}
           </span>
           <span className="truncate">{item.shortDescription}</span>
         </div>

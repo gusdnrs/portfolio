@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Montserrat } from 'next/font/google'; // 영문, 숫자 전용 폰트
-import localFont from 'next/font/local'; // 한글 전용 폰트
 import '../styles/globals.css';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
@@ -15,14 +14,8 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 });
 
-// 한글 전용 폰트 - Subset 버전 사용 권장 (용량 최적화)
-const pretendard = localFont({
-  src: '../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2',
-  display: 'swap',
-  weight: '450 920', // 필요한 weight 범위만 지정하여 최적화 시도
-  variable: '--font-pretendard',
-  preload: true,
-});
+// 한글 전용 폰트는 globals.css에서 CDN Subset(약 200KB)으로 로드함
+// const pretendard = localFont({ ... }); // 제거됨
 
 // 메타데이터
 export const metadata: Metadata = {
@@ -49,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" className={`${pretendard.variable} ${montserrat.variable}`}>
+    <html lang="ko" className={montserrat.variable}>
       <body className="relative">
         <GSAPProvider>
           <ConnectingLine />

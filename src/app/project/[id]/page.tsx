@@ -99,18 +99,7 @@ export default async function ProjectDetail({
         {/* Left: Summary Grid */}
         <div className="lg:col-span-1 space-y-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
-            <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
-              <div className="flex items-center gap-3 text-brand-blue mb-2">
-                <Calendar className="w-5 h-5" />
-                <span className="text-lg font-bold uppercase tracking-widest text-brand-blue-dark">
-                  Period
-                </span>
-              </div>
-              <p className="text-base font-bold text-gray-600">
-                {project.period}
-              </p>
-            </div>
-            <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+            <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-3 text-brand-blue mb-2">
                 <User className="w-5 h-5" />
                 <span className="text-lg font-bold uppercase tracking-widest text-brand-blue-dark">
@@ -120,6 +109,38 @@ export default async function ProjectDetail({
               <p className="text-base font-bold text-gray-600">
                 {project.contribution}
               </p>
+            </div>
+            <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
+              <div className="flex items-center gap-3 text-brand-blue mb-4">
+                <Calendar className="w-5 h-5" />
+                <span className="text-lg font-bold uppercase tracking-widest text-brand-blue-dark">
+                  Period
+                </span>
+              </div>
+              <div className="space-y-4">
+                {project.period.project && (
+                  <div className="relative pl-4 border-l-2 border-brand-blue">
+                    <span className="text-base font-black text-brand-blue uppercase tracking-widest block mb-0.5">
+                      {project.category.includes('new')
+                        ? '신규 런칭'
+                        : '리뉴얼'}
+                    </span>
+                    <p className="text-base font-bold text-gray-700 leading-tight tabular-nums">
+                      {project.period.project.join(', ')}
+                    </p>
+                  </div>
+                )}
+                {project.period.maintenance && (
+                  <div className="relative pl-4 border-l-2 border-[#60799B]">
+                    <span className="text-base font-black text-[#60799B] uppercase tracking-widest block mb-0.5">
+                      유지보수
+                    </span>
+                    <p className="text-base font-bold text-gray-700 leading-tight tabular-nums">
+                      {project.period.maintenance}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm">
               <div className="flex items-center gap-3 text-brand-blue mb-6">
@@ -162,7 +183,7 @@ export default async function ProjectDetail({
               <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black text-brand-blue tracking-tight leading-[1.2] mb-8">
                 주요 작업 내용
               </h3>
-              <p className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900 mb-2">
+              <p className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900 mb-4">
                 {project.shortDescription}
               </p>
               <p className="text-lg text-gray-600 leading-loose break-keep">
