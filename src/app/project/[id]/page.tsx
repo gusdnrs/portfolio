@@ -87,7 +87,7 @@ export default async function ProjectDetail({
             <span className="inline-block px-4 py-2 bg-brand-blue rounded-full text-xs font-black text-white uppercase tracking-widest shadow-lg mb-6">
               {project.category.join(' / ')}
             </span>
-            <h1 className="text-4xl md:text-7xl font-black text-brand-blue-dark leading-tight drop-shadow-sm">
+            <h1 className="text-3xl md:text-7xl font-black text-brand-blue-dark leading-tight drop-shadow-sm break-all">
               {project.title}
             </h1>
           </div>
