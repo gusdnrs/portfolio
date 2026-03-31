@@ -230,7 +230,7 @@ function ProjectSmallCard({ item }: { item: Project }) {
           <h4 className="text-lg font-bold text-gray-900 truncate group-hover:text-white transition-colors duration-500">
             {item.title}
           </h4>
-          <span className="shrink-0 px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-wider group-hover:bg-white group-hover:text-blue-600 transition-all duration-500">
+          <span className="shrink-0 px-2 py-0.5 rounded-md bg-blue-50 text-blue-600 text-[9px] font-black uppercase tracking-wider group-hover:bg-white group-hover:text-blue-600 transition-all duration-500 hidden sm:inline-block">
             {item.category
               .map((cat) =>
                 cat === 'new'
@@ -243,7 +243,7 @@ function ProjectSmallCard({ item }: { item: Project }) {
           </span>
         </div>
 
-        <div className="flex items-center gap-3 text-base text-gray-400 font-medium whitespace-nowrap overflow-hidden group-hover:text-white/70 transition-colors duration-500">
+        <div className="flex items-center gap-3 text-sm sm:text-base text-gray-400 font-medium whitespace-nowrap overflow-hidden group-hover:text-white/70 transition-colors duration-500">
           <span className="shrink-0 font-num tabular-nums text-blue-500/50 group-hover:text-white/40 transition-colors duration-500">
             {(item.period.project?.[0] || item.period.maintenance)?.split(' - ')[0]}
           </span>
