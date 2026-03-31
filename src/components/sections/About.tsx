@@ -190,12 +190,17 @@ export default function About() {
                   </p>
                   <p>
                     <span className="font-bold text-brand-blue">
-                      {projects.length}건 이상의 병·의원 프로젝트를 완수
+                      {projects.length}건
                     </span>
-                    하며 쌓은 숙련도로 웹 표준과 접근성을 준수한 최적의 웹
-                    구조를 지향하고 있습니다. 단순한 코딩을 넘어 프로젝트의
-                    비즈니스 목적을 깊이 이해하고 실현하는 데 집중하고 있습니다.
+                    &nbsp; 이상의 병·의원 프로젝트를 완수 했으며, 1건의 협업
+                    프로젝트를 제외한&nbsp;
+                    <span className="font-bold text-brand-blue">
+                      모든 프로젝트의 퍼블리싱을 100% 단독으로 수행
+                    </span>
+                    했습니다. 이를 통해 쌓은 풍부한 실무 숙련도로 웹 표준과
+                    접근성을 준수한 최적의 웹 구조를 지향하고 있습니다.
                   </p>
+
                   <p>
                     학생회장과 영업 실무로 다진&nbsp;
                     <span className="font-bold text-brand-blue">소통 능력</span>
