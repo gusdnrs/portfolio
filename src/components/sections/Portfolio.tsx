@@ -148,7 +148,7 @@ export default function Portfolio() {
       <div className="max-w-[1440px] mx-auto relative z-10">
         <div className="portfolio-header-block pt-8 pb-6 mb-10 md:mb-16">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 pb-6">
-            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+            <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter text-gray-900 uppercase leading-[1.05]">
               Portfolio
             </h2>
 
@@ -218,7 +218,7 @@ export default function Portfolio() {
         <div id="portfolio-sub-projects" className="mt-24 mb-32">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-12 px-4">
             <div className="space-y-2 text-center md:text-left">
-              <h3 className="text-2xl md:text-3xl font-black text-gray-900 tracking-tighter">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 tracking-tighter">
                 유지보수 및 전체 프로젝트
               </h3>
               <p className="text-gray-400 font-medium">
@@ -244,7 +244,7 @@ export default function Portfolio() {
             <div className="mt-16 flex justify-center">
               <button
                 onClick={() => setVisibleCount((prev) => prev + 6)}
-                className="group flex items-center gap-3 px-8 py-4 bg-gray-50 hover:bg-gray-100 text-gray-600 rounded-full text-base font-black transition-all duration-300 border border-gray-100 hover:border-gray-200"
+                className="group flex items-center gap-3 px-8 py-4 bg-gray-50 hover:bg-gray-100 text-gray-600 rounded-full text-base font-bold transition-all duration-300 border border-gray-100 hover:border-gray-200"
               >
                 <Plus className="w-5 h-5 group-hover:rotate-90 transition-transform duration-500" />
                 더 많은 프로젝트 보기

@@ -75,7 +75,7 @@ export default async function ProjectDetail({
             <div className="p-2 rounded-full glass border-white/20 group-hover:bg-brand-blue group-hover:border-brand-blue transition-all">
               <ArrowLeft className="w-5 h-5" />
             </div>
-            <span className="text-sm uppercase tracking-widest font-black">
+            <span className="text-sm uppercase tracking-widest font-bold">
               Back to Home
             </span>
           </Link>
@@ -84,10 +84,10 @@ export default async function ProjectDetail({
         {/* Title Overlay */}
         <div className="absolute inset-x-0 bottom-0 max-w-[1440px] mx-auto px-6 md:px-10 pb-8 md:pb-12">
           <div>
-            <span className="inline-block px-4 py-2 bg-brand-blue rounded-full text-xs font-black text-white uppercase tracking-widest shadow-lg mb-6">
+            <span className="inline-block px-4 py-2 bg-brand-blue rounded-full text-xs font-bold text-white uppercase tracking-widest shadow-lg mb-6">
               {project.category.join(' / ')}
             </span>
-            <h1 className="text-3xl md:text-7xl font-black text-brand-blue-dark leading-tight drop-shadow-sm break-all">
+            <h1 className="text-3xl md:text-7xl font-bold text-brand-blue-dark leading-tight drop-shadow-sm break-all">
               {project.title}
             </h1>
           </div>
@@ -120,7 +120,7 @@ export default async function ProjectDetail({
               <div className="space-y-4">
                 {project.period.project && (
                   <div className="relative pl-4 border-l-2 border-brand-blue">
-                    <span className="text-base font-black text-brand-blue uppercase tracking-widest block mb-0.5">
+                    <span className="text-base font-bold text-brand-blue uppercase tracking-widest block mb-0.5">
                       {project.category.includes('new')
                         ? '신규 런칭'
                         : '리뉴얼'}
@@ -132,7 +132,7 @@ export default async function ProjectDetail({
                 )}
                 {project.period.maintenance && (
                   <div className="relative pl-4 border-l-2 border-[#60799B]">
-                    <span className="text-base font-black text-[#60799B] uppercase tracking-widest block mb-0.5">
+                    <span className="text-base font-bold text-[#60799B] uppercase tracking-widest block mb-0.5">
                       유지보수
                     </span>
                     <p className="text-base font-bold text-gray-700 leading-tight tabular-nums">
@@ -180,10 +180,10 @@ export default async function ProjectDetail({
         <div className="lg:col-span-2">
           <div className="space-y-10">
             <div>
-              <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-black text-brand-blue tracking-tight leading-[1.2] mb-8">
+              <h3 className="text-[clamp(1.75rem,4vw,2.5rem)] font-bold text-brand-blue tracking-tight leading-[1.2] mb-8">
                 주요 작업 내용
               </h3>
-              <p className="text-[clamp(1.25rem,3vw,1.875rem)] font-black tracking-tight text-gray-900 mb-4">
+              <p className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-900 mb-4">
                 {project.shortDescription}
               </p>
               <p className="text-lg text-gray-600 leading-base/7 md:leading-loose break-keep">
@@ -197,7 +197,7 @@ export default async function ProjectDetail({
                   href={project.websiteUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-4 px-10 py-5 hover:bg-brand-blue hover:text-white rounded-[24px] font-black bg-white text-brand-blue hover:scale-105 border border-brand-blue active:scale-95 transition-all shadow-xl shadow-brand-blue/20"
+                  className="inline-flex items-center gap-4 px-10 py-5 hover:bg-brand-blue hover:text-white rounded-[24px] font-bold bg-white text-brand-blue hover:scale-105 border border-brand-blue active:scale-95 transition-all shadow-xl shadow-brand-blue/20"
                 >
                   <span className="text-lg">{project.title} 바로가기</span>
                   <ExternalLink className="w-6 h-6" />

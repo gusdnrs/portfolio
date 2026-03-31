@@ -115,7 +115,7 @@ export default function Contact() {
       <section className="relative z-10 w-full max-w-[1440px] px-8">
         {/* TOP: Header Title - Added to match About Me style */}
         <div className="contact-top mb-16 md:mb-24 text-center lg:text-left">
-          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-black tracking-tighter text-gray-900 uppercase leading-[1.05]">
+          <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter text-gray-900 uppercase leading-[1.05]">
             <span className="contact-title-animate block mb-2">Contact</span>
           </h2>
         </div>
