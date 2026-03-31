@@ -53,7 +53,7 @@ export default async function ProjectDetail({
   const nextProject = projects[projectIndex + 1];
 
   return (
-    <main className="min-h-screen bg-[#fcfcfc] pb-32">
+    <main className="min-h-screen bg-[#fcfcfc] pb-20 md:pb-32">
       {/* Dynamic Header/Hero */}
       <section className="relative h-[60vh] md:h-[80vh] overflow-hidden">
         <Image
@@ -82,7 +82,7 @@ export default async function ProjectDetail({
         </div>
 
         {/* Title Overlay */}
-        <div className="absolute inset-x-0 bottom-0 max-w-[1440px] mx-auto px-6 md:px-10 pb-12">
+        <div className="absolute inset-x-0 bottom-0 max-w-[1440px] mx-auto px-6 md:px-10 pb-8 md:pb-12">
           <div>
             <span className="inline-block px-4 py-2 bg-brand-blue rounded-full text-xs font-black text-white uppercase tracking-widest shadow-lg mb-6">
               {project.category.join(' / ')}
@@ -95,7 +95,7 @@ export default async function ProjectDetail({
       </section>
 
       {/* Project Info & Description */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-10 pt-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
+      <section className="max-w-[1440px] mx-auto px-6 md:px-10 pt-12 md:pt-20 grid grid-cols-1 lg:grid-cols-3 gap-16">
         {/* Left: Summary Grid */}
         <div className="lg:col-span-1 space-y-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-6">
@@ -210,14 +210,14 @@ export default async function ProjectDetail({
 
       {/* Image Gallery (Client Component) */}
       {project.detailImages && project.detailImages.length > 0 && (
-        <section className="max-w-[1440px] mx-auto px-6 md:px-10 mt-32">
+        <section className="max-w-[1440px] mx-auto px-6 md:px-10 mt-20 md:mt-32">
           <ProjectGallery detailImages={project.detailImages} />
         </section>
       )}
 
       {/* Pagination / Next Project */}
-      <section className="max-w-[1440px] mx-auto px-6 md:px-10 mt-40">
-        <div className="h-px bg-gray-100 mb-20" />
+      <section className="max-w-[1440px] mx-auto px-6 md:px-10 mt-20 md:mt-40">
+        <div className="h-px bg-gray-100 mb-12 md:mb-20" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {prevProject ? (
             <Link
