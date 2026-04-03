@@ -25,7 +25,8 @@ export const projects: Project[] = [
     id: '1',
     title: '두정이진병원',
     category: ['renewal', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 인터랙션 구현, CMS 전용 커스텀 구축, 유지보수 퍼블리싱, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 인터랙션 구현, CMS 전용 커스텀 구축, 유지보수 퍼블리싱, SEO최적화',
     period: {
       project: ['2024.07 - 2024.08'],
       maintenance: '2021.11 - 2025.11',
@@ -52,8 +53,11 @@ export const projects: Project[] = [
       '/images/projects/2jin2/mo-02.jpg',
       '/images/projects/2jin2/mo-03.jpg',
     ],
-    longDescription:
-      '기존 웹사이트는 모바일 반응형을 지원하지 않아 사용자 이탈이 발생했고, 팝업 등록이나 비급여 항목, 진료 시간표 변경 등의 사소한 업데이트조차 내부에서 불가능해 외부 유지보수 비용이 과도하게 지출되는 상황이었습니다. 소아과 특유의 친근한 브랜드 컨셉을 살리면서도, 환자들이 가장 많이 찾는 의료진과 진료 시간표 정보를 가독성 있게 재배치하는 것이 핵심 과제였습니다. 이러한 문제를 해결하기 위해 퍼블리싱의 재사용성과 운영의 자율성에 초점을 맞추었습니다. 우선 방대한 클리닉별 정보를 일관성 있게 보여주기 위해 레이아웃 구조를 컴포넌트 단위로 모듈화하여 퍼블리싱 생산성을 높였습니다. 메인 페이지에는 AOS 스크롤 애니메이션과 의료진 슬라이더 등 다양한 인터랙션을 적용해 UX를 개선하고 병원 공지사항과 외부 예약 시스템을 직관적으로 연동했습니다. 가장 중요한 관리자 페이지(CMS)는 병원 스태프가 직접 팝업, 비급여 영역, 의료진 정보를 즉각 수정할 수 있도록 관리 환경을 전면 커스텀 구축했습니다. 체계적인 SEO 최적화와 직관적인 예약 시스템 연계를 통해 사이트 검색 노출량과 실제 예약 전환율을 크게 개선했습니다. 이 결과물에 크게 만족한 대표 원장님이 직접 타 병원에 자사를 추천하여 신규 수주 계약으로 이어지는 비즈니스적 성과를 달성했으며, 리뉴얼 이후 현재까지 어떠한 병목이나 서버 오류 없이 안정적으로 유지보수를 전담하고 있습니다.',
+    longDescription: `기존 웹사이트는 모바일 반응형을 지원하지 않아 사용자 이탈이 발생했고, 팝업 등록이나 비급여 항목, 진료 시간표 변경 등의 사소한 업데이트조차 내부에서 불가능해 외부 유지보수 비용이 과도하게 지출되는 상황이었습니다. 이러한 문제를 해결하면서 소아과 특유의 친근한 브랜드 컨셉을 살리고, 환자들이 가장 많이 찾는 의료진과 진료 시간표 정보를 가독성 있게 재배치하는 것이 핵심 과제였습니다.
+
+이러한 문제를 해결하기 위해 퍼블리싱의 재사용성과 운영의 자율성에 초점을 맞추었습니다. 우선 방대한 클리닉별 정보를 일관성 있게 보여주기 위해 레이아웃 구조를 컴포넌트 단위로 모듈화하여 퍼블리싱 생산성을 높였습니다. 메인 페이지에는 AOS 스크롤 애니메이션과 의료진 슬라이더 등 다양한 인터랙션을 적용해 UX를 개선하고 병원 공지사항과 외부 예약 시스템을 직관적으로 연동했습니다. 가장 중요한 관리자 페이지(CMS)는 병원 스태프가 직접 팝업, 비급여 영역, 의료진 정보를 즉각 수정할 수 있도록 관리 환경을 전면 커스텀 구축했습니다.
+
+체계적인 SEO 최적화와 직관적인 예약 시스템 연계를 통해 사이트 검색 노출량과 실제 예약 전환율을 크게 개선했습니다. 이 결과물에 크게 만족한 대표 원장님이 직접 타 병원에 자사를 추천하여 신규 수주 계약으로 이어지는 비즈니스적 성과를 달성했으며, 리뉴얼 이후 현재까지 어떠한 병목이나 서버 오류 없이 안정적으로 유지보수를 전담했습니다.`,
     featured: true,
     websiteUrl: 'http://www.2jin2.com/',
   },
@@ -61,12 +65,14 @@ export const projects: Project[] = [
     id: '2',
     title: '기운찬한방병원',
     category: ['renewal', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 6종 UI 컴포넌트 모듈화, IA 재설계 기반 정보 구조 최적화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 6종 UI 컴포넌트 모듈화, IA 재설계 기반 정보 구조 최적화, SEO최적화',
     period: {
       project: ['2023.08 - 2023.10', '2023.04 - 2023.04'],
       maintenance: '2022.09 - 2023.11',
     },
-    shortDescription: '의료 정보를 체계적으로 재설계한 반응형 리뉴얼',
+    shortDescription:
+      '정보 구조 재정립과 스타일 가이드 수립을 통해 유지보수 효율을 높인 반응형 리뉴얼',
     tools: [
       'HTML',
       'PHP',
@@ -86,8 +92,11 @@ export const projects: Project[] = [
       '/images/projects/giunchanhospital/mo-02_v2.jpg',
       '/images/projects/giunchanhospital/mo-03_v2.jpg',
     ],
-    longDescription:
-      '기존 웹 빌더 시스템의 높은 유지보수 비용 문제를 해결하고, 방대한 의료 데이터를 안정적으로 이관하기 위한 전면 리뉴얼 프로젝트였습니다. 여러 진료 과목이 복잡하게 혼재되어 있던 정보를 사용자 중심으로 재구성하기 위해 정보 구조(IA)를 설계 단계부터 다시 정립하였으며, 수많은 서브 페이지를 효율적으로 관리할 수 있도록 체계적인 스타일 가이드를 수립했습니다. 작업 범위가 넓고 데이터가 방대했으나, 철저한 코드 관리와 반응형 퍼블리싱 기술을 적용해 프로젝트를 성공적으로 완수했습니다. 결과적으로 환자들이 방대한 정보 속에서도 원하는 진료 내용을 쉽고 빠르게 찾을 수 있는 최적화된 디지털 환경을 구축했습니다.',
+    longDescription: `기존 웹 빌더 시스템의 유지보수 비용이 높게 발생하고 있었으며, 여러 진료 과목과 방대한 의료 데이터가 복잡하게 혼재되어 있어 관리에 어려움이 있는 상황이었습니다. 이를 해결함과 동시에, 방대한 기존 의료 데이터를 안정적으로 신규 시스템에 이관하고 복잡한 정보를 사용자 중심으로 재구성하는 전면 리뉴얼이 핵심 과제였습니다.
+
+이를 위해 정보 구조(IA)를 초기 기획 단계부터 논리적으로 다시 정립하여 진료 과목별 접근성을 높였습니다. 또한 수많은 서브 페이지를 효율적이고 일관성 있게 관리할 수 있도록 체계적인 UI 스타일 가이드를 수립하여 퍼블리싱을 진행했습니다.
+
+정보 탐색이 용이한 반응형 웹을 성공적으로 구축하여 유지보수 효율을 크게 향상시켰으며, 기술력과 결과물에 대한 병원 측의 높은 만족도를 이끌어냈습니다.`,
     featured: true,
     websiteUrl: 'http://www.giunchanhospital.co.kr/',
   },
@@ -95,13 +104,14 @@ export const projects: Project[] = [
     id: '3',
     title: '주연여성의원',
     category: ['new', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 섬세한 인터랙션 구현, 모바일 프리미엄 UX 최적화 및 브랜드 UI 구축, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 섬세한 인터랙션 구현, 모바일 프리미엄 UX 최적화 및 브랜드 UI 구축, SEO최적화',
     period: {
       project: ['2023.12 - 2024.01'],
       maintenance: '2023.12 - 2025.11',
     },
     shortDescription:
-      '우아하고 섬세한 브랜드 감성을 담아낸 프리미엄 반응형 웹사이트 런칭',
+      '브랜드 아이덴티티 시각화와 인터랙션 구현에 집중한 여성 전문 의원 반응형 웹 신규 구축',
     tools: ['HTML', 'PHP', 'jQuery', 'JS', 'SCSS', 'Gnuboard', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/juyeonclinic/main.png',
     detailImages: [
@@ -112,8 +122,11 @@ export const projects: Project[] = [
       '/images/projects/juyeonclinic/mo-02.jpg',
       '/images/projects/juyeonclinic/mo-03.jpg',
     ],
-    longDescription:
-      '여성 전문 의원으로서의 신뢰감과 고유한 브랜드 정체성을 확보하기 위해 감각적인 시각화와 섬세한 인터랙션이 강조된 신규 런칭 프로젝트입니다. 병원이 추구하는 우아하고 편안한 분위기를 웹의 시각적 요소로 정밀하게 구현하는 데 집중하였으며, 완성도 높은 반응형 퍼블리싱을 통해 모바일 환경에서도 PC와 동일한 프리미엄 사용자 경험을 유지하도록 설계했습니다. 그 결과, 병원의 브랜드 이미지를 온라인상에 성공적으로 안착시켰으며 UI 구현의 완성도와 사용 편의성 측면에서 클라이언트로부터 매우 높은 만족도를 이끌어냈습니다.',
+    longDescription: `새롭게 개원하는 여성 전문 의원으로서, 타 병원과 차별화되면서도 진료 철학을 반영할 수 있는 고유한 브랜드 정체성 확립과 신뢰감 형성이 필수적인 상황이었습니다. 병원이 추구하는 우아하고 편안한 분위기를 디지털 인터페이스로 정밀하게 구현하고, 신규 런칭 후 마케팅 활동의 기반이 될 수 있는 프리미엄 웹사이트를 구축하는 것이 핵심 과제였습니다.
+
+이를 해결하기 위해 디자인 테마에 맞춘 감각적인 시각화와 섬세한 마이크로 인터랙션을 곳곳에 적용해 고급스러운 브랜드 감성을 전달했습니다. 특히 PC와 모바일 환경 어디서나 동일한 퀄리티의 프리미엄 사용자 경험(UX)을 제공할 수 있도록, 디테일에 집중한 고도화된 반응형 퍼블리싱을 수행했습니다.
+
+결과적으로 병원의 철학과 아이덴티티가 돋보이는 신뢰도 높은 웹사이트를 성공적으로 런칭했으며, 완성도 높은 결과물을 바탕으로 개원 초기 마케팅과 연계된 안정적인 유지보수 파트너십을 이어가며 병원의 성장을 적극 지원했습니다.`,
     featured: true,
     websiteUrl: 'http://www.juyeonclinic.com/',
   },
@@ -121,20 +134,24 @@ export const projects: Project[] = [
     id: '4',
     title: '이스트폴담우이비인후과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 고품질 UI 및 인터랙션 구현, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 고품질 UI 및 인터랙션 구현, SEO최적화',
     period: {
       project: ['2025.07 - 2025.07'],
     },
     shortDescription:
-      '브랜드 가치를 집약적으로 전달하는 1페이지 랜딩페이지 구축',
+      '유연한 코드 설계로 잦은 요구사항 변경에 대응하여 단기간에 완성한 단일 페이지 반응형 랜딩 웹페이지',
     tools: ['HTML', 'PHP', 'jQuery', 'JS', 'SCSS', 'Gnuboard', 'Figma'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/damwooent/main.png',
     detailImages: [
       '/images/projects/damwooent/pc-01.jpg',
       '/images/projects/damwooent/mo-01.jpg',
     ],
-    longDescription:
-      '개원 준비 단계에서 발생하는 빈번한 요구사항 변경에 유연하게 대응하며, 병원의 핵심 가치를 집약적으로 전달하는 1페이지 랜딩페이지를 구축했습니다. 기획 및 디자인 담당자와 실시간으로 소통하며 수정 사항을 즉각적으로 반영하였고, 효율적인 스타일 제어 기술을 활용해 촉박한 일정 속에서도 높은 완성도의 레이아웃을 구현했습니다. 최종적으로 병원이 의도한 브랜드 컨셉이 정밀하게 반영되어, 런칭 초기 환자들에게 신뢰감을 주는 안정적인 홍보 채널로 성공적으로 활용되었습니다.',
+    longDescription: `신규 개원을 준비하는 과정에서 일정이 매우 촉박했으며, 요구사항이 빈번하게 변경되어 빠르고 유연한 대응이 필수적으로 요구되는 상황이었습니다. 짧은 시간 안에 핵심 가치와 진료 정보를 하나의 화면에 밀도 있게 담아내는 단일 페이지 랜딩 웹페이지를 제작하는 것이 과제였습니다.
+
+이러한 촉박한 일정을 소화하기 위해 팀원들 간 실시간으로 긴밀하게 소통하며 수시로 발생하는 피드백을 코드로 즉각 반영했습니다. 더불어 향후 유지보수를 고려해 구조를 최적화하고 모듈화 하여 퍼블리싱 속도와 레이아웃의 완성도를 끌어올렸습니다.
+
+결과적으로 잦은 일정 변동 속에서도 완성도 높은 단일 페이지 최적화 반응형 레이아웃을 구현했으며, 개원 시기에 맞춰 브랜드 정체성을 정확히 대변하는 홍보 웹사이트를 안정적으로 런칭하는 성과를 거두었습니다.`,
     featured: true,
     websiteUrl: 'http://www.damwooent.co.kr/',
   },
@@ -142,13 +159,14 @@ export const projects: Project[] = [
     id: '5',
     title: '베스트연합의원',
     category: ['renewal', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 방문진료 예약 시스템 설계, CMS 고도화 기반 관리 효율성 개선, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 방문진료 예약 시스템 설계, CMS 고도화 기반 관리 효율성 개선, SEO최적화',
     period: {
       project: ['2024.02 - 2024.05'],
       maintenance: '2021.11 - 2024.10',
     },
     shortDescription:
-      '사용자 예약 편의성과 관리 효율을 동시에 극대화한 방문진료 맞춤형 리뉴얼',
+      '방문진료 예약 시스템 신규 구축 및 행정 효율성 개선에 집중한 맞춤형 리뉴얼',
     tools: [
       'HTML',
       'PHP',
@@ -168,8 +186,11 @@ export const projects: Project[] = [
       '/images/projects/bestunitedclinic/mo-02_v2.jpg',
       '/images/projects/bestunitedclinic/mo-03_v2.jpg',
     ],
-    longDescription:
-      '환자의 예약 편의성과 병원 행정의 효율성을 동시에 높이기 위해 방문진료 상담 신청 시스템을 새롭게 구축한 리뉴얼 프로젝트입니다. 실제 진료 예약 프로세스를 심층 분석하여 사용자 입력 항목을 논리적으로 재구성하였고, 관리자가 신청 데이터를 한눈에 파악하고 즉각 대응할 수 있도록 관리자 페이지(CMS)를 고도화했습니다. 이를 통해 온라인 예약 전환율을 유의미하게 높이는 한편, 병원 측의 행정 업무 공수를 대폭 절감시키는 실질적인 운영 개선 성과를 거두었습니다.',
+    longDescription: `환자의 예약 편의성이 다소 부족하고, 방문진료 요청에 대한 병원 측의 행정 처리가 비효율적으로 운영되고 있는 상황이었습니다. 이를 개선하기 위해 환자와 병원 모두의 효율을 대폭 향상시킬 수 있는 방문진료 상담 예약 시스템을 신규 구축하고 홈페이지 전반을 리뉴얼하는 것이 과제였습니다.
+
+이를 위해 방문진료상담 예약 프로세스를 심층 분석하여 사용자 입력 항목을 직관적으로 재구성하였으며, 관리자 페이지에서 신청 데이터를 한눈에 파악할 수 있도록 행정 시스템을 고도화했습니다. 더불어 클리닉별 방대한 의료 정보를 깔끔하게 정리하고, 메인 페이지에 세련된 인터랙션을 추가해 퍼블리싱 완성도를 높였습니다.
+
+결과적으로 사용성과 관리 효율이 매우 개선되어 만족스러운 1년 유지보수 연장 계약을 체결했습니다. 계약 종료 후 타 업체를 통해 웹사이트 디자인이 변경되었음에도 불구하고, 안정적인 시스템과 기능에 대한 신뢰를 바탕으로 추후 당사와 마케팅 협업을 새롭게 이어가는 의미 있는 성과를 달성했습니다.`,
     featured: true,
     websiteUrl: 'http://www.bestunitedclinic.co.kr/',
   },
@@ -177,12 +198,13 @@ export const projects: Project[] = [
     id: '6',
     title: '서울에이스병원',
     category: ['maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 4년 장기 운영 및 안정성 확보 전담, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 4년 장기 운영 및 안정성 확보 전담, SEO최적화',
     period: {
       maintenance: '2021.11 - 2025.11',
     },
     shortDescription:
-      '대규모 의료 정보의 체계화와 다수의 신규 상세페이지 구축 및 유지보수',
+      '다수의 상세페이지 신규 구축 및 자체 관리 시스템 고도화를 통한 대형 병원 맞춤형 솔루션',
     tools: ['HTML', 'PHP', 'MySQL', 'jQuery', 'JS', 'CSS', 'Photoshop'], // HTML, CSS, SCSS, Tailwind, JS, jQuery, Gnuboard, PHP, MySQL, Figma, Photoshop
     image: '/images/projects/ace-hospital/main.png',
     detailImages: [
@@ -193,8 +215,11 @@ export const projects: Project[] = [
       '/images/projects/ace-hospital/mo-02.jpg',
       '/images/projects/ace-hospital/mo-03.jpg',
     ],
-    longDescription:
-      '의료진 프로필과 진료 시간표 등 업데이트가 잦은 대형 병원 웹사이트의 특성을 고려하여, 운영 안정성과 확장성에 집중한 프로젝트입니다. 병원의 규모 확장과 진료 항목 고도화에 맞춰 다수의 신규 상세페이지를 체계적으로 구축하였으며, 모든 유동적인 데이터를 관리자가 직접 제어할 수 있도록 시스템을 고도화했습니다. 전담 퍼블리셔로서 장기간 서비스 중단 없는 안정적인 운영 환경을 보장하는 한편, 상시적인 콘텐츠 최적화와 신속한 기술 지원을 통해 웹사이트가 병원의 신뢰도 높은 홍보 채널로 기능하도록 기여했습니다.',
+    longDescription: `대형 병원의 특성상 의료진 프로필, 진료 시간표 등 데이터 변경이 빈번했으며, 병원 규모 확장에 따라 진료 항목 또한 지속적으로 추가되는 상황이었습니다. 이에 따라 잦은 데이터 업데이트에 대응할 수 있는 유지보수 환경을 마련하고, 다수의 신규 상세페이지를 제작하는 것이 주요 과제였습니다.
+
+이를 해결하기 위해 병원의 요구사항과 진료 항목 확장에 맞추어 다수의 신규 상세페이지를 제작했습니다. 또한 기존에 구축되어 있던 관리자 페이지에 의료진 정보 수정 및 진료 시간표 변경 기능을 추가하고 개선하여 실무 담당자의 운영 편의성을 높였습니다.
+
+결과적으로 기존 시스템의 안정성을 유지하면서 대량의 신규 데이터를 원활하게 반영하였으며, 재직 기간 동안 서비스 중단 없이 대규모 병원 웹사이트의 장기 유지보수를 성공적으로 수행했습니다.`,
     featured: true,
     websiteUrl: 'http://ace-hospital.co.kr/',
   },
@@ -205,7 +230,8 @@ export const projects: Project[] = [
     id: '7',
     title: '목동서울정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. SEO 최적화, 특화 레이아웃 활용으로 제작 공정 단축',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. SEO 최적화, 특화 레이아웃 활용으로 제작 공정 단축',
     period: { project: ['2025.10 - 2025.10'] },
     shortDescription:
       '비수술 치료의 전문성과 신뢰도를 시각화한 반응형 랜딩페이지',
@@ -245,7 +271,8 @@ export const projects: Project[] = [
     id: '9',
     title: '우리의내과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 디바이스 최적화 인터렉션 구현, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 디바이스 최적화 인터렉션 구현, SEO최적화',
     period: { project: ['2025.09 - 2025.09'] },
     shortDescription:
       '템플릿 최적화와 인터랙션으로 제작 효율과 몰입감을 높인 랜딩페이지',
@@ -265,7 +292,8 @@ export const projects: Project[] = [
     id: '10',
     title: '서울매일365의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 디바이스별 최적화된 인터랙션 구현, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 디바이스별 최적화된 인터랙션 구현, SEO최적화',
     period: { project: ['2025.03 - 2025.03'] },
     shortDescription:
       '카드형 레이아웃과 직관적인 호버 인터랙션으로 정보 전달력을 높인 반응형 웹사이트',
@@ -285,7 +313,8 @@ export const projects: Project[] = [
     id: '11',
     title: '성남센트럴안과의원',
     category: ['renewal', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 메인 리뉴얼, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 메인 리뉴얼, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: {
       project: ['2025.02 - 2025.02', '2024.03 - 2024.03'],
       maintenance: '2021.11 - 2025.11',
@@ -312,7 +341,8 @@ export const projects: Project[] = [
     id: '12',
     title: '미아삼성정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: { project: ['2025.02 - 2025.02'] },
     shortDescription:
       '교수 출신 원장의 신뢰도와 수술·비수술 치료를 직관적으로 대비시킨 정형외과 랜딩페이지',
@@ -332,7 +362,8 @@ export const projects: Project[] = [
     id: '13',
     title: '올바른마디튼튼의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 지점 특화 컴포넌트 커스터마이징, 프랜차이즈 표준 레이아웃 적용, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 지점 특화 컴포넌트 커스터마이징, 프랜차이즈 표준 레이아웃 적용, SEO최적화',
     period: { project: ['2024.12 - 2024.12'] },
     shortDescription:
       '프랜차이즈 브랜드 아이덴티티를 유지하면서 야간 진료와 비수술 치료를 부각한 지역 맞춤형 정형외과 웹사이트',
@@ -365,7 +396,8 @@ export const projects: Project[] = [
     id: '14',
     title: '리얼유의원',
     category: ['renewal', 'maintenance'],
-    contribution: 'index·의료진 페이지 퍼블리싱 100%. 백드롭 영상 인터랙션 구축, SEO최적화',
+    contribution:
+      'index·의료진 페이지 퍼블리싱 100%. 백드롭 영상 인터랙션 구축, SEO최적화',
     period: {
       project: ['2024.06 - 2024.06'],
       maintenance: '2023.07 - 2025.11',
@@ -389,7 +421,8 @@ export const projects: Project[] = [
     id: '15',
     title: '다정해정신건강의학과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: { project: ['2024.04 - 2024.04'] },
     shortDescription:
       '환자에게 편안함과 부드러운 인상을 전달하는 반응형 랜딩페이지',
@@ -418,7 +451,8 @@ export const projects: Project[] = [
     id: '16',
     title: '안양바르다정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, 방대한 의료 정보 IA 체계화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, 방대한 의료 정보 IA 체계화, SEO최적화',
     period: { project: ['2023.11 - 2023.12'] },
     shortDescription:
       '클리닉 정보를 체계적으로 정돈하고 신뢰도를 시각화한 정형외과 웹사이트',
@@ -451,7 +485,8 @@ export const projects: Project[] = [
     id: '17',
     title: '서울아름산부인과의원',
     category: ['new', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: {
       project: ['2023.11 - 2023.12'],
       maintenance: '2023.11 - 2025.11',
@@ -483,7 +518,8 @@ export const projects: Project[] = [
     id: '18',
     title: '올바른정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 지점 특화 컴포넌트 커스터마이징, 프랜차이즈 표준 레이아웃 적용, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 지점 특화 컴포넌트 커스터마이징, 프랜차이즈 표준 레이아웃 적용, SEO최적화',
     period: { project: ['2023.07 - 2023.07'] },
     shortDescription:
       '프랜차이즈 지점 확장의 기반이 된 정형외과 표준 웹사이트 구축',
@@ -516,7 +552,8 @@ export const projects: Project[] = [
     id: '19',
     title: '예쁨의정석의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: {
       project: ['2023.06 - 2023.06'],
       maintenance: '2023.06 - 2025.11',
@@ -552,7 +589,8 @@ export const projects: Project[] = [
     id: '20',
     title: '삼성탑정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: {
       project: ['2023.05 - 2023.05'],
       maintenance: '2023.05 - 2025.11',
@@ -584,7 +622,8 @@ export const projects: Project[] = [
     id: '21',
     title: '올바른재활의학과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: { project: ['2023.03 - 2023.04'] },
     shortDescription:
       '다양한 진료 정보를 직관적인 인터페이스로 정리한 맞춤형 랜딩페이지',
@@ -613,7 +652,8 @@ export const projects: Project[] = [
     id: '22',
     title: '탑정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: { project: ['2022.12 - 2022.12'] },
     shortDescription:
       '줄기세포 전문성을 강조하고 풀페이지 레이아웃을 적용한 반응형 웹사이트',
@@ -646,7 +686,8 @@ export const projects: Project[] = [
     id: '23',
     title: '성모김내과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 건강검진 중심 메뉴 구조화 및 소화기내과 전문성 부각 UI 구축, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 건강검진 중심 메뉴 구조화 및 소화기내과 전문성 부각 UI 구축, SEO최적화',
     period: { project: ['2022.08 - 2022.08'] },
     shortDescription:
       '의료진의 전문성과 신뢰도를 전면에 내세운 내과 맞춤형 웹사이트',
@@ -679,7 +720,8 @@ export const projects: Project[] = [
     id: '24',
     title: '태전튼튼정형외과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, 네이버예약 연동, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, 네이버예약 연동, SEO최적화',
     period: { project: ['2022.07 - 2022.07'] },
     shortDescription:
       '와이드 레이아웃과 수치화된 데이터로 비수술 치료의 권위를 표현한 랜딩페이지',
@@ -708,7 +750,8 @@ export const projects: Project[] = [
     id: '25',
     title: '강동모커리한방병원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 단기 프로모션 전용 레이아웃 구축, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 단기 프로모션 전용 레이아웃 구축, SEO최적화',
     period: { project: ['2022.07 - 2022.07'] },
     shortDescription:
       '교통사고 클리닉 특화 프로모션 및 효율적인 상담 DB 연동 랜딩페이지',
@@ -737,7 +780,8 @@ export const projects: Project[] = [
     id: '26',
     title: '서울청정신건강의학과의원',
     category: ['new'],
-    contribution: '반응형 퍼블리싱 100% 담당. 멀티 브랜치 네비게이션 구현 및 지점별 카테고리 구조화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 멀티 브랜치 네비게이션 구현 및 지점별 카테고리 구조화, SEO최적화',
     period: {
       project: ['2022.07 - 2022.08'],
       maintenance: '2022.07 - 2025.11',
@@ -797,7 +841,8 @@ export const projects: Project[] = [
     id: '28',
     title: '나이스병원',
     category: ['new', 'maintenance'],
-    contribution: '메인 및 전 서브페이지 퍼블리싱 70%, 타 팀과의 능동적 소통 기반 대규모 리뉴얼 완수, SEO최적화',
+    contribution:
+      '메인 및 전 서브페이지 퍼블리싱 70%, 타 팀과의 능동적 소통 기반 대규모 리뉴얼 완수, SEO최적화',
     period: {
       project: ['2022.01 - 2022.06'],
       maintenance: '2022.01 - 2023.04',
@@ -857,7 +902,8 @@ export const projects: Project[] = [
     id: '30',
     title: '튼튼병원',
     category: ['renewal', 'maintenance'],
-    contribution: '서버 이전 총괄 및 데이터 검수, AI 디자인 활용 관리자 페이지 리뉴얼 퍼블리싱 100%',
+    contribution:
+      '서버 이전 총괄 및 데이터 검수, AI 디자인 활용 관리자 페이지 리뉴얼 퍼블리싱 100%',
     period: {
       project: ['2025.06 - 2025.06', '2024.10 - 2024.12'],
       maintenance: '2021.11 - 2025.11',
@@ -881,7 +927,8 @@ export const projects: Project[] = [
     id: '31',
     title: '청담튼튼병원',
     category: ['renewal', 'maintenance'],
-    contribution: '메인 페이지 퍼블리싱 100%. 4년 장기 유지보수 전담, 진료 일정 및 이벤트 실시간 대응, SEO최적화',
+    contribution:
+      '메인 페이지 퍼블리싱 100%. 4년 장기 유지보수 전담, 진료 일정 및 이벤트 실시간 대응, SEO최적화',
     period: {
       project: ['2025.06 - 2025.06', '2023.10 - 2023.10'],
       maintenance: '2021.11 - 2025.11',
@@ -908,7 +955,8 @@ export const projects: Project[] = [
     id: '32',
     title: '청담튼튼병원 단일공복강경센터',
     category: ['renewal', 'maintenance'],
-    contribution: '메인 및 게시판 전체 리뉴얼 퍼블리싱 100%, 웹·모바일 별도 최적화, 4년 장기 유지보수 전담, SEO최적화',
+    contribution:
+      '메인 및 게시판 전체 리뉴얼 퍼블리싱 100%, 웹·모바일 별도 최적화, 4년 장기 유지보수 전담, SEO최적화',
     period: {
       project: ['2024.02 - 2024.02'],
       maintenance: '2021.11 - 2025.11',
@@ -931,7 +979,8 @@ export const projects: Project[] = [
     id: '33',
     title: '청담튼튼병원 정맥관절이야기',
     category: ['renewal', 'maintenance'],
-    contribution: '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화, 치료후기 게시판 연동, 4년 장기 유지보수 전담',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화, 치료후기 게시판 연동, 4년 장기 유지보수 전담',
     period: {
       project: ['2023.05 - 2023.05'],
       maintenance: '2021.11 - 2025.11',
@@ -954,7 +1003,8 @@ export const projects: Project[] = [
     id: '34',
     title: '청담튼튼병원 키우리성장클리닉',
     category: ['renewal', 'maintenance'],
-    contribution: '메인 리뉴얼 퍼블리싱 100%, 웹·모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
+    contribution:
+      '메인 리뉴얼 퍼블리싱 100%, 웹·모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
     period: {
       project: ['2023.04 - 2023.04'],
       maintenance: '2021.11 - 2025.11',
@@ -977,7 +1027,8 @@ export const projects: Project[] = [
     id: '35',
     title: '동대문참튼튼병원',
     category: ['maintenance'],
-    contribution: '메인 페이지 퍼블리싱 100%. 3년 장기 유지보수 전담, 성장클리닉·도수·건강검진 신규 섹션 구축, SEO최적화',
+    contribution:
+      '메인 페이지 퍼블리싱 100%. 3년 장기 유지보수 전담, 성장클리닉·도수·건강검진 신규 섹션 구축, SEO최적화',
     period: {
       project: ['2024.12 - 2024.12', '2022.04 - 2022.04'],
       maintenance: '2021.11 - 2024.12',
@@ -1004,7 +1055,8 @@ export const projects: Project[] = [
     id: '36',
     title: '의정부참튼튼병원',
     category: ['renewal', 'maintenance'],
-    contribution: '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
+    contribution:
+      '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
     period: { maintenance: '2021.11 - 2025.11' },
     shortDescription:
       '척추·관절·뇌신경·도수·비수술·수술 센터의 원스톱 진료 시스템을 아이콘 카드 UI로 안내하는 의정부 참튼튼병원 리뉴얼·유지보수',
@@ -1028,7 +1080,8 @@ export const projects: Project[] = [
     id: '37',
     title: '노원참튼튼병원',
     category: ['maintenance'],
-    contribution: '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
+    contribution:
+      '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
     period: {
       project: ['2023.05 - 2023.05'],
       maintenance: '2021.11 - 2025.11',
@@ -1051,7 +1104,8 @@ export const projects: Project[] = [
     id: '38',
     title: '구로참튼튼병원',
     category: ['new', 'maintenance'],
-    contribution: '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
+    contribution:
+      '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 4년 장기 유지보수 전담',
     period: {
       project: ['2025.01 - 2025.02', '2024.09 - 2024.09', '2023.08 - 2023.08'],
       maintenance: '2021.11 - 2025.11',
@@ -1087,7 +1141,8 @@ export const projects: Project[] = [
     id: '39',
     title: '대구참튼튼병원',
     category: ['renewal', 'maintenance'],
-    contribution: '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 유지보수 전담',
+    contribution:
+      '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 유지보수 전담',
     period: {
       project: ['2023.10 - 2023.10'],
       maintenance: '2021.11 - 2023.10',
@@ -1123,7 +1178,8 @@ export const projects: Project[] = [
     id: '40',
     title: '위즈닥터스',
     category: ['renewal', 'maintenance'],
-    contribution: '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 관리자 연동 문의 시스템 구축',
+    contribution:
+      '퍼블리싱 100%, 웹/모바일 별도 최적화, SEO최적화, 관리자 연동 문의 시스템 구축',
     period: {
       project: ['2022.05 - 2022.05'],
       maintenance: '2021.11 - 2025.11',
@@ -1159,7 +1215,8 @@ export const projects: Project[] = [
     id: '41',
     title: '테라기획',
     category: ['renewal'],
-    contribution: '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
+    contribution:
+      '반응형 퍼블리싱 100% 담당. 카드 UI 구현, 시각적 인터랙티브 요소 활용 UX 강화, SEO최적화',
     period: {
       project: ['2025.08 - 2025.08', '2024.05 - 2024.05', '2022.09 - 2022.09'],
       maintenance: '2021.11 - 2025.11',

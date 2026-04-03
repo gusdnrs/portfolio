@@ -186,7 +186,7 @@ export default async function ProjectDetail({
               <p className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-900 mb-4">
                 {project.shortDescription}
               </p>
-              <p className="text-lg text-gray-600 leading-base/7 md:leading-loose break-keep">
+              <p className="text-lg text-gray-600 leading-base/7 md:leading-loose break-keep whitespace-pre-wrap">
                 {project.longDescription}
               </p>
             </div>
