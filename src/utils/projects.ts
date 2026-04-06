@@ -18,9 +18,9 @@ export interface Project {
 }
 
 export const projects: Project[] = [
-  // ==========================================
+  // ------------------------------------------
   // [ FEATURED PROJECTS: 1-6 ]
-  // ==========================================
+  // ------------------------------------------
   {
     id: '1',
     title: '두정이진병원',
@@ -223,9 +223,9 @@ export const projects: Project[] = [
     featured: true,
     websiteUrl: 'http://ace-hospital.co.kr/',
   },
-  // ==========================================
+  // ------------------------------------------
   // [ SUB PROJECTS & MAINTENANCE: 7-41 ]
-  // ==========================================
+  // ------------------------------------------
   {
     id: '7',
     title: '목동서울정형외과의원',
@@ -1326,7 +1326,7 @@ export const projects: Project[] = [
     },
     shortDescription:
       '300+ 진행 실적과 5대 마케팅 프로그램을 직관적인 UI로 재편한 B2B 웹사이트 리뉴얼',
-    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'Photoshop', 'Photoshop'],
+    tools: ['HTML', 'jQuery', 'JS', 'CSS', 'Photoshop'],
     image: '/images/projects/terramedi/main_v2.png',
     detailImages: [
       '/images/projects/terramedi/pc-01_v2.jpg',
