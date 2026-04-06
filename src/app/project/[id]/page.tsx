@@ -186,9 +186,13 @@ export default async function ProjectDetail({
               <p className="text-[clamp(1.25rem,3vw,1.875rem)] font-bold tracking-tight text-gray-900 mb-4">
                 {project.shortDescription}
               </p>
-              <p className="text-lg text-gray-600 leading-base/7 md:leading-loose break-keep whitespace-pre-wrap">
-                {project.longDescription}
-              </p>
+              <div className="flex flex-col gap-4">
+                {project.longDescription.map((paragraph, i) => (
+                  <p key={i} className="text-lg text-gray-600 leading-base/7 md:leading-loose break-keep">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
             </div>
 
             {project.websiteUrl && (
