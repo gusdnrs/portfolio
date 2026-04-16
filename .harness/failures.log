@@ -1,0 +1,13 @@
+# 📓 AI Failures Log (Anti-Recurrence) - Portfolio
+
+이 파일은 `portfolio` 프로젝트에서 에이전트가 저지른 실수를 기록하고 학습하는 공간입니다.
+형식: `YYYY-MM-DD | [Context] | [Failure] -> [Lesson]`
+
+---
+[DISTILLED] 핵심 교훈 보관소
+- **Next.js & GSAP**: Server Component에서 fetch한 데이터를 Client Component로 넘길 때, GSAP ScrollTrigger가 레이아웃을 즉시 인식하지 못할 경우 `ScrollTrigger.refresh()`를 사용해야 함.
+---
+
+2026-04-15 | GitHub Section | [GSAP Animation Frozen] -> ScrollTrigger 플러그인 등록 누락 및 레이아웃 인식 오류로 인해 카드 애니메이션이 작동하지 않음. `gsap.registerPlugin(ScrollTrigger)` 호출 필요.
+2026-04-15 | Code Editing | [ReferenceError: ScrollTrigger is not defined] -> `replace_file_content` 사용 시 필수 임포트 누락으로 런타임 에러 발생.
+2026-04-15 | GSAP Animation | [Animation Not Triggering] -> React 환경에서 `gsap.from`은 초기값 상태 관리가 불안정할 수 있음. `gsap.fromTo`를 사용해 시작/끝 상태를 명시하고, `matchMedia`로 반응형 대응 및 `ScrollTrigger.refresh()` 호출 필수.

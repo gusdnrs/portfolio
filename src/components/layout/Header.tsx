@@ -84,6 +84,7 @@ export default function Header() {
     { id: 0, title: 'Home', href: '/#hero' },
     { id: 1, title: 'About Me', href: '/#about' },
     { id: 2, title: 'Portfolio', href: '/#portfolio' },
+    { id: 4, title: 'GitHub', href: '/#github' },
     { id: 3, title: 'Contact', href: '/#contact' },
   ];
 
