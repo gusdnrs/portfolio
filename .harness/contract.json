@@ -1,0 +1,14 @@
+{
+  "projectName": "portfolio",
+  "version": "1.0.0",
+  "constraints": {
+    "indent": "2 spaces",
+    "funtionLines": 25,
+    "framework": "Next.js 15",
+    "styling": "Tailwind CSS v4"
+  },
+  "forbidden": [
+    "Inline CSS",
+    "Any modifications outside src/ or .harness/"
+  ]
+}
