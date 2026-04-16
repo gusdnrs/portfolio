@@ -31,7 +31,7 @@ async function getGithubRepos(): Promise<GitHubRepo[]> {
   try {
     const res = await fetch(
       'https://api.github.com/users/gusdnrs/repos?sort=updated&per_page=30',
-      { next: { revalidate: 3600 } },
+      { next: { revalidate: 43200 } },
     );
     if (!res.ok) return [];
     
