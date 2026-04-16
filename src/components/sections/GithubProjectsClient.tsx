@@ -35,16 +35,16 @@ const LANGUAGE_COLORS: Record<string, string> = {
 };
 
 const REPO_DISPLAY_NAMES: Record<string, string> = {
-  'portfolio': '✨ Hyunwook Portfolio',
-  'rolling-paper': '💌 Rolling Paper',
-  'clamp-calculator': '📐 Clamp Calculator',
-  'interview-recoder': '📝 Interview Recorder',
-  'oci-gemini-ai-stack': '☁️ OCI Gemini AI Stack',
-  'react-netflix-app': '🎬 Netflix Clone',
-  'todo-app': '✅ Todo App',
-  'tic_tac_toe': '🎮 Tic Tac Toe',
-  'filter-table': '🔍 Filter Table',
-  'react-button-app': '🔘 React Button App',
+  'portfolio': 'Hyunwook Portfolio',
+  'rolling-paper': 'Rolling Paper',
+  'clamp-calculator': 'Clamp Calculator',
+  'interview-recoder': 'Interview Recorder',
+  'oci-gemini-ai-stack': 'OCI Gemini AI Stack',
+  'react-netflix-app': 'Netflix Clone',
+  'todo-app': 'Todo App',
+  'tic_tac_toe': 'Tic Tac Toe',
+  'filter-table': 'Filter Table',
+  'react-button-app': 'React Button App',
 };
 
 function formatDate(dateStr: string): string {
@@ -56,13 +56,9 @@ function formatDate(dateStr: string): string {
 }
 
 function RepoCard({ repo }: { repo: GitHubRepo }) {
-  // 포트폴리오 레포는 무조건 GitHub 링크만 사용 (사용자 요청)
   const isPortfolioRepo = repo.name === 'portfolio';
   const isVercel = !isPortfolioRepo && !!repo.homepage;
   const displayUrl = isVercel ? (repo.homepage as string) : repo.html_url;
-  const langColor = repo.language
-    ? (LANGUAGE_COLORS[repo.language] ?? '#6b7280')
-    : '#6b7280';
   const displayName = REPO_DISPLAY_NAMES[repo.name] ?? repo.name;
 
   return (
@@ -70,54 +66,31 @@ function RepoCard({ repo }: { repo: GitHubRepo }) {
       href={displayUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="github-item group flex flex-col bg-white/5 border border-white/10 rounded-3xl p-7 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)] hover:-translate-y-1"
+      className="github-item group flex flex-col bg-white border border-gray-100 rounded-[32px] p-8 hover:border-blue-600/30 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:-translate-y-1"
     >
-      {/* Header */}
-      <div className="flex items-start justify-between mb-5">
-        <div className="w-11 h-11 rounded-2xl bg-white/10 border border-white/10 flex items-center justify-center group-hover:bg-brand-blue/30 group-hover:border-brand-blue/40 transition-all duration-500">
-          <Github className="w-5 h-5 text-white/60 group-hover:text-white transition-colors duration-500" />
-        </div>
-        <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-brand-blue group-hover:border-brand-blue transition-all duration-500">
-          <ArrowUpRight className="w-4 h-4 text-white/40 group-hover:text-white transition-colors duration-500" />
-        </div>
-      </div>
-
       {/* Content */}
-      <div className="flex-1 mb-6">
-        <h3 className="text-lg font-bold text-white/90 mb-2 group-hover:text-white transition-colors duration-300 leading-tight">
+      <div className="flex-1 mb-8">
+        <h3 className="text-2xl md:text-[32px] font-bold text-gray-900 mb-3 group-hover:text-brand-blue transition-colors duration-300 leading-tight">
           {displayName}
         </h3>
-        <p className="text-sm text-white/40 leading-relaxed line-clamp-2 group-hover:text-white/60 transition-colors duration-300">
+        <p className="text-lg md:text-xl text-gray-500 leading-relaxed line-clamp-3 group-hover:text-gray-600 transition-colors duration-300">
           {repo.description || '설명이 없습니다.'}
         </p>
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between pt-5 border-t border-white/8">
-        <div className="flex items-center gap-3">
-          {repo.language && (
-            <span className="flex items-center gap-1.5 text-xs font-bold text-white/50">
-              <span
-                className="w-2 h-2 rounded-full shrink-0"
-                style={{ backgroundColor: langColor }}
-              />
-              {repo.language}
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          <span
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${
-              isVercel
-                ? 'bg-brand-blue/20 text-brand-blue border border-brand-blue/30'
-                : 'bg-white/8 text-white/40 border border-white/10'
-            }`}
-          >
-            {isVercel ? 'Live' : 'GitHub'}
-          </span>
-          <span className="text-[11px] text-white/30 tabular-nums">
-            {formatDate(repo.updated_at)}
-          </span>
+      <div className="flex items-center justify-between pt-6 border-t border-gray-50">
+        <span
+          className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-black uppercase tracking-wider ${
+            isVercel
+              ? 'bg-blue-600/10 text-blue-600 border border-blue-600/20'
+              : 'bg-gray-100 text-gray-400 border border-gray-200 shadow-sm'
+          }`}
+        >
+          {isVercel ? 'Live' : 'GitHub'}
+        </span>
+        <div className="w-10 h-10 rounded-full bg-gray-50 border border-gray-100 flex items-center justify-center group-hover:bg-brand-blue group-hover:border-brand-blue transition-all duration-500">
+          <ArrowUpRight className="w-4 h-4 text-gray-400 group-hover:text-white transition-colors duration-500" />
         </div>
       </div>
     </a>
@@ -215,12 +188,12 @@ export default function GithubProjectsClient({ repos }: { repos: GitHubRepo[] })
     <section
       ref={containerRef}
       id="github"
-      className="py-20 md:py-32 lg:py-40 px-4 bg-[#0e1117] relative overflow-hidden"
+      className="py-20 md:py-32 lg:py-40 px-4 bg-[#F5F5F7] relative overflow-hidden"
     >
       {/* Background decoration */}
       <div aria-hidden="true" className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-brand-blue/5 blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-brand-blue/4 blur-3xl" />
+        <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-brand-blue/[0.03] blur-3xl" />
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full bg-brand-blue/[0.02] blur-3xl" />
       </div>
 
       <div className="max-w-[1440px] mx-auto relative z-10">
@@ -228,21 +201,16 @@ export default function GithubProjectsClient({ repos }: { repos: GitHubRepo[] })
         <div className="github-header pt-8 pb-6 mb-10 md:mb-16">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 pb-6">
             <div>
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/10 text-white/50 text-sm font-bold mb-6">
-                <Github className="w-4 h-4" />
-                <span>gusdnrs</span>
-              </div>
-              <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter text-white uppercase leading-[1.05]">
+              <h2 className="text-[clamp(2.5rem,6vw,5rem)] font-bold tracking-tighter text-gray-900 uppercase leading-[1.05]">
                 GitHub
               </h2>
             </div>
-            <p className="text-lg text-white/40 font-medium max-w-md leading-relaxed lg:text-right">
+            <p className="text-lg text-gray-500 font-medium max-w-md leading-relaxed lg:text-right">
               개인 프로젝트 및 학습 결과물입니다.
               <br className="hidden lg:block" />
-              클릭하면 라이브 데모로 이동합니다.
+              클릭하면 해당 링크로 이동합니다.
             </p>
           </div>
-          <div className="h-px bg-white/8" />
         </div>
 
         {/* Grid */}
@@ -267,7 +235,7 @@ export default function GithubProjectsClient({ repos }: { repos: GitHubRepo[] })
             href="https://github.com/gusdnrs"
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center gap-3 px-8 py-4 rounded-full border border-white/15 text-white/60 hover:text-white hover:border-white/30 hover:bg-white/5 transition-all duration-300 font-bold text-base"
+            className="group flex items-center gap-3 px-8 py-4 rounded-full border border-gray-200 bg-white text-gray-900 hover:text-brand-blue hover:border-brand-blue shadow-sm hover:shadow-md transition-all duration-300 font-bold text-base"
           >
             <Github className="w-5 h-5" />
             <span>GitHub 프로필 보기</span>

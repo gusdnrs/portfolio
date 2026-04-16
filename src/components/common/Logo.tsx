@@ -16,7 +16,7 @@ export default function Logo({
       </span>
       <span
         className={`text-xl font-black leading-none ${
-          isWhite ? 'text-white/90' : isScrolled ? 'text-gray-950' : 'text-brand-blue-dark'
+          isScrolled ? 'text-gray-950' : 'text-brand-blue-dark'
         }`}
       >
         HYUNWOOK

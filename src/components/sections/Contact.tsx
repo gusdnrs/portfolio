@@ -15,19 +15,26 @@ import { useGSAP } from '@gsap/react';
 const emailAddress = 'gusdnrs@naver.com';
 
 const contactLinks = [
-  {
-    name: 'GitHub',
-    icon: <Github className="w-6 h-6" />,
-    url: 'https://github.com/gusdnrs',
-    color: 'from-[#24292F] to-[#444d56]',
-    desc: '코드 저장소 및 오픈소스 활동',
-  },
+  // {
+  //   name: 'GitHub',
+  //   icon: <Github className="w-6 h-6" />,
+  //   url: 'https://github.com/gusdnrs',
+  //   color: 'from-[#24292F] to-[#444d56]',
+  //   desc: '코드 저장소 및 오픈소스 활동',
+  // },
   {
     name: 'Notion',
     icon: <BookOpen className="w-6 h-6" />,
     url: 'https://h-gomi.notion.site/2e0eae09287780078b1bf89ddfae8189?pvs=143',
     color: 'from-[#000000] to-[#37352F]',
-    desc: '기술 블로그 및 프로젝트 아카이브',
+    desc: '경력기술서 확인하기',
+  },
+  {
+    name: 'Resume',
+    icon: <FileText className="w-6 h-6" />,
+    url: '/documents/resume_hyunwook.pdf',
+    color: 'from-[#5856D6] to-[#AF52DE]',
+    desc: '이력서 확인하기',
   },
   {
     name: 'Email',
@@ -36,13 +43,6 @@ const contactLinks = [
     color: 'from-[#007AFF] to-[#5AC8FA]',
     desc: '채용 관련 문의',
     isCopy: true,
-  },
-  {
-    name: 'Resume',
-    icon: <FileText className="w-6 h-6" />,
-    url: '/documents/resume_hyunwook.pdf',
-    color: 'from-[#5856D6] to-[#AF52DE]',
-    desc: '상세 경력기술서 확인하기',
   },
 ];
 
@@ -104,7 +104,7 @@ export default function Contact() {
     <div
       id="contact"
       ref={containerRef}
-      className="min-h-screen bg-[#F5F5F7] text-[#1D1D1F] selection:bg-blue-100 overflow-hidden relative flex items-center justify-center py-24 md:py-32 lg:py-40"
+      className="min-h-screen bg-white text-[#1D1D1F] selection:bg-blue-100 overflow-hidden relative flex items-center justify-center py-24 md:py-32 lg:py-40"
     >
       {/* 1. 배경 요소: CONTACT 텍스트 & 컬러 블롭 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -120,10 +120,10 @@ export default function Contact() {
           </h2>
         </div>
 
-        <div className="contact-main-card bg-white/10 backdrop-blur-2xl backdrop-saturate-180 rounded-[48px] md:rounded-[60px] border border-white/40 shadow-[0_40px_100px_rgba(0,0,0,0.05)] overflow-hidden">
+        <div className="contact-main-card bg-white rounded-[48px] md:rounded-[60px] border border-gray-100 shadow-[0_24px_80px_rgba(0,0,0,0.03)] overflow-hidden">
           <div className="grid lg:grid-cols-10 items-stretch min-h-[600px] md:min-h-[700px]">
             {/* 왼쪽 영역: 강력한 헤드라인 (60%) */}
-            <div className="lg:col-span-6 p-10 md:p-16 lg:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-white/20">
+            <div className="lg:col-span-6 p-10 md:p-16 lg:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-gray-100">
               <h2 className="contact-left-animate text-[clamp(1.75rem,5vw,3rem)] md:text-4xl lg:text-5xl font-bold leading-[1.3] md:leading-[1.2] tracking-tight text-[#1D1D1F] max-w-2xl break-keep">
                 기획의 아이디어와 <br />
                 사용자의 경험을 <br className="md:hidden" />
@@ -143,7 +143,7 @@ export default function Contact() {
                     onClick={link.isCopy ? handleCopyEmail : undefined}
                     target={link.isCopy ? undefined : '_blank'}
                     rel={link.isCopy ? undefined : 'noopener noreferrer'}
-                    className={`contact-card-animate group relative flex items-center justify-between p-6 rounded-[32px] bg-white/40 border border-white/60 backdrop-blur-md transition-[box-shadow,transform,background-color] duration-500 hover:bg-white/60 hover:shadow-xl hover:-translate-x-2 cursor-pointer`}
+                    className={`contact-card-animate group relative flex items-center justify-between p-6 rounded-[32px] bg-gray-50 border border-gray-100 transition-[box-shadow,transform,background-color] duration-500 hover:bg-white hover:border-blue-600/30 hover:shadow-xl hover:-translate-x-2 cursor-pointer`}
                   >
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-5">
                       <div

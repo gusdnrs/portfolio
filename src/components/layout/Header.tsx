@@ -93,11 +93,11 @@ export default function Header() {
       <div
         className={`${
           isScrolled
-            ? 'fixed bg-white/20 backdrop-blur-md backdrop-saturate-180 border-b border-white/30 h-[80px] text-gray-900 shadow-[0_2px_30px_0_rgba(0,0,0,0.08)]'
+            ? 'fixed bg-white/80 backdrop-blur-md border-b border-gray-200 h-[80px] shadow-sm'
             : isSubPage
               ? 'absolute text-white'
               : 'absolute text-gray-950'
-        } top-0 left-0 w-full z-100 h-20 transition-all duration-300`}
+        } top-0 left-0 w-full z-[300] h-20 transition-all duration-300`}
       >
         <header className="h-full px-6 md:px-10 flex items-center justify-between relative">
           <Link href="/" className="whitespace-nowrap">
@@ -118,10 +118,10 @@ export default function Header() {
                         if (el) el.scrollIntoView({ behavior: 'smooth' });
                       }
                     }}
-                    className={`transition-colors ${
-                      !isScrolled && isSubPage
-                        ? 'text-white/70 hover:text-white'
-                        : 'text-gray-950/70 hover:text-gray-950'
+                    className={`transition-colors h-full flex items-center ${
+                      isScrolled || (!isScrolled && !isSubPage)
+                        ? 'text-gray-950/70 hover:text-gray-950'
+                        : 'text-white/70 hover:text-white'
                     }`}
                   >
                     <span className="font-en capitalize font-semibold text-base tracking-tight">
