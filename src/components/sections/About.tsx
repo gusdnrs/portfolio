@@ -129,6 +129,11 @@ export default function About() {
 
   const experiences = [
     {
+      date: '2026.05 ~ 현재',
+      company: '파인애플피티엘',
+      title: '주임',
+    },
+    {
       date: '2021.11 ~ 2025.11',
       company: '테라기획',
       title: '주임',
