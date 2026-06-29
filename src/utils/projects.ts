@@ -1333,7 +1333,7 @@ export const projects: Project[] = [
       '이미지 포맷을 WebP로 전환하여 페이지 경량화를 달성하고, 로딩 속도를 기존 7초대에서 3초대 이내로 획기적으로 개선했습니다. 또한 검색 엔진 최적화(SEO)뿐만 아니라 AEO(Answer Engine Optimization), GEO(Geographic Search Optimization) 코드를 추가하여 최적화했습니다.',
       '관리자 페이지 세팅을 통해 효율적인 운영 환경을 구축하였으며, 사용자 접근성을 극대화하여 실제 내원 유입을 돕는 웹 최적화 작업을 성공적으로 완료했습니다.',
     ],
-    featured: false,
+    featured: true,
     websiteUrl: 'https://www.esarangdental.com/',
   },
 ];
