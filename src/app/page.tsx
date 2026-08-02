@@ -1,17 +1,21 @@
 import Hero from '@/components/sections/Hero';
 import About from '@/components/sections/About';
-import Portfolio from '@/components/sections/Portfolio';
-import GithubProjects from '@/components/sections/GithubProjects';
+import Career from '@/components/sections/Career';
+import Skills from '@/components/sections/Skills';
+import Projects from '@/components/sections/Projects';
+import GithubActivity from '@/components/sections/GithubActivity';
 import Contact from '@/components/sections/Contact';
 
 export default function Home() {
   return (
-    <div className="relative">
+    <>
       <Hero />
       <About />
-      <Portfolio />
-      <GithubProjects />
+      <Career />
+      <Skills />
+      <Projects />
+      <GithubActivity />
       <Contact />
-    </div>
+    </>
   );
 }

@@ -1,194 +1,134 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import Logo from '../common/Logo';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import ThemeToggle from '@/components/ui/ThemeToggle';
+import { useScrollSpy } from '@/hooks/useScrollSpy';
+import type { NavItem } from '@/types';
+
+const NAV_ITEMS: NavItem[] = [
+  { id: 'about', label: 'About' },
+  { id: 'career', label: 'Career' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'contact', label: 'Contact' },
+];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const pathname = usePathname();
-  const isSubPage = pathname.startsWith('/project/');
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  // Handle manual scroll to hash when navigating from other pages
-  useEffect(() => {
-    if (pathname === '/' && window.location.hash) {
-      const id = window.location.hash.substring(1);
-      const element = document.getElementById(id);
-      if (element) {
-        // Delay slightly for content to settle
-        setTimeout(() => {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }, 300);
-      }
-    }
-  }, [pathname]);
+  const sectionIds = useMemo(
+    () => NAV_ITEMS.map(item => item.id),
+    [],
+  );
+  const activeId = useScrollSpy(sectionIds);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      if (scrollY > 100) {
-        setIsScrolled(true);
-      } else if (scrollY < 30) {
-        setIsScrolled(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, {
+      passive: true,
+    });
+    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Previous width for resize tracking
-  const prevWidthRef = useRef<number>(0);
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    prevWidthRef.current = window.innerWidth;
-
-    const handleResize = () => {
-      const currentWidth = window.innerWidth;
-      const prevWidth = prevWidthRef.current;
-
-      // Force reload when crossing from mobile to desktop
-      if (prevWidth < 768 && currentWidth >= 768) {
-        window.location.reload();
-      }
-
-      // Sync menu and body scroll
-      if (currentWidth >= 768) {
-        setIsMenuOpen(false);
-        document.body.style.overflow = '';
-      }
-
-      prevWidthRef.current = currentWidth;
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+  const scrollTo = useCallback((id: string) => {
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: 'smooth' });
+    setMobileOpen(false);
   }, []);
-
-  // Handle body scroll lock
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isMenuOpen]);
-
-  const navItems = [
-    { id: 0, title: 'Home', href: '/#hero' },
-    { id: 1, title: 'About Me', href: '/#about' },
-    { id: 2, title: 'Portfolio', href: '/#portfolio' },
-    { id: 4, title: 'GitHub', href: '/#github' },
-    { id: 3, title: 'Contact', href: '/#contact' },
-  ];
 
   return (
-    <>
-      <div
-        className={`${
-          isScrolled
-            ? 'fixed bg-white/80 backdrop-blur-md border-b border-gray-200 h-[80px] shadow-sm'
-            : isSubPage
-              ? 'absolute text-white'
-              : 'absolute text-gray-950'
-        } top-0 left-0 w-full z-[300] h-20 transition-all duration-300`}
-      >
-        <header className="h-full px-6 md:px-10 flex items-center justify-between relative">
-          <Link href="/" className="whitespace-nowrap">
-            <Logo isScrolled={isScrolled} isWhite={!isScrolled && isSubPage} />
-          </Link>
-          <nav className="hidden md:block">
-            <ul className="flex gap-8">
-              {navItems.map((item) => (
-                <li key={item.id}>
-                  <Link
-                    href={item.href}
-                    onClick={(e) => {
-                      // 같은 페이지(/)에서 클릭 시 JS smooth scroll 처리
-                      if (pathname === '/') {
-                        e.preventDefault();
-                        const id = item.href.replace('/#', '');
-                        const el = document.getElementById(id);
-                        if (el) el.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                    className={`transition-colors h-full flex items-center ${
-                      isScrolled || (!isScrolled && !isSubPage)
-                        ? 'text-gray-950/70 hover:text-gray-950'
-                        : 'text-white/70 hover:text-white'
-                    }`}
-                  >
-                    <span className="font-en capitalize font-semibold text-base tracking-tight">
-                      {item.title}
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50
+        transition-all duration-300
+        ${scrolled ? 'glass shadow-sm' : 'bg-transparent'}`}
+    >
+      <div className="section-container flex items-center
+        justify-between h-16 md:h-20">
+        {/* 로고 */}
+        <button
+          onClick={() => window.scrollTo({
+            top: 0, behavior: 'smooth',
+          })}
+          className="font-mono-custom text-lg font-bold
+            text-text-primary tracking-tight cursor-pointer"
+        >
+          HW<span className="text-text-tertiary">.</span>
+        </button>
 
-          {/* Mobile Nav Toggle */}
-          <button
-            className={`md:hidden flex flex-col gap-1.5 p-2 cursor-pointer focus:outline-none ${
-              isScrolled ? 'absolute right-6' : ''
-            }`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle Menu"
-            aria-expanded={isMenuOpen}
-          >
-            <span
-              className={`w-6 h-0.5 transition-all duration-300 ${isMenuOpen ? 'rotate-45 translate-y-2' : ''} ${
-                isScrolled || (!isScrolled && !isSubPage) ? 'bg-gray-950' : 'bg-white'
-              }`}
-            />
-            <span
-              className={`w-6 h-0.5 transition-all duration-300 ${isMenuOpen ? 'opacity-0' : ''} ${
-                isScrolled || (!isScrolled && !isSubPage) ? 'bg-gray-950' : 'bg-white'
-              }`}
-            />
-            <span
-              className={`w-6 h-0.5 transition-all duration-300 ${isMenuOpen ? '-rotate-45 -translate-y-2' : ''} ${
-                isScrolled || (!isScrolled && !isSubPage) ? 'bg-gray-950' : 'bg-white'
-              }`}
-            />
-          </button>
-        </header>
-      </div>
-
-      {/* Mobile Overlay Menu */}
-      <div
-        className={`fixed inset-0 bg-white/95 backdrop-blur-xl z-200 transition-all duration-500 ease-portfolio ${
-          isMenuOpen
-            ? 'translate-x-0 opacity-100'
-            : 'translate-x-full opacity-0 invisible'
-        } md:hidden`}
-      >
-        <nav className="flex h-full flex-col justify-center items-center px-10">
-          <ul className="flex flex-col gap-10 text-center">
-            {navItems.map((item) => (
-              <li key={item.id}>
-                <Link
-                  href={item.href}
-                  onClick={() => setIsMenuOpen(false)}
-                  className="font-en text-4xl font-bold capitalize hover:text-brand-blue transition-colors"
-                >
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          <div className="absolute bottom-12 text-center">
-            <p className="font-num text-lg font-semibold">gusdnrs@naver.com</p>
+        {/* 데스크톱 네비게이션 */}
+        <nav className="hidden md:flex items-center gap-1">
+          {NAV_ITEMS.map(item => (
+            <button
+              key={item.id}
+              onClick={() => scrollTo(item.id)}
+              className={`px-4 py-2 rounded-lg text-sm
+                font-medium transition-colors duration-200
+                cursor-pointer
+                ${
+                  activeId === item.id
+                    ? 'text-text-primary bg-bg-card'
+                    : 'text-text-tertiary hover:text-text-secondary'
+                }`}
+            >
+              {item.label}
+            </button>
+          ))}
+          <div className="ml-2">
+            <ThemeToggle />
           </div>
         </nav>
+
+        {/* 모바일 메뉴 버튼 */}
+        <div className="flex md:hidden items-center gap-2">
+          <ThemeToggle />
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 rounded-lg text-text-secondary
+              hover:text-text-primary cursor-pointer"
+            aria-label="메뉴 열기"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
       </div>
-    </>
+
+      {/* 모바일 드로어 */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25 }}
+            className="md:hidden glass border-t
+              border-border-primary overflow-hidden"
+          >
+            <div className="section-container py-4 flex
+              flex-col gap-1">
+              {NAV_ITEMS.map(item => (
+                <button
+                  key={item.id}
+                  onClick={() => scrollTo(item.id)}
+                  className={`py-3 px-4 rounded-lg text-left
+                    text-sm font-medium transition-colors
+                    cursor-pointer
+                    ${
+                      activeId === item.id
+                        ? 'text-text-primary bg-bg-card'
+                        : 'text-text-tertiary'
+                    }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+          </motion.nav>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

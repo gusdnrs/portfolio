@@ -1,50 +1,200 @@
 @import 'tailwindcss';
 
+/* ===========================
+   디자인 토큰 — 다크/라이트 테마
+   =========================== */
+
 :root {
-  --font-pretendard: var(--font-pretendard), -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+  /* 다크 모드 기본 */
+  --bg-primary: #0a0a0b;
+  --bg-secondary: #141416;
+  --bg-tertiary: #1c1c1f;
+  --bg-card: #18181b;
+  --bg-card-hover: #232326;
+
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #71717a;
+
+  --border-primary: #27272a;
+  --border-secondary: #3f3f46;
+
+  --accent: #e4e4e7;
+  --accent-gradient: linear-gradient(135deg, #e4e4e7, #a1a1aa);
+
+  --glass-bg: rgba(24, 24, 27, 0.6);
+  --glass-border: rgba(63, 63, 70, 0.3);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  --font-pretendard: 'Pretendard Variable', 'Pretendard', -apple-system,
+    BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
+    'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 }
 
+[data-theme='light'] {
+  --bg-primary: #fafafa;
+  --bg-secondary: #f4f4f5;
+  --bg-tertiary: #e4e4e7;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f4f4f5;
 
+  --text-primary: #09090b;
+  --text-secondary: #52525b;
+  --text-tertiary: #a1a1aa;
+
+  --border-primary: #e4e4e7;
+  --border-secondary: #d4d4d8;
+
+  --accent: #27272a;
+  --accent-gradient: linear-gradient(135deg, #27272a, #52525b);
+
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(228, 228, 231, 0.5);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* ===========================
+   Tailwind 테마 확장
+   =========================== */
 @theme {
-  /* Color palette */
-  --color-brand-blue: #3a59d1;
-  --color-brand-blue-dark: #1a1a1a;
-  --color-bg-gray: #f8f9fa;
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-bg-card: var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
 
-  /* Font */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+
+  --color-accent: var(--accent);
+
   --font-pretendard: var(--font-pretendard);
-  --font-montserrat: var(--font-montserrat);
+  --font-mono: var(--font-mono);
 }
 
-/* Base Style Set */
+/* ===========================
+   기본 스타일
+   =========================== */
 @layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+  }
 
   body {
-    @apply cursor-default bg-bg-gray text-brand-blue-dark break-keep font-pretendard antialiased tracking-tight;
+    @apply bg-bg-primary text-text-primary font-pretendard antialiased;
+    @apply transition-colors duration-300 ease-in-out;
+    @apply break-keep tracking-tight leading-relaxed;
   }
+
   img {
     @apply w-full max-w-full block;
   }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg-primary);
+  }
 }
 
+/* ===========================
+   유틸리티 클래스
+   =========================== */
 @layer utilities {
-  .font-en {
-    @apply font-montserrat;
-  }
+  /* 글래스모피즘 */
   .glass {
-    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)];
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
   }
-  .glass-dark {
-    @apply bg-brand-blue-dark/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.05)];
+
+  /* 섹션 컨테이너 */
+  .section-container {
+    @apply mx-auto max-w-[1200px] px-6;
   }
+
+  /* 그라데이션 텍스트 */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-brand-blue to-[#6a82fb];
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .hero-gradient {
-    background: radial-gradient(
-      circle at 50% 50%,
-      color-mix(in srgb, var(--color-brand-blue) 5%, transparent) 0%,
-      rgba(248, 249, 250, 0) 70%
-    );
+
+  /* 노이즈 텍스처 (Hero 배경용) */
+  .noise-overlay {
+    position: relative;
   }
+  .noise-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  /* 그리드 패턴 (Hero 배경용) */
+  .grid-pattern {
+    background-image: linear-gradient(
+        var(--border-primary) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        var(--border-primary) 1px,
+        transparent 1px
+      );
+    background-size: 60px 60px;
+    opacity: 0.3;
+  }
+
+  /* 카드 호버 효과 */
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+    @apply hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* 커스텀 스크롤바 */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--border-secondary);
+    border-radius: 9999px;
+  }
+
+  /* 모노 폰트 */
+  .font-mono-custom {
+    font-family: var(--font-mono);
+  }
+}
+
+/* ===========================
+   모달 오버레이 시 body 스크롤 잠금
+   =========================== */
+body.modal-open {
+  overflow: hidden;
 }
