@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { Menu, X, Sparkles, Send } from 'lucide-react';
+import { Menu, X, Sparkles, Send, ChevronRight } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { useScrollSpy } from '@/hooks/useScrollSpy';
 import type { NavItem } from '@/types';
@@ -32,6 +32,15 @@ export default function Header() {
     });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  // 모바일 메뉴 열림 시 스크롤 잠금
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.classList.add('modal-open');
+    } else {
+      document.body.classList.remove('modal-open');
+    }
+  }, [mobileOpen]);
 
   const scrollTo = useCallback((id: string) => {
     document
@@ -128,12 +137,12 @@ export default function Header() {
         >
           {/* 좌측: 햄버거 메뉴 버튼 */}
           <button
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={() => setMobileOpen(true)}
             className="w-10 h-10 flex items-center justify-center
               rounded-xl text-text-primary hover:bg-bg-secondary/60 cursor-pointer"
             aria-label="메뉴 열기"
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            <Menu size={22} />
           </button>
 
           {/* 중앙: 로고 */}
@@ -146,40 +155,104 @@ export default function Header() {
             HW<span className="text-indigo-500">.</span>
           </button>
 
-          {/* 우측: 컨트롤 (테마 토글 등) */}
+          {/* 우측: 컨트롤 (테마 토글) */}
           <div className="flex items-center gap-3">
             <ThemeToggle />
           </div>
         </div>
 
-        {/* 모바일 드로어 메뉴 */}
+        {/* 모바일 사이드 메뉴 오버레이 & 펼침 카드 */}
         <AnimatePresence>
           {mobileOpen && (
-            <motion.nav
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.25 }}
-              className="bg-bg-card/95 backdrop-blur-xl border-b border-border-primary shadow-xl overflow-hidden"
-            >
-              <div className="px-5 py-4 flex flex-col gap-1.5">
-                {NAV_ITEMS.map(item => (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              {/* 백드롭 (배경 블러) */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                onClick={() => setMobileOpen(false)}
+                className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              />
+
+              {/* 390px 스타일 사이드메뉴 카드 모달 */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.92, y: 15 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.92, y: 15 }}
+                transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+                className="relative z-10 w-full max-w-[390px] min-h-[540px] p-6
+                  bg-bg-card rounded-[24px] border border-border-primary/80
+                  shadow-[0_12px_32px_rgba(15,23,42,0.25)]
+                  flex flex-col justify-between"
+              >
+                {/* 상단 맘: 로고 & 닫기 버튼 */}
+                <div className="space-y-6">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[20px] font-extrabold text-text-primary tracking-tight">
+                      HW<span className="text-indigo-500">.</span>
+                    </span>
+
+                    {/* 닫기 버튼 */}
+                    <button
+                      onClick={() => setMobileOpen(false)}
+                      className="w-9 h-9 rounded-full bg-bg-secondary
+                        border border-border-primary
+                        flex items-center justify-center text-text-primary
+                        hover:bg-bg-card-hover transition-colors cursor-pointer"
+                      aria-label="메뉴 닫기"
+                    >
+                      <X size={18} />
+                    </button>
+                  </div>
+
+                  {/* 메뉴 항목 리스트 */}
+                  <div className="flex flex-col gap-2">
+                    {NAV_ITEMS.map(item => {
+                      const isActive = activeId === item.id;
+                      return (
+                        <button
+                          key={item.id}
+                          onClick={() => scrollTo(item.id)}
+                          className={`w-full px-4 py-[14px] rounded-[12px]
+                            flex items-center justify-between
+                            transition-all duration-200 cursor-pointer
+                            ${
+                              isActive
+                                ? 'bg-indigo-600/10 dark:bg-indigo-400/15 text-indigo-600 dark:text-indigo-400 font-semibold'
+                                : 'text-text-primary font-medium hover:bg-bg-secondary'
+                            }`}
+                        >
+                          <span className="text-[16px]">{item.label}</span>
+                          {isActive && (
+                            <ChevronRight
+                              size={16}
+                              className="text-indigo-600 dark:text-indigo-400"
+                            />
+                          )}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* 하단 영역: CTA 버튼 & 서브설명 */}
+                <div className="pt-6 space-y-3">
                   <button
-                    key={item.id}
-                    onClick={() => scrollTo(item.id)}
-                    className={`py-3 px-4 rounded-xl text-left
-                      text-sm font-medium transition-colors cursor-pointer
-                      ${
-                        activeId === item.id
-                          ? 'bg-indigo-600/10 dark:bg-indigo-400/15 text-indigo-600 dark:text-indigo-400 font-semibold'
-                          : 'text-slate-600 dark:text-zinc-400 hover:bg-indigo-600/10 dark:hover:bg-indigo-400/15 hover:text-indigo-600 dark:hover:text-indigo-400'
-                      }`}
+                    onClick={() => scrollTo('contact')}
+                    className="w-full py-3.5 px-4 rounded-[12px]
+                      bg-indigo-600 hover:bg-indigo-500
+                      text-white text-[15px] font-semibold text-center
+                      shadow-md shadow-indigo-600/20 transition-all cursor-pointer"
                   >
-                    {item.label}
+                    Contact Me
                   </button>
-                ))}
-              </div>
-            </motion.nav>
+                  <p className="text-center text-[12px] text-text-tertiary">
+                    웹 퍼블리셔 &amp; 프론트엔드 개발자 임현욱
+                  </p>
+                </div>
+              </motion.div>
+            </div>
           )}
         </AnimatePresence>
       </header>
