@@ -76,7 +76,7 @@ export default function Header() {
         </button>
 
         {/* 데스크톱 메뉴 영역 */}
-        <nav className="hidden md:flex items-center gap-1.5 lg:gap-2">
+        <nav className="hidden md:flex items-center gap-1 lg:gap-2">
           {NAV_ITEMS.map(item => {
             const isActive = activeId === item.id;
             return (
@@ -87,8 +87,8 @@ export default function Header() {
                   transition-all duration-200 cursor-pointer
                   ${
                     isActive
-                      ? 'text-text-primary bg-bg-secondary shadow-xs font-semibold'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-bg-secondary/50'
+                      ? 'bg-indigo-600/10 dark:bg-indigo-400/15 text-indigo-600 dark:text-indigo-400 font-semibold'
+                      : 'text-slate-600 dark:text-zinc-400 hover:bg-indigo-600/10 dark:hover:bg-indigo-400/15 hover:text-indigo-600 dark:hover:text-indigo-400'
                   }`}
               >
                 {item.label}
@@ -128,7 +128,7 @@ export default function Header() {
         </div>
       </div>
 
-      {/* 모바일 드로어 (플로팅 스타일 하단 연결) */}
+      {/* 모바일 드로어 */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.nav
@@ -149,8 +149,8 @@ export default function Header() {
                     text-sm font-medium transition-colors cursor-pointer
                     ${
                       activeId === item.id
-                        ? 'text-text-primary bg-bg-secondary font-semibold'
-                        : 'text-text-secondary hover:bg-bg-secondary/50'
+                        ? 'bg-indigo-600/10 dark:bg-indigo-400/15 text-indigo-600 dark:text-indigo-400 font-semibold'
+                        : 'text-slate-600 dark:text-zinc-400 hover:bg-indigo-600/10 dark:hover:bg-indigo-400/15 hover:text-indigo-600 dark:hover:text-indigo-400'
                     }`}
                 >
                   {item.label}
