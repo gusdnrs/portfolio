@@ -9,9 +9,10 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="w-full bg-[#0B0F1E] border-t border-white/10 text-white pt-20 pb-12">
-      <div className="section-container space-y-16">
-        {/* ─── 1. 상단 CTA 배너 카드 (Ready to get started?) ─── */}
+    <footer className="w-full bg-[#0B0F1E] border-t border-white/10 text-white">
+      {/* ─── 1. 데스크톱 전용 푸터 (md 이상) ─── */}
+      <div className="hidden md:block section-container py-20 pb-12 space-y-16">
+        {/* 상단 CTA 배너 카드 */}
         <div className="w-full p-8 md:p-12 rounded-[24px] bg-white/[0.02] border border-white/[0.08] backdrop-blur-[10px] flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           <div className="max-w-2xl space-y-2">
             <h3 className="text-2xl md:text-3xl font-bold font-heading text-white tracking-tight">
@@ -40,9 +41,8 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ─── 2. 메인 푸터 링크 그리드 (Company / Product / Resources / Legal 스타일) ─── */}
+        {/* 메인 푸터 링크 그리드 */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pt-4">
-          {/* 브랜드 컬럼 (2열 차지) */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
@@ -58,7 +58,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Navigation 컬럼 */}
           <div className="space-y-4">
             <h4 className="text-white text-base font-bold tracking-tight">Navigation</h4>
             <ul className="space-y-2.5 text-sm text-[#94A3B8]">
@@ -75,7 +74,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Major Projects 컬럼 */}
           <div className="space-y-4">
             <h4 className="text-white text-base font-bold tracking-tight">Featured Projects</h4>
             <ul className="space-y-2.5 text-sm text-[#94A3B8]">
@@ -102,7 +100,6 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Tech & Contact 컬럼 */}
           <div className="space-y-4">
             <h4 className="text-white text-base font-bold tracking-tight">Contact Info</h4>
             <ul className="space-y-2.5 text-sm text-[#94A3B8]">
@@ -124,9 +121,9 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* ─── 3. 하단 구분선 & 카피라이트 & 소셜 ─── */}
+        {/* 하단 구분선 & 카피라이트 & 소셜 */}
         <div className="space-y-6 pt-6 border-t border-white/10">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-4">
             <p className="text-sm text-[#64748B]">
               © 2026 임현욱. All rights reserved. Built with Next.js &amp; TailwindCSS.
             </p>
@@ -156,6 +153,140 @@ export default function Footer() {
               </button>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ─── 2. 모바일 전용 푸터 (md 미만) ─── */}
+      <div className="md:hidden w-full pt-14 pb-10 px-6 space-y-12">
+        {/* 상단 CTA 배너 카드 (모바일) */}
+        <div className="w-full p-6 rounded-[16px] bg-white/[0.02] border border-white/[0.07] flex flex-col gap-6">
+          <div className="space-y-2">
+            <h3 className="text-[24px] font-bold text-white tracking-tight leading-snug">
+              Ready to work together?
+            </h3>
+            <p className="text-[#94A3B8] text-[14px] leading-[19.6px]">
+              새로운 프로젝트나 완성도 높은 반응형 웹 퍼블리싱이 필요하신가요? 언제든 연락주세요.
+            </p>
+          </div>
+          <div className="flex flex-col gap-3 w-full">
+            <button
+              onClick={() => scrollTo('contact')}
+              className="w-full py-3.5 rounded-full bg-indigo-600 text-white text-[14px] font-semibold text-center shadow-md shadow-indigo-600/20 cursor-pointer"
+            >
+              Contact Me
+            </button>
+            <a
+              href="mailto:gusdnrs@naver.com"
+              className="w-full py-3.5 rounded-full bg-white/[0.02] border border-white/[0.07] text-white text-[14px] font-semibold text-center block"
+            >
+              이메일 문의
+            </a>
+          </div>
+        </div>
+
+        {/* 중단 링크 그룹 (태그 칩 형태) */}
+        <div className="flex flex-col gap-8">
+          {/* Navigation 칩 */}
+          <div className="flex flex-col gap-3.5">
+            <h4 className="text-white text-[15px] font-bold tracking-tight">Navigation</h4>
+            <div className="flex flex-wrap gap-2.5">
+              {['about', 'career', 'skills', 'projects', 'contact'].map(id => (
+                <button
+                  key={id}
+                  onClick={() => scrollTo(id)}
+                  className="px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.05] text-[#94A3B8] text-[13px] font-normal capitalize hover:text-white hover:bg-white/[0.08] transition-all cursor-pointer"
+                >
+                  {id}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Featured Projects 칩 */}
+          <div className="flex flex-col gap-3.5">
+            <h4 className="text-white text-[15px] font-bold tracking-tight">Featured Projects</h4>
+            <div className="flex flex-wrap gap-2.5">
+              {['기운찬한방병원', '주연여성의원', '베스트연합의원', '성남센트럴안과'].map(name => (
+                <button
+                  key={name}
+                  onClick={() => scrollTo('projects')}
+                  className="px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.05] text-[#94A3B8] text-[13px] font-normal hover:text-white hover:bg-white/[0.08] transition-all cursor-pointer"
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact 칩 */}
+          <div className="flex flex-col gap-3.5">
+            <h4 className="text-white text-[15px] font-bold tracking-tight">Contact Info</h4>
+            <div className="flex flex-wrap gap-2.5">
+              <a
+                href="mailto:gusdnrs@naver.com"
+                className="px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.05] text-[#94A3B8] text-[13px] font-normal hover:text-white transition-all"
+              >
+                gusdnrs@naver.com
+              </a>
+              <a
+                href="https://github.com/gusdnrs"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 rounded-full bg-white/[0.02] border border-white/[0.05] text-[#94A3B8] text-[13px] font-normal hover:text-white transition-all flex items-center gap-1"
+              >
+                <span>github.com/gusdnrs</span>
+                <ExternalLink size={11} />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* 구분선 */}
+        <div className="w-full h-px border-t border-white/10" />
+
+        {/* 하단 브랜드 & 소셜 & 카피라이트 (세로 중앙) */}
+        <div className="flex flex-col items-center justify-center gap-6 text-center">
+          {/* 브랜드 로고 */}
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20">
+              <Sparkles size={16} className="fill-white/20" />
+            </div>
+            <span className="text-[20px] font-extrabold text-white tracking-tight">
+              HW<span className="text-indigo-500">.</span>
+            </span>
+          </div>
+
+          {/* 소셜 아이콘 바 */}
+          <div className="flex items-center justify-center gap-4">
+            <a
+              href="https://github.com/gusdnrs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-9 h-9 rounded-full bg-white/[0.02] border border-white/[0.07] flex items-center justify-center text-[#94A3B8] hover:text-white transition-all"
+              aria-label="GitHub Profile"
+            >
+              <Github size={16} />
+            </a>
+            <a
+              href="mailto:gusdnrs@naver.com"
+              className="w-9 h-9 rounded-full bg-white/[0.02] border border-white/[0.07] flex items-center justify-center text-[#94A3B8] hover:text-white transition-all"
+              aria-label="Send Email"
+            >
+              <Mail size={16} />
+            </a>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="w-9 h-9 rounded-full bg-white/[0.02] border border-white/[0.07] flex items-center justify-center text-[#94A3B8] hover:text-white transition-all cursor-pointer"
+              aria-label="Scroll to top"
+            >
+              <ArrowUp size={16} />
+            </button>
+          </div>
+
+          {/* 카피라이트 */}
+          <p className="text-[12px] text-[#64748B]">
+            © 2026 임현욱. All rights reserved.<br />Built with Next.js &amp; TailwindCSS.
+          </p>
         </div>
       </div>
     </footer>
